@@ -5,4 +5,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :events do
+    resources :checkins, only: [:index, :create]
+    resources :comments, only: [:index, :new, :create]
+  end
+  resources :checkins, only: [:destroy]
+  get '/events/recommended', to: 'events#recommended', as: 'recommended'
 end
