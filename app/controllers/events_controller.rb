@@ -30,6 +30,6 @@ class EventsController < ApplicationController
         lng: event.longitude
       }
     end
-    @events_near = Event.near(@user_coordinates, 100)
+    @events_near = Event.near(@user_coordinates, 10)
   end
 end

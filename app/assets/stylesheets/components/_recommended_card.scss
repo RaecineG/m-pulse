@@ -1,42 +1,9 @@
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .card-events-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .card-events-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .card-events-list {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .card-events-list {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .card-events-list {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
 .container-recommended {
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1200px;
 }
 
 .container-recommended h1 {
@@ -111,4 +78,20 @@
 .card-event-icon {
   width: 50px;
   height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card-event-icon i {
+  font-size: 300%;
+}
+
+.card-event-icon p {
+  position: absolute;
+  right: 15px;
+  bottom: 8px;
+  left: 13px;
+  color: #FAFD69;
 }
