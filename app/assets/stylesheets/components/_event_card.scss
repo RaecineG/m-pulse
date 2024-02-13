@@ -1,0 +1,74 @@
+.card-event {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  width: 38%;
+}
+
+.card-event > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  padding: 16px;
+}
+
+.card-event h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-event p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-event-button {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-event-description {
+  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-event-details {
+  max-width: 70%;
+}
+
+
+.card-event .card-event-infos {
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-event-infos .fa-user {
+  position: absolute;
+  right: 16px;
+  top: 4px;
+}
+
+.btn-directions {
+  font-weight: bold;
+  background-color: yellow;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
