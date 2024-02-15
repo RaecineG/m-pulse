@@ -1,6 +1,7 @@
-<div class="container container-recommended">
+<%# rendering this page in the index %>
+<div class="container-recommended">
   <h1>Events for you</h1>
-  <% @events_near.each do |event| %>
+  <% events_near.each do |event| %>
     <div class="card-events-list">
       <div class="card-image">
         <%= link_to event_path(event), class: 'card-event-link' do %>
@@ -11,7 +12,7 @@
         <div class="card-event-infos-details">
           <h3><%= event.name %></h3>
           <h2><%= event.category %></h2>
-          <% distance = event.distance_to(@user_coordinates) %>
+          <% distance = event.distance_to(user_coordinates) %>
           <p>Distance: <%= distance.round(2) %> km</p>
         </div>
         <div class="card-event-icon">

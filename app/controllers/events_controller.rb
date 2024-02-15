@@ -9,6 +9,7 @@ class EventsController < ApplicationController
         lng: event.longitude
       }
     end
+    recommended
   end
 
   def show

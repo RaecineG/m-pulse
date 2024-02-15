@@ -3,12 +3,13 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 0 20px;
-  max-width: 1200px;
+  max-width: 100%;
 }
 
 .container-recommended h1 {
   margin-bottom: 10px;
   margin-top: 10px;
+  font-size: 1.5em; /* Adjust the font size for responsiveness */
 }
 
 .card-events-list {
@@ -20,6 +21,8 @@
   align-items: center;
   margin-top: 5px;
   margin-bottom: 16px;
+  box-shadow: 10px 5px 5px, rgb(62, 61, 61);
+  border-radius: 10px;
 }
 
 .card-image img {
