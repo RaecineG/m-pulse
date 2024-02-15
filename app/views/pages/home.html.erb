@@ -1,1 +1,15 @@
+<div class="home-container d-flex justify-content-center flex-column">
+  <div class="home-logo">
+    <%= image_tag('Pulse.gif', alt: 'logo image', class: 'logo-image') %>
+  </div>
 
+  <div class="signup-link">
+    <%= link_to "Sign up", new_user_registration_path, class: "home-btn", style: "text-decoration: none;" %>
+  </div>
+
+  <p id="home-p">Already have an account?</p>
+  <div class="signup-link">
+    <%= link_to "Login", new_user_session_path, class: "home-btn", style: "background-color: #5CE1E6; text-decoration: none;" %>
+  </div>
+
+</div>
