@@ -1,5 +1,8 @@
-<div style="width: 100vw; height: 100vh;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <% @events.each do |event| %>
+    <%= render "events/info_window", event: event %>
+  <% end %>
+  <div style="width: 100vw; height: 100vh;"
+  data-map-target="frame">
+  </div>
 </div>
