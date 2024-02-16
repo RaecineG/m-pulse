@@ -1,2 +1,8 @@
 <h1>Events#show</h1>
 <p>Find me in app/views/events/show.html.erb</p>
+
+<%= simple_form_for [@event, @checkin], url: event_checkins_path(@event) do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :event_id %>
+  <%= f.submit "Check-in to this event", class: "btn" %>
+<% end %>

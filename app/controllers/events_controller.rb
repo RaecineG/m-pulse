@@ -12,6 +12,12 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @checkin = Checkin.new
+    @event = Event.find(params[:id])
+    @checkin.user = @user
+    @checkin.event = @event
+    @checkin.save
   end
 
   def new
