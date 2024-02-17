@@ -15,7 +15,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-<<<<<<< HEAD
     @user = current_user
     @checkin = Checkin.new
     @marker = {
@@ -30,8 +29,6 @@ class EventsController < ApplicationController
     # else
     #   render 'index', status: :unprocessable_entity
     # end
-=======
->>>>>>> 1af7ec57f04d98bfe50598f8a3d0ca9d78e249da
   end
 
   def new

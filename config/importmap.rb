@@ -9,9 +9,7 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "mapbox-gl" # @3.1.2
 pin "process" # @2.0.1
-<<<<<<< HEAD
 pin "@mapbox/mapbox-gl-directions", to: "@mapbox--mapbox-gl-directions.js" # @4.2.0
-=======
 pin "@mapbox/mapbox-gl-geocoder", to: "@mapbox--mapbox-gl-geocoder.js" # @5.0.2
 pin "#lib/client.js", to: "#lib--client.js.js" # @0.13.7
 pin "@mapbox/fusspot", to: "@mapbox--fusspot.js" # @0.4.0
@@ -28,4 +26,3 @@ pin "nanoid" # @3.3.7
 pin "subtag" # @0.5.0
 pin "suggestions" # @1.7.1
 pin "xtend" # @4.0.2
->>>>>>> 1af7ec57f04d98bfe50598f8a3d0ca9d78e249da

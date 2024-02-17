@@ -7,7 +7,6 @@ class CheckinsController < ApplicationController
     @checkin = Checkin.new(checkin_params)
     @checkin.user = @user
     @checkin.event = @event
-    raise
     if @checkin.save
       redirect_to events_path
     else
