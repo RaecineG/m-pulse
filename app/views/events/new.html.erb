@@ -1,2 +1,16 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<div class="container">
+  <h1>New Event</h1>
+</div>
+<br>
+<div class="form-container">
+  <%= simple_form_for [@event] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :start_at, html5: true %>
+    <%= f.input :end_at, html5: true %>
+    <%= f.input :category, collection: Event.categories.keys %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Submit event", class: "btn btn-primary" %>
+  <% end %>
+</div>

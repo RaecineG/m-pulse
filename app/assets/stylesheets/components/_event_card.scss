@@ -1,0 +1,86 @@
+.show-card-event {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  z-index: 1;
+  margin: 16px;
+}
+
+.show-card-event-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  padding: 16px;
+}
+
+.show-card-event h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.show-card-event p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+}
+
+.show-card-event-button {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.show-card-event-description {
+  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.show-card-event-details {
+  max-width: 70%;
+}
+
+
+.show-card-event .show-card-event-infos {
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.show-card-event-infos .fa-user {
+  position: absolute;
+  right: 16px;
+  top: 4px;
+  font-size: 80px;
+}
+
+.show-card-event-infos h4 {
+  position: absolute;
+  z-index: 1;
+  top: 56px;
+  right: 31px;
+  font-weight: bold;
+  color: yellow;
+}
+
+.btn-directions {
+  font-weight: bold;
+  background-color: yellow;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 100%;
+}

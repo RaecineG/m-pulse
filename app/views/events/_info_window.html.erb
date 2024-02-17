@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="event-container row justify-content-center">
+    <div class="show-card-event col-12 col-lg-4">
+      <div class="show-card-event-img", url(<%= cl_image_path event&.photo&.key ? event.photo.key : "https://res.cloudinary.com/dyjadlnd4/image/upload/v1708145895/development/6d3p2y2juqbrb3a9i6limsjfhnpy.jpg" %>)">
+        <div class="show-card-event-infos">
+          <div class="show-card-event-details">
+            <h2><%= event.name %></h2>
+            <p><%= event.category %></p>
+            <p><strong>Saturday, February 17</p>
+              <p><%= event.address %></p>
+            </div>
+            <i class="fa-solid fa-user" style="color: #3c3b3b"></i>
+            <h4>100</h4>
+          </div>
+          <div class="show-card-event-button">
+            <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
+          </div>
+          <div class="show-card-event-description">
+            <div>
+              <h5>Description</h5>
+              <p><%= event.description %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
