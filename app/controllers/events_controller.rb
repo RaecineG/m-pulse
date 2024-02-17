@@ -15,6 +15,20 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @user = current_user
+    @checkin = Checkin.new
+    @marker = {
+      lat: @event.latitude,
+      lng: @event.longitude
+    }
+    @checkin.user = @user
+    @checkin.event = @event
+    @checkin.save
+    # if @checkin.save
+    #   render action: "checkins/create"
+    # else
+    #   render 'index', status: :unprocessable_entity
+    # end
   end
 
   def new
