@@ -8,13 +8,11 @@ export default class extends Controller {
     markers: Array
   }
 
-  static targets = ["frame", "card"]
-
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
-      container: this.frameTarget,
+      container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
@@ -25,12 +23,10 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-      const markerObject = new mapboxgl.Marker()
+      new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
         .addTo(this.map)
-        markerObject.on("click",()=>{
-          console.log("hello")
-        })
     })
   }
 
