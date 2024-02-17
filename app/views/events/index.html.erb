@@ -1,3 +1,4 @@
+
 <!-- Background Map -->
 
 <div class="background-map" style="width: 100vw; height: 100vh;"
@@ -6,16 +7,19 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<!-- Modal and Button for Event for you -->
-<div class="recommended-container" data-controller="recommend-modal">
-  <%# Modal Trigger Button %>
-  <button type="button" class="btn" style="background-color: #FAFD69;" id="modal-trigger" data-action ="click->recommend-modal#open">Events for you</button>
-   <%# Modal Overlay %>
-  <div id="modal-overlay" class="modal-overlay" data-recommend-modal-target="overlay">
-    <div class="modal-content">
-      <span class="close" data-action="click->recommend-modal#close">&times;</span>
-      <%# Recommended Events Content partial %>
+<!-- Modal and Button for Event for you
+<div class="recommended-container" data-controller="recommendedcard">
+  Modal Trigger Button
+  <button type="button" class="btn" style="background-color: #FAFD69;" id="modal-trigger">Events for you</button>
+   Modal Overlay
+  <div id="modal-overlay" class="modal-overlay d-none">
+    <div class="modal-content" data-recommendedcard-target="button">
+      <span class="close" data-action="click->recommendedcard#modalOpen">&times;</span>
+      Recommended Events Content partial
       <%= render partial: 'recommended', locals: { events_near: @events_near, user_coordinates: @user_coordinates } %>
     </div>
   </div>
-</div>
+</div> -->
+<%# <!-- Modal Javascript -->
+<script src="javascript/modal.js"></script> %>
+
