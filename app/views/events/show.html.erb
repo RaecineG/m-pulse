@@ -1,8 +1,14 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
-
-<%= simple_form_for [@event, @checkin], url: event_checkins_path(@event) do |f| %>
-  <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :event_id %>
-  <%= f.submit "Check-in to this event", class: "btn" %>
-<% end %>
+<div class="map">
+  <div style="width: 100vw; height: 100vh;"
+    data-controller="destination"
+    data-destination-marker-value="<%= @marker.to_json %>"
+    data-destination-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <div>
+    <%= simple_form_for [@event, @checkin], url: event_checkins_path(@event) do |f| %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :event_id %>
+      <%= f.submit "Check-in to this event", class: "btn" %>
+    <% end %>
+  </div>
+</div>

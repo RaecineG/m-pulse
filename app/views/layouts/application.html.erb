@@ -8,18 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
   </head>
 
   <body>
-<<<<<<< HEAD
-    <%= render "shared/navbar" %>
+    <%# <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-=======
-  <%# <%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
->>>>>>> 9cbb89157733c5a91e27c3f82f5210b88202ca6b
     <%= yield %>
   </body>
 </html>
