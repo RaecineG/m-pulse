@@ -4,32 +4,38 @@
   margin: 0 auto;
   padding: 0 20px;
   max-width: 100%;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 750px) {
+  .container-recommended { max-width: 100%; }
 }
 
 .container-recommended h1 {
   margin-bottom: 10px;
   margin-top: 10px;
-  font-size: 1.5em; /* Adjust the font size for responsiveness */
+  font-size: 1.5em;
 }
 
+
 .card-events-list {
-  overflow: hidden;
-  height: 120px;
+  height: 95px; /* Let the height adjust automatically based on content */
+  max-height: calc(80vh - 30px); /* Adjust maximum height to fit within modal content */
+  /* Subtract any padding or margin from the modal content's max-height */
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-top: 5px;
   margin-bottom: 16px;
-  box-shadow: 10px 5px 5px, rgb(62, 61, 61);
   border-radius: 10px;
+  overflow: hidden; /* Hide any content that exceeds the height of card-events-list */
 }
 
 .card-image img {
-  height: 100px;
-  width: 100px;
-  margin-left: 10px;
-  object-fit: cover;
+  max-width: 100%; /* Ensure the image doesn't exceed the width of its container */
+  height: auto; /* Allow the height to adjust proportionally based on the width */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
   border-radius: 50%;
 }
 
