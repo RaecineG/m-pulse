@@ -1,0 +1,33 @@
+<%# rendering this page in the index %>
+<div class="container-recommended">
+  <h1>Events for you</h1>
+  <% events_near.each do |event| %>
+    <div class="card-events-list">
+      <div class="card-image">
+        <%= link_to event_path(event), class: 'card-event-link' do %>
+          <%= image_tag 'discoball.jpg' %>
+        <% end %>
+      </div>
+      <div class="card-event-infos">
+        <div class="card-event-infos-details">
+          <h2><%= event.name %></h2>
+          <% if event.category == 1 %>
+            <h3><%= "Club Event" %></h3>
+          <% elsif event.category == 2 %>
+            <h3><%= "Sports Event" %></h3>
+          <% elsif event.category == 3 %>
+            <h3><%= "Meet up" %></h3>
+          <% else %>
+            <h3><%= "Tech Event" %></h3>
+          <% end %>
+          <% distance = event.distance_to(user_coordinates) %>
+          <p><%= distance.round(2) %> km</p>
+        </div>
+        <div class="card-event-icon">
+          <i class="fa-solid fa-user" style="color: #3c3b3b"></i>
+          <p>120</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
