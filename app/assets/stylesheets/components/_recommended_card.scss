@@ -3,31 +3,42 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 0 20px;
-  max-width: 1200px;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 750px) {
+  .container-recommended { max-width: 100%; }
 }
 
 .container-recommended h1 {
   margin-bottom: 10px;
   margin-top: 10px;
+  font-size: 1.5em;
 }
 
+
 .card-events-list {
-  overflow: hidden;
-  height: 120px;
+  height: 95px;
+  max-height: calc(80vh - 30px);
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-top: 5px;
   margin-bottom: 16px;
+  border-radius: 10px;
+  // overflow: hidden;
 }
 
 .card-image img {
-  height: 100px;
-  width: 100px;
-  margin-left: 10px;
-  object-fit: cover;
+  width: 85px;
+  height: 85px;
+  margin-left: 5px;
+  // width: auto;
+  // height: auto;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .card-event-infos {
@@ -39,14 +50,14 @@
 }
 
 .card-events-list h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   margin: 0;
   text-decoration: none;
 }
 
 .card-events-list h3 {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0;
   text-decoration: none;
@@ -76,8 +87,8 @@
 }
 
 .card-event-icon {
-  width: 50px;
-  height: 100px;
+  width: 40px;
+  height: 95px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,13 +96,13 @@
 }
 
 .card-event-icon i {
-  font-size: 300%;
+  font-size: 250%;
 }
 
 .card-event-icon p {
   position: absolute;
   right: 15px;
-  bottom: 8px;
-  left: 13px;
+  bottom: 7px;
+  left: 9px;
   color: #FAFD69;
 }

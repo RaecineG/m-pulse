@@ -10,6 +10,7 @@ class EventsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {event: event})
       }
     end
+    recommended
   end
 
   def show
@@ -40,8 +41,8 @@ class EventsController < ApplicationController
   end
 
   def recommended
-    # user_coordinates = [request.location.latitude, request.location.longitude]
-    @user_coordinates = [35.661777, 139.704051]
+    # @user_coordinates = [request.location.latitude, request.location.longitude]
+    @user_coordinates = [35.6537872, 139.6928169]
     @events = Event.all
     @locations = @events.geocoded.map do |event|
       {
@@ -49,7 +50,7 @@ class EventsController < ApplicationController
         lng: event.longitude
       }
     end
-    @events_near = Event.near(@user_coordinates, 10)
+    @events_near = Event.near(@user_coordinates, 50)
   end
 
   private
