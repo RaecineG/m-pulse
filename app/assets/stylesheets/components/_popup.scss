@@ -1,0 +1,92 @@
+// .background-map {
+//   position: relative;
+// }
+
+
+.modal-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 60%;
+  background-color: rgba(249, 249, 249, 0.797);
+  display: none;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.recommended-container {
+  width: 90%;
+  height: 60%;
+
+}
+
+
+// .modal-content-container {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   background-color: white;
+//   padding: 20px;
+//   border-radius: 5px;
+//   z-index: 1001;
+// }
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  color: rgb(55, 53, 53);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 90%; /* Adjust maximum width for smaller screens */
+  }
+
+  .close {
+    top: 5px;
+    right: 5px;
+  }
+}
+
+.close:hover,
+.close:focus {
+  color: #FAFD69;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.background-map{
+  position: relative;
+  z-index: 1;
+}
+
+#modal-trigger{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 1001;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #modal-trigger {
+    bottom: 10px; /* Adjust the bottom spacing for smaller screens */
+  }
+}
+.modal-content {
+  max-height: 80vh; /* Set a maximum height for the modal content */
+  overflow-y: hidden; /* Hide any content that exceeds the height */
+}
