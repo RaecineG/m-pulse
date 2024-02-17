@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
   def recommended
     # @user_coordinates = [request.location.latitude, request.location.longitude]
-    @user_coordinates = [35.661777, 139.704051]
+    @user_coordinates = [35.6537872, 139.6928169]
     @events = Event.all
     @locations = @events.geocoded.map do |event|
       {

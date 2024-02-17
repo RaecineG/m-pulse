@@ -19,9 +19,8 @@
 
 
 .card-events-list {
-  height: 95px; /* Let the height adjust automatically based on content */
-  max-height: calc(80vh - 30px); /* Adjust maximum height to fit within modal content */
-  /* Subtract any padding or margin from the modal content's max-height */
+  height: 95px;
+  max-height: calc(80vh - 30px);
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -29,14 +28,17 @@
   margin-top: 5px;
   margin-bottom: 16px;
   border-radius: 10px;
-  overflow: hidden; /* Hide any content that exceeds the height of card-events-list */
+  // overflow: hidden;
 }
 
 .card-image img {
-  max-width: 100%; /* Ensure the image doesn't exceed the width of its container */
-  height: auto; /* Allow the height to adjust proportionally based on the width */
-  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  width: 85px;
+  height: 85px;
+  margin-left: 5px;
+  // width: auto;
+  // height: auto;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .card-event-infos {
@@ -48,14 +50,14 @@
 }
 
 .card-events-list h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   margin: 0;
   text-decoration: none;
 }
 
 .card-events-list h3 {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0;
   text-decoration: none;
@@ -85,8 +87,8 @@
 }
 
 .card-event-icon {
-  width: 50px;
-  height: 100px;
+  width: 40px;
+  height: 95px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,13 +96,13 @@
 }
 
 .card-event-icon i {
-  font-size: 300%;
+  font-size: 250%;
 }
 
 .card-event-icon p {
   position: absolute;
   right: 15px;
-  bottom: 8px;
-  left: 13px;
+  bottom: 7px;
+  left: 9px;
   color: #FAFD69;
 }
