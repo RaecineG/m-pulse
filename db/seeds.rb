@@ -70,18 +70,25 @@ users.each do |user|
 end
 
 # Random users for checkins!
-# 50.times do
-#   created_user = User.create!(
-#     first_name: "RandomFirstName#{number}",
-#     last_name: "RandomLastName#{number}",
-#     username: "RandomUser#{number}",
-#     email: "RandomEmail@mpulse.com",
-#     gender: "rand(1..2)",
-#     password: "123456"
-#   )
-# end
+random_users = []
+number = 1
 
-puts "Users have been generated succesfully 💃🕺"
+20.times do
+  created_user = User.create!(
+    first_name: "RandomFirstName#{number}",
+    last_name: "RandomLastName#{number}",
+    username: "RandomUser#{number}",
+    email: "RandomEmail#{number}@mpulse.com",
+    gender: "rand(1..2)",
+    password: "123456"
+  )
+  random_users << created_user
+  number += 1
+end
+
+puts "Created #{random_users.count} random users 🤖"
+
+puts "All users have been generated succesfully 💃🕺"
 # Users section -- END --
 
 # Events section -- START --
@@ -94,7 +101,7 @@ events = [
 ]
 
 # Add an address to the randomizer
-addresses = ["Shinjuku", "Shibuya", "Meguro", "Asakusa", "Ikebukuro", "Paris"]
+addresses = ["Shinjuku", "Shibuya", "Meguro", "Asakusa", "Ikebukuro"]
 
 # DateTime format guide: DateTime.new(2001,2,3,4,5,6)
 # Result => <DateTime: 2001-02-03T04:05:06+00:00 ...>
