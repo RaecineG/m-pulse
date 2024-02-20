@@ -134,7 +134,7 @@ events.each do |event|
     # Random datetime instance with set parameters from start_time array
     end_at: starting_time + (1.5 / 24),
     # End time currently set to be 1.5 hours after start time
-    category: rand(1..4),
+    category: rand(0..3),
     user: organizers.sample
     # Assigned to random organizer
   )
