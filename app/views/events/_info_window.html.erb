@@ -1,6 +1,6 @@
 <div class="container">
   <div class="event-container row justify-content-center">
-    <div class="show-card-event col-12 col-lg-4">
+    <div class="show-card-event col-sm-12 col-lg-4">
       <% if event&.photo&.key %>
         <%= cl_image_tag event.photo.key, :class=>"show-card-event-img" %>
       <% else %>
@@ -19,10 +19,19 @@
         <div class="show-card-event-button">
           <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
         </div>
-        <div class="show-card-event-description">
-          <div>
-            <h5>Description</h5>
-            <p><%= event.description %></p>
+        <div class="switch-container">
+          <nav>
+            <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
+              <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">Description</button>
+              <button class="nav-link" id="switch-comments-pill" data-bs-toggle="pill" data-bs-target="#switch-comments" type="button" role="pill" aria-controls="switch-comments" aria-selected="false">Comments</button>
+            </div>
+          </nav>
+          <div class="pill-content" id="nav-pillContent">
+            <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
+              <%= event.description %>
+            </div>
+            <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
+            </div>
           </div>
         </div>
       </div>
