@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 User.destroy_all
 Event.destroy_all
 Checkin.destroy_all
@@ -57,8 +49,11 @@ users << {
   password: "123456"
 }
 
+admin_users = []
+
 users.each do |user|
   created_user = User.create!(user)
+  admin_users << created_user
 
   if created_user.gender == 1
     puts "User -> #{created_user.username} has been created... 🚹"
@@ -67,11 +62,12 @@ users.each do |user|
   else
     puts "User -> #{created_user.username} has been created... 🦄"
   end
+
 end
 
 # Random users for checkins!
 random_users = []
-number = 1
+number = 1 # For incrementation
 
 20.times do
   created_user = User.create!(
@@ -116,11 +112,6 @@ start_times = []
   start_times << DateTime.new(2024, month, day, hour, 30, 0)
 end
 
-organizers = []
-2.times do
-  organizers << User.all.sample
-end
-
 events.each do |event|
   starting_time = start_times.sample
   # Random datetime instance with set parameters from start_times array
@@ -135,7 +126,7 @@ events.each do |event|
     end_at: starting_time + (1.5 / 24),
     # End time currently set to be 1.5 hours after start time
     category: rand(0..3),
-    user: organizers.sample
+    user: admin_users.sample
     # Assigned to random organizer
   )
   puts "Event -> #{Event.last.name} has been created"
@@ -145,12 +136,17 @@ puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --
 
 # Checkins section -- START --
-5.times do
-  Checkin.create!(
-    status: 1,
-    event: Event.all.sample,
-    user: User.all.sample
-  )
+random_users.each do |user|
+  Event.all.each do |event|
+    go = rand(1..5)
+    if go != 1
+      Checkin.create!(
+        status: 1,
+        event: event,
+        user: user
+      )
+    end
+  end
 end
 
 puts "Checkins have been generated succesfully ☑️"
