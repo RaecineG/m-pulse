@@ -10,3 +10,15 @@
   width: 90vw;
   background: none!important;
 }
+
+
+.current-location {
+  // background-image: url('mapbox-icon.png');
+  background-color: yellow;
+  // background:-webkit-linear-gradient(left top, yellow);
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
