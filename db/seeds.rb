@@ -88,7 +88,7 @@ puts "All users have been generated succesfully 💃🕺"
 # Users section -- END --
 
 # Events section -- START --
-# Add your own event + description here ⬇️
+# Add your own event here ⬇️
 events = [
   { name: "Disco Ball 🪩",
     description: "Party until your head spin 😵‍💫",
@@ -105,7 +105,7 @@ events = [
   { name: "Pre-sakura Half-Marathon 🏃",
     description: "Warm-up before the Sakura season start, join us in this fun run along the scenic Meguro river",
     address: "Nakameguro", category: 1 }
-]
+] # Current event categories: 0-Club, 1-Sports, 2-Meet-up, 3-Tech
 
 # DateTime format guide: DateTime.new(2001,2,3,4,5,6)
 # Result => <DateTime: 2001-02-03T04:05:06+00:00 ...>

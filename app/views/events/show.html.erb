@@ -1,4 +1,4 @@
-<div class="map">
+<div class="background-map">
   <div style="width: 100vw; height: 100vh;"
     data-controller="destination"
     data-destination-marker-value="<%= @marker.to_json %>"
@@ -6,9 +6,10 @@
   </div>
 
   <div data-controller="checkin">
-    <%= render template: "checkins/new",
-    locals: { event: @event, checkin: @checkin },
-    data: { checkin_target: "form", action: "submit->checkin#noauto" }
-    %>
+    <div> <%# <div class="d-none"> %>
+      <%= render "checkins/new_checkin",
+      event: @event, checkin: @checkin
+      %>
+    </div>
   </div>
 </div>

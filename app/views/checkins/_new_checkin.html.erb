@@ -1,0 +1,7 @@
+<div>
+  <%= simple_form_for [event, checkin] do |f| %>
+    <%= f.label "#{event.name}" %>
+    <%# <%= f.input :status %>
+    <%= f.submit "Check-in to this event", class: "btn btn-directions" %>
+  <% end %>
+</div>
