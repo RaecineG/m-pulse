@@ -73,7 +73,7 @@
   color: rgb(55, 53, 53);
   position: absolute;
   top: 40px;
-  right: 24.5px;
+  right: 29px;
 }
 
 .btn-directions {
@@ -123,4 +123,16 @@
 .switch-container {
   margin-left: 16px;
   margin-right: 16px;
+}
+
+.time-container {
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: yellow;
+  opacity: 90%;
+  padding: 8px;
+  width: fit-content;
+  margin: 16px;
+  position: fixed;
+  top: 190px;
 }
