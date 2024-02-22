@@ -15,21 +15,13 @@
           <div class="card-event-infos" data-toggle="collapse">
             <div class="card-event-infos-details">
               <h2 class="h4"><%= event.name %></h2>
-              <% if event.category == 0 %>
-                <h3 class="h5"><%= "Club Event" %></h3>
-              <% elsif event.category == 1 %>
-                <h3 class="h5"><%= "Sports Event" %></h3>
-              <% elsif event.category == 2 %>
-                <h3 class="h5"><%= "Meet up" %></h3>
-              <% else %>
-                <h3 class="h5"><%= "Tech Event" %></h3>
-              <% end %>
+              <h3 class="h5"><%= event.category %></h3>
               <% distance = event.distance_to(user_coordinates) %>
               <p><%= distance.round(2) %> km</p>
             </div>
             <div class="card-event-icon">
               <div class="icon-and-text">
-                <i class="fa-solid fa-user" style="color: #3c3b3b"></i>
+                <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
                 <p>120</p>
               </div>
             </div>
