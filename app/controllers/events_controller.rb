@@ -24,11 +24,6 @@ class EventsController < ApplicationController
     @checkin.user = @user
     @checkin.event = @event
     @checkin.save
-    # if @checkin.save
-    #   render action: "checkins/create"
-    # else
-    #   render 'index', status: :unprocessable_entity
-    # end
   end
 
   def new

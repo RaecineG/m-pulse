@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/events/recommended', to: 'events#recommended', as: 'recommended'
   resources :events do
-    resources :checkins, only: [:index, :create]
+    resources :checkins, only: [:index, :new, :create]
     resources :comments, only: [:index, :new, :create]
   end
   resources :checkins, only: [:destroy]
