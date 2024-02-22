@@ -10,3 +10,28 @@
   width: 90vw;
   background: none!important;
 }
+
+
+.current-location {
+  // background-image: url('mapbox-icon.png');
+  background-color: yellow;
+  // background:-webkit-linear-gradient(left top, yellow);
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: neonGlow 1.5s infinite;
+}
+
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 10px 2px #e2f516, 0 0 20px 5px #e2f516, 0 0 40px 10px #e2f516;
+  }
+  50% {
+    box-shadow: 0 0 20px 5px #e2f516, 0 0 40px 10px #e2f516, 0 0 80px 15px #e2f516;
+  }
+  100% {
+    box-shadow: 0 0 10px 2px #e2f516, 0 0 20px 5px #e2f516, 0 0 40px 10px #e2f516;
+  }
+}

@@ -8,6 +8,14 @@ export default class extends Controller {
 
     // <!-- JavaScript for Modal -->
   }
+
+  toggleModal() {
+    if (this.overlayTarget.style.display === "none" || this.overlayTarget.style.display === "") {
+      this.open();
+    } else {
+      this.close();
+    }
+  }
   open() {
     this.overlayTarget.style.display = "flex";
   }

@@ -1,22 +1,26 @@
 <!-- Background Map -->
-
 <div class="background-map" style="width: 100vw; height: 100vh;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-
 <!-- Modal and Button for Event for you -->
-<div class="recommended-container" data-controller="recommend-modal">
-  <%# Modal Trigger Button %>
-  <button type="button" class="btn" style="background-color: #FAFD69;" id="modal-trigger" data-action ="click->recommend-modal#open">Events for you</button>
-   <%# Modal Overlay %>
-  <div id="modal-overlay" class="modal-overlay" data-recommend-modal-target="overlay">
-    <div class="modal-content">
-      <span class="close" data-action="click->recommend-modal#close">&times;</span>
-      <%# Recommended Events Content partial %>
-      <%= render partial: 'recommended', locals: { events_near: @events_near, user_coordinates: @user_coordinates } %>
+<div class="container">
+  <div class="recommended-container" data-controller="recommend-modal">
+    <%# Modal Overlay %>
+    <div class="card-events-list col-12 col-lg-8">
+      <div id="modal-overlay" class="modal-overlay" data-recommend-modal-target="overlay">
+        <div class="modal-content">
+          <h1>Events for you</h1>
+          <%# <span class="close">&times;</span> %>
+          <%# Recommended Events Content partial %>
+          <%= render partial: 'recommended', locals: { events_near: @events_near, user_coordinates: @user_coordinates } %>
+        </div>
+      </div>
+      <%# Modal Trigger Button %>
     </div>
+    <button type="button" class="btn" style="background-color: #FAFD69;" id="modal-trigger" data-action ="click->recommend-modal#toggleModal">Events for you</button>
   </div>
 </div>
+<!-- current location-->
+<div data-controller="current-location"></div>

@@ -14,10 +14,11 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/mapbox/streets-v10",
     })
 
     this.#addMarkersToMap()
+    this.#addCurrentLocation()
     this.#fitMapToMarkers()
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
@@ -32,6 +33,49 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
+
+  #addCurrentLocation() {
+
+    if ("geolocation" in navigator) {
+      // Get the current position
+      navigator.geolocation.getCurrentPosition(
+        this.handleSuccess.bind(this),
+        this.handleError.bind(this)
+      );
+    } else {
+      // Geolocation is not supported by this browser
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  handleSuccess(position) {
+    // Get latitude and longitude
+
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+
+    console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+    // const currentLocationElement = document.querySelector("[data-target='current-location.coordinates']");
+    // currentLocationElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+
+    const el = document.createElement('div');
+    el.className = 'current-location';
+
+    this.map.setCenter([longitude, latitude]);
+
+
+    new mapboxgl.Marker(el)
+    .setLngLat([ longitude, latitude ])
+    .addTo(this.map)
+
+  }
+
+  handleError(error) {
+    // Handle any errors that occur while retrieving the position
+    console.error("Error getting location:", error);
+  }
+
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
