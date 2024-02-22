@@ -1,30 +1,66 @@
 <div class="container">
   <div class="event-container row justify-content-center">
-    <div class="show-card-event col-12 col-lg-4">
-      <% if event&.photo&.key %>
-        <%= cl_image_tag event.photo.key, :class=>"show-card-event-img" %>
-      <% else %>
-        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="show-card-event-img">
-      <% end %>
+    <div class="show-card-event col-sm-12 col-lg-4">
+      <!-- Start of image carousel -->
+      <div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselEventCaptions" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselEvenCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselEventCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselEventCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner cold-md-10">
+            <% event.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= "active" if index == 0 %>">
+                <img src="<%= cl_image_path photo.key, height: 1200, width: 1600, crop: :fill %>" class="d-block w-100 img-size" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvents" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselEvents" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <!-- End of image carousel -->
+      <!-- Start of Event info container -->
       <div class="show-card-event-infos">
         <div class="show-card-event-details">
           <h2><%= event.name %></h2>
           <p><%= event.category %></p>
-          <p><strong>Saturday, February 17</p>
-            <p><%= event.address %></p>
+          <p><strong><%= event.start_at.strftime("%A, %B %e") %></strong></p>
+          <p><%= event.address %></p>
+        </div>
+        <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
+        <h6>100</h6>
+      </div>
+      <!-- End of Event info container -->
+      <div class="show-card-event-button">
+        <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
+      </div>
+      <!-- Start of switch container for description and events -->
+      <div class="switch-container">
+        <nav>
+          <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
+            <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">Description</button>
+            <button class="nav-link" id="switch-comments-pill" data-bs-toggle="pill" data-bs-target="#switch-comments" type="button" role="pill" aria-controls="switch-comments" aria-selected="false">Comments</button>
           </div>
-          <i class="fa-solid fa-user" style="color: #3c3b3b"></i>
-          <h4>100</h4>
-        </div>
-        <div class="show-card-event-button">
-          <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
-        </div>
-        <div class="show-card-event-description">
-          <div>
-            <h5>Description</h5>
-            <p><%= event.description %></p>
+        </nav>
+        <div class="pill-content" id="nav-pillContent">
+          <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
+            <%= event.description %>
+          </div>
+          <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
           </div>
         </div>
       </div>
+      <!-- End of switch container for description and events -->
     </div>
   </div>
+</div>
