@@ -56,8 +56,13 @@ export default class extends Controller {
 
 
     console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+    // const currentLocationElement = document.querySelector("[data-target='current-location.coordinates']");
+    // currentLocationElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+
     const el = document.createElement('div');
     el.className = 'current-location';
+
+    this.map.setCenter([longitude, latitude]);
 
 
     new mapboxgl.Marker(el)
