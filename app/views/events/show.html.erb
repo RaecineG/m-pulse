@@ -1,12 +1,10 @@
-<div class="background-map">
+<div class="show-map">
   <div style="width: 100vw; height: 100vh;"
     data-controller="destination"
     data-destination-marker-value="<%= @marker.to_json %>"
     data-destination-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
 
-  <div data-controller="checkin">
-    <div> <%# <div class="d-none"> %>
+    <div class="show-map-content show-card-event p-3" data-controller="checkin">
       <%= render "checkins/new_checkin",
       event: @event, checkin: @checkin
       %>

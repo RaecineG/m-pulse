@@ -14,39 +14,27 @@ puts "Generating new seeds 🌱"
 users = []
 
 users << {
-  first_name: "Meg",
-  last_name: "Projman",
-  username: "komegi",
-  email: "meg@mpulse.com",
-  gender: "2",
-  password: "123456"
+  first_name: "Meg", last_name: "Projman",
+  username: "komegi", email: "meg@mpulse.com",
+  gender: "2", password: "123456"
 }
 
 users << {
-  first_name: "Raecine",
-  last_name: "Leaddev",
-  username: "rae",
-  email: "rae@mpulse.com",
-  gender: "2",
-  password: "123456"
+  first_name: "Raecine", last_name: "Leaddev",
+  username: "rae", email: "rae@mpulse.com",
+  gender: "2", password: "123456"
 }
 
 users << {
-  first_name: "Syrene",
-  last_name: "Prontendo",
-  username: "sy",
-  email: "sy@mpulse.com",
-  gender: "1",
-  password: "123456"
+  first_name: "Syrene", last_name: "Prontendo",
+  username: "sy", email: "sy@mpulse.com",
+  gender: "1", password: "123456"
 }
 
 users << {
-  first_name: "Justin",
-  last_name: "Bakuendo",
-  username: "just",
-  email: "justin@mpulse.com",
-  gender: "1",
-  password: "123456"
+  first_name: "Justin", last_name: "Bakuendo",
+  username: "just", email: "justin@mpulse.com",
+  gender: "1", password: "123456"
 }
 
 admin_users = []
@@ -62,7 +50,6 @@ users.each do |user|
   else
     puts "User -> #{created_user.username} has been created... 🦄"
   end
-
 end
 
 # Random users for checkins!
@@ -75,7 +62,7 @@ number = 1 # For incrementing
     last_name: "RandomLastName#{number}",
     username: "RandomUser#{number}",
     email: "RandomEmail#{number}@mpulse.com",
-    gender: "rand(1..2)",
+    gender: rand(1..2),
     password: "123456"
   )
   random_users << created_user
