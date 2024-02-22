@@ -2,8 +2,15 @@ class CheckinsController < ApplicationController
   def index
   end
 
+  def new
+    @event = Event.find(params[:id])
+    @checkin = Checkin.new
+    @checkin.save
+  end
+
   def create
     @event = Event.find(params[:id])
+    @user = current_user
     @checkin = Checkin.new(checkin_params)
     @checkin.user = @user
     @checkin.event = @event

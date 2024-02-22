@@ -4,11 +4,11 @@
     data-destination-marker-value="<%= @marker.to_json %>"
     data-destination-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div class="d-none">
-    <%= simple_form_for [@event, @checkin], url: event_checkins_path(@event) do |f| %>
-      <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :event_id %>
-      <%= f.submit "Check-in to this event", class: "btn " %>
-    <% end %>
+
+  <div data-controller="checkin">
+    <%= render template: "checkins/new",
+    locals: { event: @event, checkin: @checkin },
+    data: { checkin_target: "form", action: "submit->checkin#noauto" }
+    %>
   </div>
 </div>
