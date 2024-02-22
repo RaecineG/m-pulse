@@ -29,6 +29,9 @@
         </div>
       </div>
       <!-- End of image carousel -->
+      <div class="time-container">
+        <i class="fa-solid fa-hourglass-end" style="color: #3c3b3b;"></i> <strong><%= event.end_at.strftime("%H:%M") %></strong>
+      </div>
       <!-- Start of Event info container -->
       <div class="show-card-event-infos">
         <div class="show-card-event-details">
@@ -38,7 +41,7 @@
           <p><%= event.address %></p>
         </div>
         <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-        <h6>100</h6>
+        <h6><%= event.checkins.count %></h6>
       </div>
       <!-- End of Event info container -->
       <div class="show-card-event-button">
@@ -57,6 +60,9 @@
             <%= event.description %>
           </div>
           <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
+            <% event.comments.each do |comment| %>
+              <%= event.comments.content %>
+            <% end %>
           </div>
         </div>
       </div>
