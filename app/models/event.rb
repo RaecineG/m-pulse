@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_many :checkins, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_one_attached :photo
+  has_many_attached :photos
   enum category: [:club, :sports, :meetup, :tech]
 
   validates :name, presence: true

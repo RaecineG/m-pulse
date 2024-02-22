@@ -7,11 +7,12 @@
   margin: 16px;
 }
 
-.show-card-event-img {
+.carousel-inner {
   height: 200px;
-  width: 100%;
+  width: auto;
   object-fit: cover;
-  padding: 16px;
+  margin: 16px;
+  border-radius: 5px;
 }
 
 .show-card-event h2 {
@@ -61,20 +62,18 @@
   position: relative;
 }
 
-.show-card-event-infos .fa-user {
+.show-card-event-infos .fa-people-group {
   position: absolute;
   right: 16px;
   top: 4px;
-  font-size: 80px;
+  font-size: 36px;
 }
 
-.show-card-event-infos h4 {
+.show-card-event-infos h6 {
+  color: rgb(55, 53, 53);
   position: absolute;
-  z-index: 1;
-  top: 56px;
-  right: 31px;
-  font-weight: bold;
-  color: yellow;
+  top: 40px;
+  right: 24.5px;
 }
 
 .btn-directions {
@@ -83,4 +82,45 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 100%;
+}
+
+.btn-directions:hover {
+  background-color: rgb(55, 53, 53);
+  color: yellow;
+  transition: all 0.25s ease;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: yellow!important;
+  background-color: rgb(55, 53, 53)!important;
+}
+
+.nav-link {
+  color: rgb(55, 53, 53)!important;
+}
+
+.nav-pills .nav-link {
+  border-radius: 25px!important;
+}
+
+.nav-pills {
+  border: solid;
+  border-radius: 25px;
+  border-color: lightgray;
+  padding: 4px;
+  width: fit-content;
+  margin: auto;
+
+}
+
+.pill-content {
+  font-size: 14px;
+  color: rgb(55, 53, 53);
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.switch-container {
+  margin-left: 16px;
+  margin-right: 16px;
 }
