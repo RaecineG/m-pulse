@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 User.destroy_all
 Event.destroy_all
 Checkin.destroy_all
@@ -57,8 +49,11 @@ users << {
   password: "123456"
 }
 
+admin_users = []
+
 users.each do |user|
   created_user = User.create!(user)
+  admin_users << created_user
 
   if created_user.gender == 1
     puts "User -> #{created_user.username} has been created... 🚹"
@@ -67,34 +62,50 @@ users.each do |user|
   else
     puts "User -> #{created_user.username} has been created... 🦄"
   end
+
 end
 
 # Random users for checkins!
-# 50.times do
-#   created_user = User.create!(
-#     first_name: "RandomFirstName#{number}",
-#     last_name: "RandomLastName#{number}",
-#     username: "RandomUser#{number}",
-#     email: "RandomEmail@mpulse.com",
-#     gender: "rand(1..2)",
-#     password: "123456"
-#   )
-# end
+random_users = []
+number = 1 # For incrementing
 
-puts "Users have been generated succesfully 💃🕺"
+50.times do
+  created_user = User.create!(
+    first_name: "RandomFirstName#{number}",
+    last_name: "RandomLastName#{number}",
+    username: "RandomUser#{number}",
+    email: "RandomEmail#{number}@mpulse.com",
+    gender: "rand(1..2)",
+    password: "123456"
+  )
+  random_users << created_user
+  number += 1
+end
+
+puts "Created #{random_users.count} random users 🤖"
+
+puts "All users have been generated succesfully 💃🕺"
 # Users section -- END --
 
 # Events section -- START --
 # Add your own event + description here ⬇️
 events = [
-  { name: "Disco Ball 🪩", description: "Party until your head spin 😵‍💫" },
-  { name: "Javascript Seminar 💻", description: "Hone your coding skills in this Javascript seminar, be the web developer you know you can be!"},
-  { name: "70's Night 📺", description: "Go back in time and bring your vintage look to life"},
-  { name: "Single's Meet-up 💘", description: "Find your match made in heaven in this meet-up event. Disclaimer: You are not required to end up with a partner by the end of this event!"}
+  { name: "Disco Ball 🪩",
+    description: "Party until your head spin 😵‍💫",
+    address: "Shinjuku", category: 0 },
+  { name: "Javascript Seminar 💻",
+    description: "Hone your coding skills in this Javascript seminar, be the web developer you know you can be!",
+    address: "Meguro", category: 3 },
+  { name: "70's Night 📺",
+    description: "Go back in time and bring your vintage look to life",
+    address: "Shibuya", category: 0 },
+  { name: "Single's Meet-up 💘",
+    description: "Find your match made in heaven in this meet-up event. Disclaimer: You are not required to end up with a partner by the end of this event!",
+    address: "Ikebukuro", category: 2 },
+  { name: "Pre-sakura Half-Marathon 🏃",
+    description: "Warm-up before the Sakura season start, join us in this fun run along the scenic Meguro river",
+    address: "Nakameguro", category: 1 }
 ]
-
-# Add an address to the randomizer
-addresses = ["Shinjuku", "Shibuya", "Meguro", "Asakusa", "Ikebukuro", "Paris"]
 
 # DateTime format guide: DateTime.new(2001,2,3,4,5,6)
 # Result => <DateTime: 2001-02-03T04:05:06+00:00 ...>
@@ -109,27 +120,21 @@ start_times = []
   start_times << DateTime.new(2024, month, day, hour, 30, 0)
 end
 
-organizers = []
-2.times do
-  organizers << User.all.sample
-end
-
 events.each do |event|
   starting_time = start_times.sample
   # Random datetime instance with set parameters from start_times array
   Event.create!(
     name: event[:name],
     description: event[:description],
-    # Name/Description pairing from the events array
-    address: addresses.sample,
-    # Random address from the addresses array
+    address: event[:address],
+    category: event[:category],
+    # Name/Description/Address/Category from the events array
     start_at: starting_time,
     # Random datetime instance with set parameters from start_time array
     end_at: starting_time + (1.5 / 24),
     # End time currently set to be 1.5 hours after start time
-    category: rand(0..3),
-    user: organizers.sample
-    # Assigned to random organizer
+    user: admin_users.sample
+    # Assigned to random organizer/admin user
   )
   puts "Event -> #{Event.last.name} has been created"
 end
@@ -138,12 +143,17 @@ puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --
 
 # Checkins section -- START --
-5.times do
-  Checkin.create!(
-    status: 1,
-    event: Event.all.sample,
-    user: User.all.sample
-  )
+random_users.each do |user|
+  Event.all.each do |event|
+    go = rand(1..8)
+    if go != 1
+      Checkin.create!(
+        status: 1,
+        event: event,
+        user: user
+      )
+    end
+  end
 end
 
 puts "Checkins have been generated succesfully ☑️"
