@@ -67,9 +67,9 @@ end
 
 # Random users for checkins!
 random_users = []
-number = 1 # For incrementation
+number = 1 # For incrementing
 
-20.times do
+50.times do
   created_user = User.create!(
     first_name: "RandomFirstName#{number}",
     last_name: "RandomLastName#{number}",
@@ -90,14 +90,22 @@ puts "All users have been generated succesfully 💃🕺"
 # Events section -- START --
 # Add your own event + description here ⬇️
 events = [
-  { name: "Disco Ball 🪩", description: "Party until your head spin 😵‍💫" },
-  { name: "Javascript Seminar 💻", description: "Hone your coding skills in this Javascript seminar, be the web developer you know you can be!"},
-  { name: "70's Night 📺", description: "Go back in time and bring your vintage look to life"},
-  { name: "Single's Meet-up 💘", description: "Find your match made in heaven in this meet-up event. Disclaimer: You are not required to end up with a partner by the end of this event!"}
+  { name: "Disco Ball 🪩",
+    description: "Party until your head spin 😵‍💫",
+    address: "Shinjuku", category: 0 },
+  { name: "Javascript Seminar 💻",
+    description: "Hone your coding skills in this Javascript seminar, be the web developer you know you can be!",
+    address: "Meguro", category: 3 },
+  { name: "70's Night 📺",
+    description: "Go back in time and bring your vintage look to life",
+    address: "Shibuya", category: 0 },
+  { name: "Single's Meet-up 💘",
+    description: "Find your match made in heaven in this meet-up event. Disclaimer: You are not required to end up with a partner by the end of this event!",
+    address: "Ikebukuro", category: 2 },
+  { name: "Pre-sakura Half-Marathon 🏃",
+    description: "Warm-up before the Sakura season start, join us in this fun run along the scenic Meguro river",
+    address: "Nakameguro", category: 1 }
 ]
-
-# Add an address to the randomizer
-addresses = ["Shinjuku", "Shibuya", "Meguro", "Asakusa", "Ikebukuro"]
 
 # DateTime format guide: DateTime.new(2001,2,3,4,5,6)
 # Result => <DateTime: 2001-02-03T04:05:06+00:00 ...>
@@ -118,16 +126,15 @@ events.each do |event|
   Event.create!(
     name: event[:name],
     description: event[:description],
-    # Name/Description pairing from the events array
-    address: addresses.sample,
-    # Random address from the addresses array
+    address: event[:address],
+    category: event[:category],
+    # Name/Description/Address/Category from the events array
     start_at: starting_time,
     # Random datetime instance with set parameters from start_time array
     end_at: starting_time + (1.5 / 24),
     # End time currently set to be 1.5 hours after start time
-    category: rand(0..3),
     user: admin_users.sample
-    # Assigned to random organizer
+    # Assigned to random organizer/admin user
   )
   puts "Event -> #{Event.last.name} has been created"
 end
@@ -138,7 +145,7 @@ puts "Events have been generated succesfully 🪩🎊🪅"
 # Checkins section -- START --
 random_users.each do |user|
   Event.all.each do |event|
-    go = rand(1..5)
+    go = rand(1..8)
     if go != 1
       Checkin.create!(
         status: 1,
