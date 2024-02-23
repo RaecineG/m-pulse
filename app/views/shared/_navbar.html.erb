@@ -1,9 +1,15 @@
-<div class="navbar fixed-bottom navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+  <div class="navbar fixed-bottom">
+    <div class="container-fluid">
+      <div class="nav-item">
+        <i class="fa-solid fa-user" style="color: #fafd69;"></i>
+      </div>
+      <div class="nav-item">
+        <%= link_to '#', data: { action: "click->recommend-modal#toggleModal" } do %>
+          <i class="fa-solid fa-street-view" style="color: #fafd69;"></i>
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <i class="fa-brands fa-slideshare" style="color: #fafd69;"></i>
+      </div>
+    </div>
   </div>
-</div>

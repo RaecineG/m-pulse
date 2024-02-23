@@ -20,6 +20,7 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#addCurrentLocation()
     this.#fitMapToMarkers()
+    this.setupEarthquakeClusters()
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
   }
