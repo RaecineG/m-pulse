@@ -89,6 +89,7 @@ export default class extends Controller {
 
       const current_x = position.coords.longitude;
       const current_y = position.coords.latitude;
+
       this.markersValue.forEach((marker) => {
 
       const event_x = marker.lng
@@ -127,6 +128,7 @@ export default class extends Controller {
         if (distanceElement) {
             distanceElement.textContent = `${(distanceBetweenLocations / 1000).toFixed(2)} km`;
         }
+        console.log(distanceElement, event_id);
 
 
 

@@ -19,8 +19,9 @@
 
 
 .card-events-list {
-  height: 95px;
-  max-height: calc(80vh - 30px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  // max-height: calc(80vh - 30px);
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
