@@ -2,12 +2,6 @@ class CommentsController < ApplicationController
   def index
   end
 
-  def new
-    @comment = Comment.new
-    @event = Event.find(params[:event_id])
-    @user = current_user
-  end
-
   def create
     @comment = Comment.new(contents)
     @event = Event.find(params[:event_id])
