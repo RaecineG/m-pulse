@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="container-recommended">
       <% events_near.each do |event| %>
-        <div class="card-events-list col-12 col-sm-10 col-md-10 col-lg-8">
+        <div class="card-events-list col-12 col-sm-10 col-md-10 col-lg-9">
           <div class="card-image" data-toggle="collapse">
             <%= link_to event_path(event), class: 'card-event-link' do %>
               <% if event&.photos&.attached? %>
@@ -16,13 +16,13 @@
             <div class="card-event-infos-details">
               <h2 class="h4"><%= event.name %></h2>
               <h3 class="h5"><%= event.category %></h3>
-              <% distance = event.distance_to(user_coordinates) %>
-              <p><%= distance.round(2) %> km</p>
+              <%# <% distance = event.distance_to(user_coordinates) %>
+              <p id="distance_<%= event.id %>">km</p>
             </div>
             <div class="card-event-icon">
               <div class="icon-and-text">
                 <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-                <p>120</p>
+                <p><%= event.checkins.count %></p>
               </div>
             </div>
           </div>

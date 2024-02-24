@@ -7,6 +7,7 @@ class EventsController < ApplicationController
       {
         lat: event.latitude,
         lng: event.longitude,
+        id: event.id,
         info_window_html: render_to_string(partial: "info_window", locals: {event: event})
       }
     end
@@ -59,6 +60,12 @@ class EventsController < ApplicationController
       }
     end
     @events_near = Event.near(@user_coordinates, 50)
+  end
+
+  def dashboard
+    @user = current_user
+    @events = @user.events
+    @checkins = @user.checkins
   end
 
   def details
