@@ -9,9 +9,9 @@ class CheckinsController < ApplicationController
     @checkin.user = @user
     @checkin.event = @event
     if @checkin.save
-      redirect_to events_path
+      redirect_to events_path # replace with events page for commenting
     else
-      render 'new', status: :unprocessable_entity
+      render event_path(@event), status: :unprocessable_entity
     end
   end
 

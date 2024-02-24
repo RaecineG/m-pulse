@@ -30,7 +30,7 @@ export default class extends Controller {
   #fitMapToDirections() {
     const bounds = new mapboxgl.LngLatBounds()
     bounds.extend([ this.markerValue.lng, this.markerValue.lat ])
-    this.map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 100, maxZoom: 15, duration: 0 })
   }
 
   #getDestinationRoute() {
