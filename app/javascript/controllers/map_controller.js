@@ -43,6 +43,9 @@ export default class extends Controller {
       }
       console.log("cat", marker.category);
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+
+      el.id = `marker_${marker.id}`;
+
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
@@ -154,17 +157,6 @@ export default class extends Controller {
     }
   }
 
-
-
-  // getDistance(coordinates) {
-  //   .then(distance => {
-  //     console.log(`Distance between locations: ${distance} meters`);
-  //   })
-  //   .catch(error => {
-  //     // Handle the error
-  //   });
-  // }
-// Make the API request using the Fetch API
 
 
 }
