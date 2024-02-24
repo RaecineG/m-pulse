@@ -14,14 +14,16 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/dark-v11"
     })
 
     this.#addMarkersToMap()
     this.#addCurrentLocation()
     this.#fitMapToMarkers()
+
     // this.getDistance()
     // this.#calculateDistance()
+
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
   }

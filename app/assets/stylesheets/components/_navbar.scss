@@ -1,12 +1,21 @@
 .navbar {
-  position: fixed;
+  position: absolute;
   background: none;
-  z-index: 1;
-  width: 90%;
+  margin: 0;
+  // z-index: 5;
+  width: 100vw;
   box-sizing: border-box;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0px;
+  // transform: translateX(-50%);
   height: 80px;
+  // margin-top: -3px;
+  margin-top: auto;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
 
+.nav-item {
+  font-size: 30px;
 }

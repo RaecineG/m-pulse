@@ -4,22 +4,16 @@ class CheckinsController < ApplicationController
 
   end
 
-  def new
-    @event = Event.find(params[:id])
-    @checkin = Checkin.new
-    @checkin.save
-  end
-
   def create
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     @user = current_user
-    @checkin = Checkin.new(checkin_params)
+    @checkin = Checkin.new
     @checkin.user = @user
     @checkin.event = @event
     if @checkin.save
-      redirect_to events_path
+      redirect_to details_path(@event)
     else
-      render 'new', status: :unprocessable_entity
+      render event_path(@event), status: :unprocessable_entity
     end
   end
 

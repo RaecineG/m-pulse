@@ -24,7 +24,6 @@ class EventsController < ApplicationController
     }
     @checkin.user = @user
     @checkin.event = @event
-    @checkin.save
   end
 
   def new
@@ -63,15 +62,21 @@ class EventsController < ApplicationController
     @events_near = Event.near(@user_coordinates, 50)
   end
 
+
   def dashboard
     @user = current_user
     @events = @user.events
     @checkins = @user.checkins
+
+  def details
+    @event = Event.find(params[:id])
+    # @comments = Event.comments
+
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, photos: [])
+    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, :photo)
   end
 end
