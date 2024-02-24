@@ -55,12 +55,13 @@ end
 # Random users for checkins!
 random_users = []
 number = 1 # For incrementing
+rando_usernames = ["PartyAnimal", "MochaScript", "qt.pi", "1337coder", "unicorn", "LakersFan"]
 
 50.times do
   created_user = User.create!(
     first_name: "RandomFirstName#{number}",
     last_name: "RandomLastName#{number}",
-    username: "RandomUser#{number}",
+    username: "#{rando_usernames.sample}#{number}",
     email: "RandomEmail#{number}@mpulse.com",
     gender: rand(1..2),
     password: "123456"
@@ -140,11 +141,43 @@ random_users.each do |user|
         user: user
       )
     end
-    Comment.create!(
-
-    )
   end
 end
 
 puts "Checkins have been generated succesfully ☑️"
 # Checkins section -- END --
+
+# Comments section -- START --
+commenters = []
+number = rand(3..30)
+
+5.times do
+  commenters << random_users[number]
+  number += rand(1..4)
+end
+
+Event.all.each do |event|
+  Comment.create!(
+    event: event, user: commenters[0],
+    content: "Best event ever!"
+  )
+  Comment.create!(
+    event: event, user: commenters[1],
+    content: "Why isn't this event everyday?"
+  )
+  Comment.create!(
+    event: event, user: commenters[2],
+    content: "Happiest day of my life 🥳"
+  )
+  Comment.create!(
+    event: event, user: commenters[3],
+    content: "Pretty cool event 😎"
+  )
+  Comment.create!(
+    event: event, user: commenters[4],
+    content: "Nice!"
+  )
+end
+
+puts "Random user comments have been posted 📢"
+# Comments section -- END --
