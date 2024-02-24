@@ -1,0 +1,31 @@
+.event-checkedin-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.add-image-button {
+  border-radius: 5px;
+  background-color: yellow;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  width: fit-content;
+  margin-top: 16px;
+  margin-right: auto;
+  margin-bottom: 16px;
+  margin-left: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.comments-container {
+  border-radius: 5px;
+  padding: 8px;
+  margin: 16px;
+  color: rgb(55, 53, 53);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 47%;
+}
