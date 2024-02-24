@@ -129,7 +129,7 @@ end
 puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --
 
-# Checkins section -- START --
+# Checkins/Comments section -- START --
 random_users.each do |user|
   Event.all.each do |event|
     go = rand(1..8)
@@ -140,6 +140,9 @@ random_users.each do |user|
         user: user
       )
     end
+    Comment.create!(
+
+    )
   end
 end
 
