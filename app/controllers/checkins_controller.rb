@@ -1,7 +1,6 @@
 class CheckinsController < ApplicationController
   def index
     @user = current_user
-
   end
 
   def create

@@ -40,7 +40,21 @@
     <!-- Start of comments container for event -->
     <div class="comments-container">
       <h4>Comments</h4>
+      <div class="all-comments">
+        <ul>
+          <% @comments.each do |comment| %>
+            <li>
+              <div class="d-flex space-between">
+                <h5><%= comment.user.username %></h5>
+                <%# add a comment timestamp here? %>
+              </div>
+              <p><%= comment.content %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+    <%= render "comments/new_comment", event: @event, comment: @comment %>
   </div>
 </div>
 <!-- End of comments container for event -->

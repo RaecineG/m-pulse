@@ -69,7 +69,9 @@ class EventsController < ApplicationController
 
   def details
     @event = Event.find(params[:id])
-    # @comments = Event.comments
+    @comments = @event.comments
+    @comment = Comment.new
+    @user = current_user
   end
 
   private
