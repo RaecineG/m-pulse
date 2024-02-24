@@ -18,12 +18,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
   </head>
   <body>
-      <%= render "shared/flashes" %>
-      <div class="d-flex flex-column">
-        <div class="flex-grow-1">
-          <%= yield %>
-        </div>
-        <%= render "shared/navbar" %>
-      </div>
+    <%= render "shared/flashes" %>
+    <%= yield %>
   </body>
 </html>
