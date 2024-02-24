@@ -65,7 +65,6 @@ class EventsController < ApplicationController
   def dashboard
     @user = current_user
     @events = @user.events
-    @checkins = @user.checkins
   end
 
   def details
