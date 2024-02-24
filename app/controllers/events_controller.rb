@@ -62,6 +62,12 @@ class EventsController < ApplicationController
     @events_near = Event.near(@user_coordinates, 50)
   end
 
+  def dashboard
+    @user = current_user
+    @events = @user.events
+    @checkins = @user.checkins
+  end
+
   private
 
   def event_params

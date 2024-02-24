@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   overflow: scroll;
+  // overflow-x: scroll;
   padding:0;
 }
 
@@ -55,8 +56,9 @@
 }
 
 .modal-content {
-  width: 80%;
+  width: 90%;
   height: 80%;
   overflow-y: hidden;
   overflow: scroll;/* Hide any content that exceeds the height */
+
 }
