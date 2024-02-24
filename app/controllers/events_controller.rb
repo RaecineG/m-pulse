@@ -8,6 +8,7 @@ class EventsController < ApplicationController
         lat: event.latitude,
         lng: event.longitude,
         id: event.id,
+        category: event.category,
         info_window_html: render_to_string(partial: "info_window", locals: {event: event})
       }
     end
