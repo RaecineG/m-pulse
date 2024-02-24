@@ -1,20 +1,5 @@
-<div class="show-map ">
-  <div style="width: 100vw; height: 100vh;"
-    data-controller="destination"
-    data-destination-marker-value="<%= @marker.to_json %>"
-    data-destination-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-
-    <div class="show-map-content show-card-event p-3" data-controller="checkin">
-      <%= render "checkins/new_checkin",
-      event: @event, checkin: @checkin
-      %>
-      <%= link_to "See all events", events_path, class: "btn btn-directions my-3" %>
-    </div>
-  </div>
-</div>
 <!-- Start of event-show-page-checkedin -->
-<%# temporarily put d-none on entire section/div below 👇 %>
-<div class="event-checkedin-container row justify-content-center d-none">
+<div class="event-checkedin-container row justify-content-center">
   <div class="show-card-event col-sm-12 col-lg-4">
     <!-- Start of image carousel -->
     <div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">

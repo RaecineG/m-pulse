@@ -1,16 +1,13 @@
 .navbar {
-  position: fixed;
+  position: absolute;
   background: none;
-  margin: 30px;
+  margin: 0;
   // z-index: 5;
-  // width: 90%;
+  width: 100vw;
   box-sizing: border-box;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
+  bottom: 0px;
   // transform: translateX(-50%);
-  // height: 82px;
+  height: 80px;
   // margin-top: -3px;
   margin-top: auto;
   align-items: stretch;

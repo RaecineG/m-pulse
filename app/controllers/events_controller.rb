@@ -61,6 +61,11 @@ class EventsController < ApplicationController
     @events_near = Event.near(@user_coordinates, 50)
   end
 
+  def details
+    @event = Event.find(params[:id])
+    # @comments = Event.comments
+  end
+
   private
 
   def event_params

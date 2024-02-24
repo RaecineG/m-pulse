@@ -9,7 +9,7 @@ class CheckinsController < ApplicationController
     @checkin.user = @user
     @checkin.event = @event
     if @checkin.save
-      redirect_to events_path # replace with events page for commenting
+      redirect_to details_path(@event)
     else
       render event_path(@event), status: :unprocessable_entity
     end
