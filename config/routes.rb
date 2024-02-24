@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get '/events/recommended', to: 'events#recommended', as: 'recommended'
+  get '/events/:id/details', to: 'events#details', as: 'details'
   resources :events do
     resources :checkins, only: [:index, :create]
     resources :comments, only: [:index, :new, :create]

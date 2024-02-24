@@ -61,6 +61,9 @@ class EventsController < ApplicationController
     @events_near = Event.near(@user_coordinates, 50)
   end
 
+  def details
+  end
+
   private
 
   def event_params
