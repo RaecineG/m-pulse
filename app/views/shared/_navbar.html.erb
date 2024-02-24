@@ -1,15 +1,45 @@
 <div class="navbar fixed-bottom">
   <div class="container-fluid">
+
+      <%# ------ Dashboard Link --------  %>
     <div class="nav-item">
-      <i class="fa-solid fa-user" style="color: #fafd69;"></i>
-    </div>
-    <div class="nav-item">
-      <%= link_to '#', data: { action: "click->recommend-modal#toggleModal" } do %>
-        <i class="fa-solid fa-street-view" style="color: #fafd69;"></i>
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-address-card" style="color: #fafd69;"></i>
       <% end %>
     </div>
+
+    <%# ------ Recommended Events Near you link --------  %>
+    <%# -----------  Modal for Events near you ------------ %>
     <div class="nav-item">
-      <i class="fa-brands fa-slideshare" style="color: #fafd69;"></i>
+      <div class="container">
+        <div class="recommended-container" data-controller="recommend-modal">
+          <%# Modal Overlay %>
+          <div class="card-events-list col-12 col-lg-8">
+            <div id="modal-overlay" class="modal-overlay" data-recommend-modal-target="overlay">
+              <div class="modal-content">
+                <h1>Events for you</h1>
+                <%# <span class="close">&times;</span> %>
+
+                <%# Recommended Events Content partial %>
+                <%= render partial: 'events/recommended', locals: { events_near: @events_near, user_coordinates: @user_coordinates } %>
+              </div>
+            </div>
+          </div>
+        <i class="fa-solid fa-street-view" style="color: #fafd69;" id="modal-trigger" data-action="click->recommend-modal#toggleModal"></i>
+        </div>
+      </div>
+    </div>
+
+        <%# ------ Followers Link --------  %>
+    <div class="nav-item">
+      <i class="fa-solid fa-people-arrows" style="color: #fafd69;"></i>
+    </div>
+
+        <%# ------ Logout Link --------  %>
+    <div class="nav-item">
+      <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete } do %>
+        <i class="fa-solid fa-person-walking-arrow-right" style="color: #fafd69;"></i>
+      <% end %>
     </div>
   </div>
 </div>
