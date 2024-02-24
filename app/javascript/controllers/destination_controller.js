@@ -30,7 +30,7 @@ export default class extends Controller {
   #fitMapToDirections() {
     const bounds = new mapboxgl.LngLatBounds()
     bounds.extend([ this.markerValue.lng, this.markerValue.lat ])
-    this.map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 100, maxZoom: 15, duration: 0 })
   }
 
   #getDestinationRoute() {
@@ -51,9 +51,35 @@ export default class extends Controller {
 
     direction.setOrigin([139.70818573877403, 35.634212708976946])
 
+    // if ("geolocation" in navigator) {
+    //   // Get the current position
+    //   const current = navigator.geolocation.getCurrentPosition(
+    //     this.handleSuccess.bind(this),
+    //     this.handleError.bind(this)
+    //   );
+    // } else {
+    //   // Geolocation is not supported by this browser
+    //   console.log("Geolocation is not supported by this browser.");
+    // }
+
+
     setTimeout(() => {
       direction.setDestination([ this.markerValue.lng, this.markerValue.lat ])
     }, 1000);
+  }
+
+  #addCurrentLocation() {
+
+    if ("geolocation" in navigator) {
+      // Get the current position
+      navigator.geolocation.getCurrentPosition(
+        this.handleSuccess.bind(this),
+        this.handleError.bind(this)
+      );
+    } else {
+      // Geolocation is not supported by this browser
+      console.log("Geolocation is not supported by this browser.");
+    }
   }
 
 

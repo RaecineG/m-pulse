@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     }
     @checkin.user = @user
     @checkin.event = @event
-    @checkin.save
   end
 
   def new
@@ -65,6 +64,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, photos: [])
+    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, :photo)
   end
 end
