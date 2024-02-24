@@ -15,16 +15,70 @@ body {
     z-index:1000;
 }
 
-.dashboard-p {
+.dashboard-checkins-p {
   text-align:left;
   width: 80%;
   justify-content: center;
   color:white;
 }
 
+.dashboard-events-p {
+  color:white;
+
+}
 .dashbord-content {
   width: 80%;
   margin: 20px auto;
+
+
+}
+
+.dashboard-checkins-p {
+  color:#3c3b3b;
+}
+
+.card-events-past-infos {
+  background-color: white;
+  border-radius: 5px;
+}
+
+// .card-events-attended-list{
+//   width: 100%;
+//   margin:auto;
+// }
+
+.dashboard-events {
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  // position: relative;
+
+}
+
+
+.dashboard-planned-events {
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.card-events-past-list {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  // max-height: calc(80vh - 30px);
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: center;
+  margin: 0;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
 
 
 }
