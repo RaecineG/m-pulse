@@ -1,6 +1,7 @@
 User.destroy_all
 Event.destroy_all
 Checkin.destroy_all
+Comment.destroy_all
 
 puts "Seeds have been disintegrated 💥"
 
