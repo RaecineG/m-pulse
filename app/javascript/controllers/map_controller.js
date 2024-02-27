@@ -30,12 +30,27 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      const el = document.createElement('div');
+
+      if (marker.category === 'club') {
+        el.innerHTML = '<i class="fa-solid fa-champagne-glasses"></i>';
+      } else if (marker.category === 'sports') {
+        el.innerHTML = '<i class="fa-solid fa-person-running"></i>';
+      } else if (marker.category === 'tech') {
+        el.innerHTML = '<i class="fa-solid fa-users"></i>';
+      } else {
+        el.innerHTML = '<i class="fa-solid fa-robot"></i>';
+      }
+      console.log("cat", marker.category);
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-      new mapboxgl.Marker()
+
+      el.id = `marker_${marker.id}`;
+
+      new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
-        console.log(marker)
+      console.log(marker)
     })
   }
 
@@ -142,17 +157,6 @@ export default class extends Controller {
     }
   }
 
-
-
-  // getDistance(coordinates) {
-  //   .then(distance => {
-  //     console.log(`Distance between locations: ${distance} meters`);
-  //   })
-  //   .catch(error => {
-  //     // Handle the error
-  //   });
-  // }
-// Make the API request using the Fetch API
 
 
 }
