@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
     @user = current_user
     @comment.user = @user
     @comment.event = @event
-    if @comment.save
+    if checked_in?(@event, @user)
+      @comment.save
       redirect_to details_path(@event)
     else
+      flash.alert = "You need to be checked in to this event!"
       redirect_to details_path(@event), status: :unprocessable_entity
     end
   end
@@ -19,5 +21,13 @@ class CommentsController < ApplicationController
 
   def contents
     params.require(:comment).permit(:content)
+  end
+
+  def checked_in?(event, user)
+    checked_in_users = []
+    event.checkins.each do |checkin|
+      checked_in_users << checkin.user
+    end
+    checked_in_users.include?(user)
   end
 end
