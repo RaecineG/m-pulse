@@ -82,8 +82,6 @@ export default class extends Controller {
     }
   }
 
-
-
   //https://api.mapbox.com/directions/v5/mapbox/driving/{coordinates}
 
   // Origin is Impact Hub, Tokyo 👇

@@ -2,13 +2,7 @@ User.destroy_all
 Event.destroy_all
 Checkin.destroy_all
 Comment.destroy_all
-
 puts "Seeds have been disintegrated 💥"
-
-def user_create(user)
-  User.create!(user)
-end
-
 puts "Generating new seeds 🌱"
 
 # Users section -- START --
@@ -112,6 +106,7 @@ end
 events.each do |event|
   starting_time = start_times.sample
   # Random datetime instance with set parameters from start_times array
+  # e = Event.create!( # uncomment for seeding images feature
   Event.create!(
     name: event[:name],
     description: event[:description],
@@ -125,6 +120,7 @@ events.each do |event|
     user: admin_users.sample
     # Assigned to random organizer/admin user
   )
+  # e.image.attach
   puts "Event -> #{Event.last.name} has been created"
 end
 
@@ -150,11 +146,11 @@ puts "Checkins have been generated succesfully ☑️"
 
 # Comments section -- START --
 commenters = []
-number = rand(3..30)
+number = rand(3..25)
 
 5.times do
   commenters << random_users[number]
-  number += rand(1..4)
+  number += rand(2..5)
 end
 
 Event.all.each do |event|

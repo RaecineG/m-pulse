@@ -3,12 +3,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @checkin = Checkin.new
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
         id: event.id,
         category: event.category,
+        checkin_count: event.checkins.count,
         info_window_html: render_to_string(partial: "info_window", locals: {event: event})
       }
     end
