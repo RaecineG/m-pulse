@@ -36,3 +36,67 @@
     box-shadow: 0 0 10px 2px #e2f516, 0 0 20px 5px #e2f516, 0 0 40px 10px #e2f516;
   }
 }
+
+.marker-high {
+  color: #ffffff; /* Red for high check-ins */
+  background-color: #f54e16;
+  font-size: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: markerGlowHigh 15s infinite;
+}
+
+@keyframes markerGlowHigh {
+  0% {
+    box-shadow: 0 0 10px 2px #f54e16, 0 0 20px 5px #f54e16, 0 0 40px 10px #f54e16;
+  }
+  50% {
+    box-shadow: 0 0 20px 5px #f54e16, 0 0 40px 10px #f54e16, 0 0 80px 15px #f54e16;
+  }
+  100% {
+    box-shadow: 0 0 10px 2px #f54e16, 0 0 20px 5px #f54e16, 0 0 40px 10px #f54e16;
+  }
+}
+
+
+.marker-medium {
+  color: #ffffff; /* Red for high check-ins */
+  background-color: #f59416;
+  font-size: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: markerGlowMedium 15s infinite;
+}
+
+@keyframes markerGlowMedium {
+  0% {
+    box-shadow: 0 0 10px 2px #f59416, 0 0 20px 5px #f59416, 0 0 40px 10px #f59416;
+  }
+  50% {
+    box-shadow: 0 0 20px 5px #f59416, 0 0 40px 10px #f59416, 0 0 80px 15px #f59416;
+  }
+  100% {
+    box-shadow: 0 0 10px 2px #f59416, 0 0 20px 5px #f59416, 0 0 40px 10px #f59416;
+  }
+}
+
+.marker-low {
+  color: #ffffff; /* Red for high check-ins */
+  background-color: #16f5f5;
+  font-size: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: markerGlowLow 15s infinite;
+}
+
+@keyframes markerGlowLow {
+  0% {
+    box-shadow: 0 0 10px 2px #16f5f5, 0 0 20px 5px #16f5f5, 0 0 40px 10px #16f5f5;
+  }
+  50% {
+    box-shadow: 0 0 20px 5px #16f5f5, 0 0 40px 10px #16f5f5, 0 0 80px 15px #16f5f5;
+  }
+  100% {
+    box-shadow: 0 0 10px 2px #16f5f5, 0 0 20px 5px #16f5f5, 0 0 40px 10px #16f5f5;
+  }
+}
