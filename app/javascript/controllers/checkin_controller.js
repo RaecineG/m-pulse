@@ -16,6 +16,7 @@ export default class extends Controller {
   showCheckin(event) {
     console.log(event)
     this.cardTarget.classList.toggle("d-none")
+    this.buttonTarget.classList.toggle("d-none")
   }
 
 }

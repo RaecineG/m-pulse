@@ -5,7 +5,8 @@
     data-destination-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
     <div class="show-map-content" data-controller="checkin">
-      <div >
+      <%# Toggle card button DIV - START %>
+      <div data-checkin-target="button">
         <button class="btn btn-directions"
         style="width: 50px;"
         data-action="click->checkin#showCheckin"
@@ -13,20 +14,25 @@
           <i class="fa-solid fa-street-view"></i>
         </button>
       </div>
+      <%# Toggle card button DIV - END %>
+
+      <%# Toggle-able card DIV - START %>
       <div class="show-card-event p-3 d-none"
       data-checkin-target="card"
       >
         <%= render "checkins/new_checkin",
         event: @event, checkin: @checkin
         %>
-        <%= link_to "See all events", events_path, class: "btn btn-directions my-3" %>
-        <button class="btn btn-directions"
-        style="width: 50px;"
+        <%# <%= link_to "See all events", events_path,
+        class: "btn btn-directions my-3"
+        ## This link is no longer necessary since it is navbar %>
+        <button class="btn btn-directions align-self-center my-2"
         data-action="click->checkin#showCheckin"
         >
           <i class="fa-solid fa-street-view"></i>
         </button>
       </div>
+      <%# Toggle-able card DIV - END %>
     </div>
   </div>
 </div>
