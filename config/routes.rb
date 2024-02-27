@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/events/:id/details', to: 'events#details', as: 'details'
   resources :events do
     resources :checkins, only: [:index, :create]
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:index, :create]
   end
   resources :checkins, only: [:destroy]
 end
