@@ -25,10 +25,17 @@
     </div>
     <!-- End of image carousel -->
     <div class="add-image-button">
-      <%= simple_form_for [@event] do |f| %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
-        <%= f.submit "+", class: "btn add-image-button" %>
+      <%= simple_form_for [@event], html: { id: 'fileForm', multipart: true } do |f| %>
+        <label for="fileInput" class="add-image-button">
+          <%= f.input :photos, as: :file, input_html: { multiple: true, onchange: 'submitFile()' }, label: false %>
+        </label>
       <% end %>
+      <script>
+        function submitFile() {
+          document.getElementById('fileForm').submit();
+          location.reload();
+        }
+      </script>
     </div>
     <!-- Start of Event info container -->
     <div class="show-card-event-infos">
