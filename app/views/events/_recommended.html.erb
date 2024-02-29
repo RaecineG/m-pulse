@@ -7,18 +7,18 @@
       <% end %>
       <!--------------- End of Dropdown menu ----------------->
       <!--------------- Search bar starts -------------------->
-      <%= form_with url: events_path, method: :get, html: {class: "mb-4", data: {map_target: "form"}} do |f| %>
+      <%= form_with url: events_path, method: :get, html: {class: "mb-4", data: {showpage_popup_target: "form"}} do |f| %>
         <%= f.text_field :query,
                      class: "form-control",
                      placeholder: "Type an event name",
                      value: params[:query],
-                     data: {map_target: "input",
-                     action: "keyup->map#update",
+                     data: {showpage_popup_target: "input",
+                     action: "keyup->showpage-popup#update",
                      } %>
       <% end %>
       <!--------------- Search bar ends -------------------->
       <!--------------- Event list card starts --------------->
-      <%= render "events/event_list", events: events %>
+      <%= render "events/event_list", events: events, coords: nil %>
 
     </div>
     <!--------------- Event list card ends --------------->

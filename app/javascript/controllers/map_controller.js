@@ -9,7 +9,7 @@ export default class extends Controller {
     markers: Array,
   }
 
-  static targets = ["eventName", "form", "input"];
+
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -170,19 +170,7 @@ export default class extends Controller {
   }
 
 
-  update() {
 
-    console.log("Update method triggered");
-    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`;
-    fetch(url, { headers: { "Accept": "text/plain" } })
-      .then(response => response.text())
-      .then((data) => {
-        this.eventNameTarget.outerHTML = data;
-        this.#addCurrentLocation();
-
-      });
-
-}
 
 
 

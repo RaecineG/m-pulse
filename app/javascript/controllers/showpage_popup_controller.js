@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="showpage-popup"
 export default class extends Controller {
 
-  static targets = ["card", "category"];
+  static targets = ["card", "category", "eventName", "form", "input"];
+
 
 
   connect() {
@@ -55,14 +56,20 @@ export default class extends Controller {
     modalButton.click();
 
   }
-  // update() {
+  update() {
 
-  //     const url = `${this.formTarget.action}?query=${this.inputTarget.value}`;
-  //     fetch(url, { headers: { "Accept": "text/plain" } })
-  //       .then(response => response.text())
-  //       .then((data) => {
-  //         this.eventNameTarget.outerHTML = data;
-  //       });
+    console.log("Update method triggered");
+    navigator.geolocation.getCurrentPosition((pos) => {
+      console.log(pos.coords);
+      const url = `${this.formTarget.action}?query=${this.inputTarget.value}&coords=${[pos.coords.latitude, pos.coords.longitude]}`;
+    fetch(url, { headers: { "Accept": "text/plain" } })
+      .then(response => response.text())
+      .then((data) => {
+        this.eventNameTarget.outerHTML = data;
 
-  // }
+      });
+  });
+
+
+}
 }

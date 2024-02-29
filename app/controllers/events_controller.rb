@@ -17,9 +17,11 @@ class EventsController < ApplicationController
       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
+
+
    respond_to do |format|
      format.html
-     format.text { render partial: "events/event_list", locals: { events: @events }, formats: [:html] }
+     format.text { render partial: "events/event_list", locals: { events: @events, coords: params[:coords] }, formats: [:html] }
    end
   end
 
