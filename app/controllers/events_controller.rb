@@ -10,10 +10,9 @@ class EventsController < ApplicationController
         lng: event.longitude,
         id: event.id,
         category: event.category,
-        info_window_html: render_to_string(partial: "events/info_window", locals: {event: event}, formats: [:html])
-        checkin_count: event.checkins.count,
-  
-
+        info_window_html: render_to_string(partial: "events/info_window", locals: {event: event}, formats: [:html]),
+        checkin_count: event.checkins.count
+      }
     end
 
     if params[:query].present?
