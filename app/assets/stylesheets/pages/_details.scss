@@ -4,17 +4,29 @@
   width: 6px!important;
 }
 
+#fileForm {
+  height: 30px;
+  width: 30px;
+}
+
 .fa-plus {
   font-size: 24px;
   font-weight: bold;
-  position: fixed;
-  top: 255px;
-  right: 430px;
+  padding-left: 5px;
+  padding-top: 3px;
 }
 
 .add-image-button {
+  border-radius: 5px;
+  background-color: yellow;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  width: fit-content;
   margin-top: 16px;
   margin-right: auto;
   margin-bottom: 16px;
   margin-left: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
