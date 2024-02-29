@@ -33,16 +33,40 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const el = document.createElement('div');
+      el.className = 'custom-markers';
 
-      if (marker.category === 'club') {
-        el.innerHTML = '<i class="fa-solid fa-champagne-glasses"></i>';
-      } else if (marker.category === 'sports') {
-        el.innerHTML = '<i class="fa-solid fa-person-running"></i>';
-      } else if (marker.category === 'tech') {
-        el.innerHTML = '<i class="fa-solid fa-users"></i>';
+      let iconClass;
+
+      if (marker.checkin_count > 43) {
+        iconClass = 'marker-high';
+      } else if (marker.checkin_count > 42) {
+        iconClass= 'marker-medium';
       } else {
-        el.innerHTML = '<i class="fa-solid fa-robot"></i>';
+        iconClass = 'marker-low';
       }
+
+      // if (marker.category === 'club') {
+      //   el.innerHTML = '<i class="fa-solid fa-champagne-glasses" style="font-size: 28px;"></i>';
+      // } else if (marker.category === 'sports') {
+      //   el.innerHTML = '<i class="fa-solid fa-person-running" style="font-size: 28px;"></i>';
+      // } else if (marker.category === 'meetup') {
+      //   el.innerHTML = '<i class="fa-solid fa-users" style="font-size: 28px;"></i>';
+      // } else if (marker.category === 'tech') {
+      //   el.innerHTML = '<i class="fa-solid fa-robot" style="font-size: 28px;"></i>';
+      // }
+
+      const iconHTML = {
+        'club': '<i class="fa-solid fa-champagne-glasses"></i>',
+        'sports': '<i class="fa-solid fa-person-running"></i>',
+        'meetup': '<i class="fa-solid fa-users"></i>',
+        'tech': '<i class="fa-solid fa-robot"></i>',
+      }[marker.category];
+
+      if (iconHTML) {
+        el.innerHTML = iconHTML;
+        el.firstChild.className += ` ${iconClass}`; // Add class to the <i> element
+      }
+
       console.log("cat", marker.category);
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 

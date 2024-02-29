@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @checkin = Checkin.new
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
@@ -10,7 +11,9 @@ class EventsController < ApplicationController
         id: event.id,
         category: event.category,
         info_window_html: render_to_string(partial: "events/info_window", locals: {event: event}, formats: [:html])
-      }
+        checkin_count: event.checkins.count,
+  
+
     end
 
     if params[:query].present?
@@ -52,9 +55,17 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:id])
+    photos = event_params[:photos]
+    photos.each do |photo|
+      next if photo.blank?
+
+      @event.photos.attach(io:photo.tempfile, filename:photo.original_filename, content_type:photo.content_type)
+    end
   end
 
   def destroy
@@ -96,6 +107,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, :photo)
+    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, photos: [])
   end
 end

@@ -4,58 +4,35 @@
     data-destination-marker-value="<%= @marker.to_json %>"
     data-destination-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
-    <div class="show-map-content show-card-event p-3" data-controller="checkin">
-      <%= render "checkins/new_checkin",
-      event: @event, checkin: @checkin
-      %>
-      <%= link_to "See all events", events_path, class: "btn btn-directions my-3" %>
+    <div class="show-map-content" data-controller="checkin">
+      <%# Toggle card button DIV - START %>
+      <div data-checkin-target="button">
+        <button class="btn btn-directions"
+        style="width: 50px;"
+        data-action="click->checkin#showCheckin"
+        >
+          <i class="fa-solid fa-street-view"></i>
+        </button>
+      </div>
+      <%# Toggle card button DIV - END %>
+
+      <%# Toggle-able card DIV - START %>
+      <div class="show-card-event p-3 d-none"
+      data-checkin-target="card"
+      >
+        <%= render "checkins/new_checkin",
+        event: @event, checkin: @checkin
+        %>
+        <%# <%= link_to "See all events", events_path,
+        class: "btn btn-directions my-3"
+        ## This link is no longer necessary since it is navbar %>
+        <button class="btn btn-directions align-self-center my-2"
+        data-action="click->checkin#showCheckin"
+        >
+          <i class="fa-solid fa-street-view"></i>
+        </button>
+      </div>
+      <%# Toggle-able card DIV - END %>
     </div>
   </div>
 </div>
-<!-- Start of event-show-page-checkedin -->
-<%# temporarily put d-none on entire section/div below 👇 %>
-<div class="event-checkedin-container row justify-content-center d-none">
-  <div class="show-card-event col-sm-12 col-lg-4">
-    <!-- Start of image carousel -->
-    <div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">
-      <div id="carouselEventCaptions" class="carousel slide" data-bs-ride="false">
-        <div class="carousel-inner cold-md-10">
-          <% @event.photos.each_with_index do |photo, index| %>
-            <div class="carousel-item <%= "active" if index == 0 %>">
-              <img src="<%= cl_image_path photo.key, height: 1200, width: 1600, crop: :fill %>" class="d-block w-100 img-size" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvents" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselEvents" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-    <!-- End of image carousel -->
-    <div class="add-image-button">
-      <b><i class="fa-solid fa-plus" style="color: #3c3b3b;"></i></b>
-    </div>
-    <!-- Start of Event info container -->
-    <div class="show-card-event-infos">
-      <div class="show-card-event-details">
-        <h2><%= @event.name %></h2>
-        <p><%= @event.category %></p>
-      </div>
-      <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-      <h6><%= @event.checkins.count %></h6>
-    </div>
-    <!-- End of Event info container -->
-    <!-- Start of comments container for event -->
-    <div class="comments-container">
-      <h4>Comments</h4>
-    </div>
-  </div>
-</div>
-<!-- End of comments container for event -->
