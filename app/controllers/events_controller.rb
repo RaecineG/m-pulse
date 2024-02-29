@@ -10,11 +10,22 @@ class EventsController < ApplicationController
         lng: event.longitude,
         id: event.id,
         category: event.category,
+        info_window_html: render_to_string(partial: "events/info_window", locals: {event: event}, formats: [:html])
         checkin_count: event.checkins.count,
-        info_window_html: render_to_string(partial: "info_window", locals: {event: event})
-      }
+  
+
     end
-    recommended
+
+    if params[:query].present?
+      @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+
+
+   respond_to do |format|
+     format.html
+     format.text { render partial: "events/event_list", locals: { events: @events, coords: params[:coords] }, formats: [:html] }
+   end
   end
 
   def show
@@ -44,25 +55,41 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:id])
+    photos = event_params[:photos]
+    photos.each do |photo|
+      next if photo.blank?
+
+      @event.photos.attach(io:photo.tempfile, filename:photo.original_filename, content_type:photo.content_type)
+    end
   end
 
   def destroy
   end
 
   def recommended
-    # @user_coordinates = [request.location.latitude, request.location.longitude]
-    @user_coordinates = [35.6537872, 139.6928169]
-    @events = Event.all
+
     @locations = @events.geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude
       }
     end
-    @events_near = Event.near(@user_coordinates, 50)
+    @events_near = Event.all
+    @categories = @events_near.pluck(:category).uniq
+
+    if params[:query].present?
+       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html
+      format.text
+    end
   end
 
   def dashboard
@@ -80,6 +107,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, :photo)
+    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, photos: [])
   end
 end

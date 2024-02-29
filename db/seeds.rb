@@ -120,9 +120,89 @@ events.each do |event|
     user: admin_users.sample
     # Assigned to random organizer/admin user
   )
-  # e.image.attach
   puts "Event -> #{Event.last.name} has been created"
 end
+
+a = Event.first
+b = Event.second
+c = Event.third
+d = Event.fourth
+e = Event.last
+
+a.photos.attach(
+  io:  File.open(Rails.root.join('db/images/discoball.jpg')),
+  filename: 'discoball.jpg'
+)
+a.photos.attach(
+  io:  File.open(Rails.root.join('db/images/discoball2.jpg')),
+  filename: 'discoball2.jpg'
+)
+a.photos.attach(
+  io:  File.open(Rails.root.join('db/images/discoball3.jpg')),
+  filename: 'discoball3.jpg'
+)
+
+puts "Event -> #{a.name} photos have been attached 📸"
+
+b.photos.attach(
+  io:  File.open(Rails.root.join('db/images/programming.jpg')),
+  filename: 'programming.jpg'
+)
+b.photos.attach(
+  io:  File.open(Rails.root.join('db/images/programming2.jpg')),
+  filename: 'programming2.jpg'
+)
+b.photos.attach(
+  io:  File.open(Rails.root.join('db/images/programming3.jpg')),
+  filename: 'programming3.jpg'
+)
+
+puts "Event -> #{b.name} photos have been attached 📸"
+
+c.photos.attach(
+  io:  File.open(Rails.root.join('db/images/70s.jpg')),
+  filename: '70s.jpg'
+)
+c.photos.attach(
+  io:  File.open(Rails.root.join('db/images/70s2.jpg')),
+  filename: '70s2.jpg'
+)
+c.photos.attach(
+  io:  File.open(Rails.root.join('db/images/70s3.jpg')),
+  filename: '70s3.jpg'
+)
+
+puts "Event -> #{c.name} photos have been attached 📸"
+
+d.photos.attach(
+  io:  File.open(Rails.root.join('db/images/singles.jpg')),
+  filename: 'singles.jpg'
+)
+d.photos.attach(
+  io:  File.open(Rails.root.join('db/images/singles2.jpg')),
+  filename: 'singles2.jpg'
+)
+d.photos.attach(
+  io:  File.open(Rails.root.join('db/images/singles3.jpg')),
+  filename: 'singles3.jpg'
+)
+
+puts "Event -> #{d.name} photos have been attached 📸"
+
+e.photos.attach(
+  io:  File.open(Rails.root.join('db/images/marathon.jpg')),
+  filename: 'marathon.jpg'
+)
+e.photos.attach(
+  io:  File.open(Rails.root.join('db/images/marathon2.jpg')),
+  filename: 'marathon2.jpg'
+)
+e.photos.attach(
+  io:  File.open(Rails.root.join('db/images/marathon3.jpg')),
+  filename: 'marathon3.jpg'
+)
+
+puts "Event -> #{e.name} photos have been attached 📸"
 
 puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --

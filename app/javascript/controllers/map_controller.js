@@ -9,6 +9,8 @@ export default class extends Controller {
     markers: Array,
   }
 
+
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -138,8 +140,17 @@ export default class extends Controller {
       const event_id = marker.id;
 
       const coordinates = `${current_x},${current_y};${event_x},${event_y}`
+      const distance = this.getDistance(coordinates);
+
 
       this.getDistance(coordinates, event_id)
+
+      // if (distance < 10000) { // Check if the distance is less than 10 km (in meters)
+      //   const distanceElement = document.getElementById(`distance_${event_id}`);
+      //   if (distanceElement) {
+      //     distanceElement.textContent = `${(distance / 1000).toFixed(2)} km`;
+      //   }
+      // }
 
 
     })
@@ -165,6 +176,7 @@ export default class extends Controller {
       // Access specific distance or duration between two locations
       const distanceBetweenLocations = distances[0][1]; // replace with the appropriate indices
 
+
       const distanceElement = document.getElementById(`distance_${event_id}`);
         if (distanceElement) {
             distanceElement.textContent = `${(distanceBetweenLocations / 1000).toFixed(2)} km`;
@@ -180,6 +192,9 @@ export default class extends Controller {
       throw error; // Propagate the error
     }
   }
+
+
+
 
 
 
