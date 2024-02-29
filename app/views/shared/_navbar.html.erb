@@ -19,7 +19,7 @@
     <%# -----------  Modal for Events near you ------------ %>
     <div class="nav-item d-flex justify-content-center">
       <div class="recommended-container text-center" data-controller="recommend-modal">
-        <i class="fa-solid fa-street-view" style="color: #fafd69;" data-action="click->recommend-modal#toggleModal"></i>
+        <i class="fa-solid fa-street-view" id ="modal-button" style="color: #fafd69;" data-action="click->recommend-modal#toggleModal"></i>
           <%# Modal Overlay %>
         <div class="card-events-list col-12 col-lg-8">
           <div id="modal-overlay" class="modal-overlay" data-recommend-modal-target="overlay">
@@ -28,7 +28,7 @@
                 <%# <span class="close">&times;</span> %>
 
                 <%# Recommended Events Content partial %>
-              <%= render partial: 'events/recommended', locals: { events_near: @events_near, user_coordinates: @user_coordinates } %>
+              <%= render partial: 'events/recommended', locals: { events: @events } %>
             </div>
           </div>
         </div>

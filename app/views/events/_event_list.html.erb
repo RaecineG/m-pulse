@@ -1,0 +1,27 @@
+
+  <div class ="row justify-content-center w-100" data-showpage-popup-target = "eventName">
+    <% events&.each do |event| %>
+      <div class="card-events-list col-12 col-sm-10 col-md-10 col-lg-9" data-showpage-popup-category-value="<%= event.category %>" data-showpage-popup-target="category">
+        <div class="card-image" id="<%= event.id %>" data-toggle="collapse" data-showpage-popup-target="card" data-action="click->showpage-popup#openCard">
+          <% if event&.photos&.attached? %>
+            <%= cl_image_tag event.photos.first.key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+          <% end %>
+        </div>
+        <div class="card-event-infos" data-toggle="collapse">
+          <div class="card-event-infos-details">
+            <h2 class="h4"><%= event.name %></h2>
+            <h3 class="h5"><%= event.category %></h3>
+            <p id="distance_<%= event.id %>" style ="font-size: 14px; text-align: left;"><%= "#{event.distance_to(coords)&.round(2)} km" unless coords.nil? %></p>
+          </div>
+          <div class="card-event-icon">
+            <div class="icon-and-text">
+              <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
+              <p><%= event.checkins.count %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
