@@ -1,33 +1,26 @@
-<div class="container">
+<div class="container" data-controller ="showpage-popup">
   <div class="row justify-content-center">
     <div class="container-recommended">
-      <% events_near&.each do |event| %>
-        <div class="card-events-list col-12 col-sm-10 col-md-10 col-lg-9">
-          <div class="card-image" id ="<%= event.id %>" data-toggle="collapse"  data-controller ="showpage-popup" data-showpage-popup-target="card" data-action="click->showpage-popup#openCard">
-            <!--<%= link_to event_path(event), class: 'card-event-link' do %>-->
-              <% if event&.photos&.attached? %>
-                <%= cl_image_tag event.photos.first.key %>
-              <% else %>
-                <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-              <% end %>
-           <!-- <% end %>-->
-          </div>
-          <div class="card-event-infos" data-toggle="collapse">
-            <div class="card-event-infos-details">
-              <h2 class="h4"><%= event.name %></h2>
-              <h3 class="h5"><%= event.category %></h3>
-              <%# <% distance = event.distance_to(user_coordinates) %>
-              <p id="distance_<%= event.id %>">km</p>
-            </div>
-            <div class="card-event-icon">
-              <div class="icon-and-text">
-                <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-                <p><%= event.checkins.count %></p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!--------- Dropdown menu for selecting category ------->
+      <%= simple_form_for :event, url: "#", method: "get", html: { class: "simple-form-category" } do |form| %>
+        <%= form.input :category, as: :select, collection: [["All Categories", ""]] + Event.categories.keys.map { |category| [category.capitalize, category] }, label: false, selected: "", input_html: { "data-action" => "change->showpage-popup#selectCategory" } %>
       <% end %>
+      <!--------------- End of Dropdown menu ----------------->
+      <!--------------- Search bar starts -------------------->
+      <%= form_with url: events_path, method: :get, html: {class: "mb-4", data: {map_target: "form"}} do |f| %>
+        <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: "Type an event name",
+                     value: params[:query],
+                     data: {map_target: "input",
+                     action: "keyup->map#update",
+                     } %>
+      <% end %>
+      <!--------------- Search bar ends -------------------->
+      <!--------------- Event list card starts --------------->
+      <%= render "events/event_list", events: events %>
+
     </div>
+    <!--------------- Event list card ends --------------->
   </div>
 </div>
