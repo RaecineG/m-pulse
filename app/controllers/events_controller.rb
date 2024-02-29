@@ -44,9 +44,17 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:id])
+    photos = event_params[:photos]
+    photos.each do |photo|
+      next if photo.blank?
+
+      @event.photos.attach(io:photo.tempfile, filename:photo.original_filename, content_type:photo.content_type)
+    end
   end
 
   def destroy
@@ -80,6 +88,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, :photo)
+    params.require(:event).permit(:name, :address, :description, :start_at, :end_at, :category, photos: [])
   end
 end

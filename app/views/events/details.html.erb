@@ -25,7 +25,17 @@
     </div>
     <!-- End of image carousel -->
     <div class="add-image-button">
-      <b><i class="fa-solid fa-plus" style="color: #3c3b3b;"></i></b>
+      <%= simple_form_for [@event], html: { id: 'fileForm', multipart: true } do |f| %>
+        <label for="fileInput">
+          <i class="fa-solid fa-plus" style="color: #3c3b3b;"></i>
+          <%= f.input :photos, as: :file, input_html: { multiple: true, onchange: 'submitFile()' }, label: false %>
+        </label>
+      <% end %>
+      <script>
+        function submitFile() {
+          document.getElementById('fileForm').submit();
+        }
+      </script>
     </div>
     <!-- Start of Event info container -->
     <div class="show-card-event-infos">
@@ -38,8 +48,8 @@
     </div>
     <!-- End of Event info container -->
     <!-- Start of comments container for event -->
+    <h4>Comments</h4>
     <div class="comments-container">
-      <h4>Comments</h4>
       <div class="all-comments">
         <ul>
           <% @comments.each do |comment| %>
