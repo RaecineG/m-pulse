@@ -4,7 +4,7 @@
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   // border-radius: 5px;
   z-index: 1;
-  margin: 16px;
+  // margin: 16px;
   height: fit-content;
   min-width: 350px;
 }
@@ -38,19 +38,18 @@
 }
 
 
-#event_photos {
+.add-image-button #event_photos {
   opacity: 0!important;
   height: 10px!important;
   width: 40px!important;
   margin-top: 15px!important;
 }
 
-.fa-plus {
-  font-size: 24px;
-  font-weight: bold;
-  padding-left: 15px;
+.material-symbols-outlined {
+  padding-left: 14px;
   position: absolute;
-  top: 258px;
+  top: 243px;
+  color: #3c3b3b;
 }
 
 .add-image-button {
