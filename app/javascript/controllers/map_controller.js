@@ -37,9 +37,9 @@ export default class extends Controller {
 
       let iconClass;
 
-      if (marker.checkin_count > 43) {
+      if (marker.checkin_count > 40) {
         iconClass = 'marker-high';
-      } else if (marker.checkin_count > 42) {
+      } else if (marker.checkin_count > 20) {
         iconClass= 'marker-medium';
       } else {
         iconClass = 'marker-low';

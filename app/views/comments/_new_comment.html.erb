@@ -1,5 +1,7 @@
-<%= simple_form_for [event, comment] do |f| %>
-  <h4>Comment as <strong><%= @user.username %></strong></h4>
-  <%= f.input :content, placeholder: "Your comment here", label: false %>
-  <%= f.submit "Add Comment ➕", class: "btn btn-directions" %>
+<%= simple_form_for [event, comment],
+  html: { data: { action: "turbo:submit-end->event-subscription#resetForm" },
+  class: "d-flex flex-column" } do |f| %>
+    <h4>Comment as <strong><%= @user.username %></strong></h4>
+    <%= f.input :content, placeholder: "Your comment here", label: false %>
+    <%= f.submit "Add Comment ➕", class: "btn btn-directions" %>
 <% end %>
