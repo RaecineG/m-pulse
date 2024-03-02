@@ -46,28 +46,24 @@
         <h6><%= @event.checkins.count %></h6>
       </div>
       <!-- End of Event info container -->
-      <hr style="width: 93%; margin: auto;">
+      <hr style="width: 95%; margin: auto;">
       <!-- Start of comments container for event -->
       <div class="comments-master-container">
         <h4>Comments</h4>
-        <div class="comments-container">
-          <div class="all-comments">
-            <ul>
-              <% @comments.each do |comment| %>
-                <li>
-                  <div class="d-flex space-between">
-                    <h5><%= comment.user.username %></h5>
-                    <%# add a comment timestamp here? %>
-                  </div>
-                  <p><%= comment.content %></p>
-                </li>
-              <% end %>
-            </ul>
+        <div class="comments-container" data-controller="event-subscription"
+        data-event-subscription-event-id-value="<%= @event.id%>"
+      >
+          <div class="all-comments" data-event-subscription-target="comments">
+            <% @comments.each do |comment| %>
+              <%= render "comments/comment", comment: comment %>
+            <% end %>
           </div>
         </div>
-        <%= render "comments/new_comment", event: @event, comment: @comment %>
+        <div>
+          <%= render "comments/new_comment", event: @event, comment: @comment %>
+        </div>
       </div>
+      <!-- End of comments container for event -->
     </div>
-    <!-- End of comments container for event -->
   </div>
 </body>
