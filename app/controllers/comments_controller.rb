@@ -10,6 +10,13 @@ class CommentsController < ApplicationController
     @comment.event = @event
     if checked_in?(@event, @user)
       @comment.save
+      EventChannel.broadcast_to(
+        @event,
+        render_to_string(partial: "info_window", locals: {comment: @comment})
+        
+      )
+      head :ok
+
       redirect_to details_path(@event)
     else
       flash.alert = "You need to be checked in to this event!"

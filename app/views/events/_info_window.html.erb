@@ -48,7 +48,8 @@
         <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
       </div>
       <!-- Start of switch container for description and events -->
-      <div class="switch-container">
+      <div class="switch-container" data-controller="event-subscription"
+          data-event-subscription-event-id-value="<%= event.id %>">
         <nav>
           <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
             <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">Description</button>
@@ -59,9 +60,16 @@
           <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
             <%= event.description %>
           </div>
-          <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
+
+          <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill"
+            data-event-subscription-target="comments">
             <% event.comments.each do |comment| %>
+              <div style="color: grey;">
+              <%= comment.user.username %>
+              </div>
+              <div>
               <%= comment.content %>
+              </div>
             <% end %>
           </div>
         </div>
