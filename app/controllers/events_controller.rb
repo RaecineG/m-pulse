@@ -112,6 +112,15 @@ class EventsController < ApplicationController
   def friends
     @current_user = current_user
     @users = User.all
+
+    if params[:query].present?
+      @users = @users.where("username ILIKE ?", "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "friends_list", locals: { users: @users }, formats: [:html] }
+    end
   end
 
   def follow_user
@@ -125,7 +134,7 @@ class EventsController < ApplicationController
         flash.now[:alert] = "Sorry, alrady following"
       end
     else
-      if curent_user.unfavorite(user)
+      if current_user.unfavorite(user)
         redirect_to friends_path
       else
         redirect_to friends_path

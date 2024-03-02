@@ -1,4 +1,4 @@
-<div class="switch-container">
+<div class="switch-container" data-controller="friendslist">
   <nav>
     <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
       <button class="nav-link active" id="switch-comments-pill" data-bs-toggle="pill" data-bs-target="#switch-comments" type="button" role="pill" aria-controls="switch-comments" aria-selected="false">All friends</button>
@@ -7,32 +7,17 @@
   <div class="pill-content" id="nav-pillContent">
     <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="container-recommended">
-            <% @users&.each do |user| %>
-              <div class="card-events-list col-8 col-sm-6 col-md-6 col-lg-6">
-                <div class="card-image">
-                </div>
-                <div class="card-event-infos" data-toggle="collapse">
-                  <div class="card-event-infos-details">
-                    <h2 class="h4"><%= user.username %></h2>
-                  </div>
-                </div>
-                <div class="card-user-details">
-                </div>
-                <div class="card-event-infos-button">
-                  <% if @current_user.favorited?(user) %>
-                    <%= link_to "Unfollow", "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } %>
-                    <!-- unfollow -->
-                  <% else %>
-                    <%= link_to "Follow", "/follow/#{user.id}/follow", data: { 'turbo-method' => :post }%>
-                    <%# <button type="button" class="btn" style = "background-color: #FAFD69; border-radius: 5px; margin-right: 10px;">follow</button> %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
+      <%= form_with url: friends_path, method: :get, html: {class: "mb-4", style: "display: flex; align-items: center; justify-content: center;", data: {friendslist_target: "form"}} do |f| %>
+        <%= f.text_field :query,
+                     class: "form-control",
+                     style: "width: 300px; height: 40px;",
+                     placeholder: "Search friends",
+                     value: params[:query],
+                     data: {friendslist_target: "input",
+                     action: "keyup->friendslist#search",
+                     } %>
+      <% end %>
+      <%= render "friends_list", users: @users %>
       </div>
     </div>
     <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
