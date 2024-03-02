@@ -1,6 +1,7 @@
-<div class="container">
-  <div class="event-container row justify-content-center">
-    <div class="show-card-event col-sm-12 col-lg-4">
+<%# <div class="container container-fluid"> %>
+<div class="event-container row justify-content-left">
+  <div class="show-card-event col-s-12 col-md-10 col-lg-5">
+    <div class="carousel-time-container">
       <!-- Start of image carousel -->
       <div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">
         <div id="carouselEventCaptions" class="carousel slide" data-bs-ride="false">
@@ -30,43 +31,45 @@
       </div>
       <!-- End of image carousel -->
       <div class="time-container">
-        <i class="fa-solid fa-hourglass-end" style="color: #3c3b3b;"></i> <strong><%= event.end_at.strftime("%H:%M") %></strong>
+        <i class="fa-solid fa-hourglass-end" style="color: #3c3b3b;"></i>
+        <strong><%= event.end_at.strftime("%H:%M") %></strong>
       </div>
-      <!-- Start of Event info container -->
-      <div class="show-card-event-infos">
-        <div class="show-card-event-details">
-          <h2><%= event.name %></h2>
-          <p><%= event.category %></p>
-          <p><strong><%= event.start_at.strftime("%A, %B %e") %></strong></p>
-          <p><%= event.address %></p>
-        </div>
-        <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-        <h6><%= event.checkins.count %></h6>
-      </div>
-      <!-- End of Event info container -->
-      <div class="show-card-event-button">
-        <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
-      </div>
-      <!-- Start of switch container for description and events -->
-      <div class="switch-container">
-        <nav>
-          <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
-            <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">Description</button>
-            <button class="nav-link" id="switch-comments-pill" data-bs-toggle="pill" data-bs-target="#switch-comments" type="button" role="pill" aria-controls="switch-comments" aria-selected="false">Comments</button>
-          </div>
-        </nav>
-        <div class="pill-content" id="nav-pillContent">
-          <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
-            <%= event.description %>
-          </div>
-          <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
-            <% event.comments.each do |comment| %>
-              <%= comment.content %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <!-- End of switch container for description and events -->
     </div>
+    <!-- Start of Event info container -->
+    <div class="show-card-event-infos">
+      <div class="show-card-event-details">
+        <h2><%= event.name %></h2>
+        <p><%= event.category %></p>
+        <p><strong><%= event.start_at.strftime("%A, %B %e") %></strong></p>
+        <p><%= event.address %></p>
+      </div>
+      <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
+      <h6><%= event.checkins.count %></h6>
+    </div>
+    <!-- End of Event info container -->
+    <div class="show-card-event-button">
+      <%= link_to "Get Directions", event_path(event), class:"btn btn-directions" %>
+    </div>
+    <!-- Start of switch container for description and events -->
+    <div class="switch-container">
+      <nav>
+        <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
+          <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">Description</button>
+          <button class="nav-link" id="switch-comments-pill" data-bs-toggle="pill" data-bs-target="#switch-comments" type="button" role="pill" aria-controls="switch-comments" aria-selected="false">Comments</button>
+        </div>
+      </nav>
+      <div class="pill-content" id="nav-pillContent">
+        <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
+          <%= event.description %>
+        </div>
+        <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
+          <% event.comments.each do |comment| %>
+            <%= comment.content %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- End of switch container for description and events -->
   </div>
+</div>
 </div>
