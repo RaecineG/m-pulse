@@ -1,9 +1,11 @@
 .event-checkedin-container {
-  position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
+  position: relative;
+  margin-top: 16px;
+  margin-bottom: 100px;
 }
 
 .add-image-link {
