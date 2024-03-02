@@ -75,9 +75,9 @@ puts "All users have been generated succesfully 💃🕺"
 events = [
   { name: "le wagon MEGA Demo Day - Web Development & Data Science bootcamps",
     description: "Join us for our MEGA Demo Day in Tokyo, introducing 16 final projects from both our web development and data science bootcamps 🔥",
-    address: "Ebisu", category: 1,
-    start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
-    end_at: DateTime.new(2024, 3, 8, 14, 0, 0),
+    address: "Ebisu", category: 3,
+    start_at: DateTime.new(2024, 3, 8, 18, 0, 0),
+    end_at: DateTime.new(2024, 3, 8, 22, 0, 0),
     photos: [
       { io: File.open(Rails.root.join('db/images/demo.jpg')),
         filename: 'demo.jpg' },
