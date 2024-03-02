@@ -49,6 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_014452) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "checkins", force: :cascade do |t|
     t.integer "status"
     t.bigint "user_id", null: false
@@ -89,7 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_014452) do
     t.bigint "favoritable_id", null: false
     t.string "favoritor_type", null: false
     t.bigint "favoritor_id", null: false
-    t.string "scope", default: "favorite", null: false
+    t.string "scope", default: "follow", null: false
     t.boolean "blocked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

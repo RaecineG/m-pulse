@@ -81,7 +81,7 @@ class EventsController < ApplicationController
     @categories = @events_near.pluck(:category).uniq
 
     if params[:query].present?
-       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
+      @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
     respond_to do |format|
