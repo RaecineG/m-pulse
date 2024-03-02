@@ -37,7 +37,7 @@ export default class extends Controller {
   #getDestinationRoute() {
     const direction = new MapboxDirections({
       accessToken: mapboxgl.accessToken,
-      routePadding: 50,
+      routePadding: 100,
       profile: "mapbox/driving",
       controls: {
         inputs: false,
