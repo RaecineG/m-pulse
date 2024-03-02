@@ -49,17 +49,13 @@
     <!-- End of Event info container -->
     <!-- Start of comments container for event -->
     <h4>Comments</h4>
-    <div class="comments-container">
-      <div class="all-comments">
+    <div class="comments-container" data-controller="event-subscription"
+      data-event-subscription-event-id-value="<%= @event.id%>"
+    >
+      <div class="all-comments" data-event-subscription-target="comments">
         <ul>
           <% @comments.each do |comment| %>
-            <li>
-              <div class="d-flex space-between">
-                <h5><%= comment.user.username %></h5>
-                <%# add a comment timestamp here? %>
-              </div>
-              <p><%= comment.content %></p>
-            </li>
+            <%= render "comments/comment", comment: comment %>
           <% end %>
         </ul>
       </div>

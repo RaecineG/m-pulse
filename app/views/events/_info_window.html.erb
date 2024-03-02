@@ -60,16 +60,11 @@
           <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
             <%= event.description %>
           </div>
-
+          <!-- Start of comments container for event -->
           <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill"
             data-event-subscription-target="comments">
             <% event.comments.each do |comment| %>
-              <div style="color: grey;">
-              <%= comment.user.username %>
-              </div>
-              <div>
-              <%= comment.content %>
-              </div>
+              <%= render "comments/comment", comment: comment %>
             <% end %>
           </div>
         </div>

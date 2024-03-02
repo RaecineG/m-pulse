@@ -9,8 +9,22 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "EventChannel", id: this.eventIdValue },
-      { received: data => console.log(data) }
+      { received: data => this.#insertCommentAndScrollDown(data) }
     )
     console.log(`Subscribed to the event with the id ${this.eventIdValue}.`)
+  }
+
+  disconnect() {
+    console.log("Unsubscribed from the chatroom")
+    this.channel.unsubscribe()
+  }
+
+  resetForm(event) {
+    event.target.reset()
+  }
+
+  #insertCommentAndScrollDown(data) {
+    this.commentsTarget.insertAdjacentHTML("beforeEnd", data)
+    this.commentsTarget.scrollTo(0, this.commentsTarget.scrollHeight)
   }
 }
