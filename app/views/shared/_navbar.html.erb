@@ -31,7 +31,9 @@
   </div>
   <%# ------ Followers Link --------  %>
   <div class="nav-item d-flex justify-content-center">
-    <i class="fa-solid fa-people-arrows" style="color: #fafd69;"></i>
+    <%= link_to follows_path do %>
+      <i class="fa-solid fa-people-arrows" style="color: #fafd69;"></i>
+    <% end %>
   </div>
   <%# ------ Logout Link --------  %>
   <div class="nav-item d-flex justify-content-center">

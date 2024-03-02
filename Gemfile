@@ -56,6 +56,13 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "geocoder"
 gem "cloudinary"
+gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
+gem 'rspec-rails'
+
+group :development do
+  gem 'rubocop', require: false
+end
+
 
 group :development, :test do
   gem "dotenv-rails"
