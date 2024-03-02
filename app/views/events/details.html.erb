@@ -33,25 +33,34 @@
           </label>
         <% end %>
       </div>
-
-      <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-      <h6><%= @event.checkins.count %></h6>
-    </div>
-    <!-- End of Event info container -->
+      <!-- Start of Event info container -->
+      <div class="details-card-event-infos">
+        <div class="details-card-event-details">
+          <h2><%= @event.name %></h2>
+          <p><%= @event.category %></p>
+        </div>
+        <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
+        <h6><%= @event.checkins.count %></h6>
+      </div>
+      <!-- End of Event info container -->
+      <hr style="width: 95%; margin: auto;">
     <!-- Start of comments container for event -->
-    <h4>Comments</h4>
-    <div class="comments-container" data-controller="event-subscription"
-      data-event-subscription-event-id-value="<%= @event.id%>"
-    >
-      <div class="all-comments" data-event-subscription-target="comments">
-        <ul>
+    <div class="comments-master-container">
+      <h4>Comments</h4>
+      <div class="comments-container" data-controller="event-subscription"
+        data-event-subscription-event-id-value="<%= @event.id%>"
+      >
+        <div class="all-comments" data-event-subscription-target="comments">
           <% @comments.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
           <% end %>
-        </ul>
-
+        </div>
       </div>
-    </div>
+      <div>
+        <%= render "comments/new_comment", event: @event, comment: @comment %>
+      </div>
+      </div>
     <!-- End of comments container for event -->
+    </div>
   </div>
 </body>
