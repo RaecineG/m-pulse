@@ -362,12 +362,9 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8)
-<<<<<<< HEAD
   rspec-rails
   rubocop
-=======
   redis
->>>>>>> 12dc6c22f2bff5967b2cae8e95cda0a9aa9cc44a
   sassc-rails
   selenium-webdriver
   simple_form!
