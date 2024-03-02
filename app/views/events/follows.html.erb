@@ -1,0 +1,38 @@
+<div class="switch-container">
+  <nav>
+    <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
+      <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">Following</button>
+    </div>
+  </nav>
+  <div class="pill-content" id="nav-pillContent">
+    <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
+      <!-- The list of users the current user is following -->
+      <div class="container">
+        <div class="row justify-content-center w-100">
+          <div class="container-recommended">
+            <% @follows&.each do |follow| %>
+              <div class="card-events-list col-10 col-sm-8 col-md-8 col-lg-8">
+                <div class="card-image">
+                </div>
+                <div class="card-event-infos" data-toggle="collapse">
+                  <div class="card-event-infos-details">
+                    <h2 class="h4"><%= @user_all.find(follow.favoritable_id).username %></h2>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- End of the list of users the current user is following -->
+    </div>
+    <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
+
+    </div>
+  </div>
+  <div class="nav-item d-flex justify-content-center">
+    <%= link_to friends_path do %>
+      <button type="button" class="btn" style = "background-color: #FAFD69; text-decoration: none;">Search friends</button>
+    <% end %>
+  </div>
+</div>

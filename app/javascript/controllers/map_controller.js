@@ -16,7 +16,9 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/dark-v11"
+      // style: "mapbox://styles/mapbox/dark-v11"
+      style: "mapbox://styles/raecine/clt9tholt007801r5des95bas"
+
     })
 
     this.#addMarkersToMap()
@@ -37,9 +39,9 @@ export default class extends Controller {
 
       let iconClass;
 
-      if (marker.checkin_count > 43) {
+      if (marker.checkin_count > 40) {
         iconClass = 'marker-high';
-      } else if (marker.checkin_count > 42) {
+      } else if (marker.checkin_count > 20) {
         iconClass= 'marker-medium';
       } else {
         iconClass = 'marker-low';

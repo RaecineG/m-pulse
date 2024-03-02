@@ -56,8 +56,8 @@ export default class extends Controller {
     modalButton.click();
 
   }
-  update() {
-
+  update(event) {
+    event.preventDefault();
     console.log("Update method triggered");
     navigator.geolocation.getCurrentPosition((pos) => {
       console.log(pos.coords);

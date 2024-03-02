@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
-    @events = Event.all
+    @events = Event.where("end_at > ?", Time.now)
+    @past_events = Event.where("end_at < ?", Time.now)
     @checkin = Checkin.new
     @markers = @events.geocoded.map do |event|
       {
@@ -19,12 +20,10 @@ class EventsController < ApplicationController
       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
-
-
-   respond_to do |format|
-     format.html
-     format.text { render partial: "events/event_list", locals: { events: @events, coords: params[:coords] }, formats: [:html] }
-   end
+    respond_to do |format|
+      format.html
+      format.text { render partial: "events/event_list", locals: { events: @events, coords: params[:coords] }, formats: [:html] }
+    end
   end
 
   def show
@@ -101,6 +100,38 @@ class EventsController < ApplicationController
     @comments = @event.comments
     @comment = Comment.new
     @user = current_user
+  end
+
+  def follows
+    @user = current_user
+    @user_all = User.all
+    @follows = @user.all_favorites
+    @followers = @user.user_favoritors
+  end
+
+  def friends
+    @current_user = current_user
+    @users = User.all
+  end
+
+  def follow_user
+    user = User.find(params[:user_id])
+    value = params[:follow]
+    if value == "follow"
+      if current_user.favorite(user)
+        redirect_to friends_path
+      else
+        redirect_to friends_path
+        flash.now[:alert] = "Sorry, alrady following"
+      end
+    else
+      if curent_user.unfavorite(user)
+        redirect_to friends_path
+      else
+        redirect_to friends_path
+        flash.now[:alert] = "Sorry, couldnt unfollow."
+      end
+    end
   end
 
   private

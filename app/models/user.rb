@@ -15,6 +15,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
+  acts_as_favoritable
+  acts_as_favoritor
+
   # validates :gender, presence: true
   # validates :date_of_birth, presence: true
 end
