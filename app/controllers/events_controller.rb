@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
-    @events = Event.all
+    @events = Event.where("end_at > ?", Time.now)
+    @past_events = Event.where("end_at < ?", Time.now)
     @checkin = Checkin.new
     @markers = @events.geocoded.map do |event|
       {
@@ -19,12 +20,10 @@ class EventsController < ApplicationController
       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
-
-
-   respond_to do |format|
-     format.html
-     format.text { render partial: "events/event_list", locals: { events: @events, coords: params[:coords] }, formats: [:html] }
-   end
+    respond_to do |format|
+      format.html
+      format.text { render partial: "events/event_list", locals: { events: @events, coords: params[:coords] }, formats: [:html] }
+    end
   end
 
   def show
