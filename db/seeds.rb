@@ -75,19 +75,59 @@ puts "All users have been generated succesfully 💃🕺"
 events = [
   { name: "Disco Ball 🪩",
     description: "Party until your head spin 😵‍💫",
-    address: "Shinjuku", category: 0 },
+    address: "Shinjuku", category: 0,
+    photos: [
+      { io: File.open(Rails.root.join('db/images/discoball.jpg')),
+        filename: 'discoball.jpg' },
+      { io: File.open(Rails.root.join('db/images/discoball2.jpg')),
+        filename: 'discoball2.jpg' },
+      { io: File.open(Rails.root.join('db/images/discoball3.jpg')),
+        filename: 'discoball3.jpg' }
+    ] },
   { name: "Javascript Seminar 💻",
     description: "Hone your coding skills in this Javascript seminar, be the web developer you know you can be!",
-    address: "Meguro", category: 3 },
+    address: "Meguro", category: 3,
+    photos: [
+      { io: File.open(Rails.root.join('db/images/programming.jpg')),
+        filename: 'programming.jpg' },
+      { io: File.open(Rails.root.join('db/images/programming2.jpg')),
+        filename: 'programming2.jpg' },
+      { io: File.open(Rails.root.join('db/images/programming3.jpg')),
+        filename: 'programming3.jpg' }
+    ] },
   { name: "70's Night 📺",
     description: "Go back in time and bring your vintage look to life",
-    address: "Shibuya", category: 0 },
+    address: "Shibuya", category: 0,
+    photos: [
+      { io: File.open(Rails.root.join('db/images/70s.jpg')),
+        filename: '70s.jpg' },
+      { io: File.open(Rails.root.join('db/images/70s2.jpg')),
+        filename: '70s2.jpg' },
+      { io: File.open(Rails.root.join('db/images/70s3.jpg')),
+        filename: '70s3.jpg' }
+    ] },
   { name: "Single's Meet-up 💘",
     description: "Find your match made in heaven in this meet-up event. Disclaimer: You are not required to end up with a partner by the end of this event!",
-    address: "Ikebukuro", category: 2 },
+    address: "Ikebukuro", category: 2,
+    photos: [
+      { io: File.open(Rails.root.join('db/images/singles.jpg')),
+        filename: 'singles.jpg' },
+      { io: File.open(Rails.root.join('db/images/singles2.jpg')),
+        filename: 'singles2.jpg' },
+      { io: File.open(Rails.root.join('db/images/singles3.jpg')),
+        filename: 'singles3.jpg' }
+    ] },
   { name: "Pre-sakura Half-Marathon 🏃",
     description: "Warm-up before the Sakura season start, join us in this fun run along the scenic Meguro river",
-    address: "Nakameguro", category: 1 }
+    address: "Nakameguro", category: 1,
+    photos: [
+      { io: File.open(Rails.root.join('db/images/marathon.jpg')),
+        filename: 'marathon.jpg' },
+      { io:  File.open(Rails.root.join('db/images/marathon2.jpg')),
+        filename: 'marathon2.jpg' },
+      { io:  File.open(Rails.root.join('db/images/marathon3.jpg')),
+        filename: 'marathon3.jpg' }
+    ] }
 ] # Current event categories: 0-Club, 1-Sports, 2-Meet-up, 3-Tech
 
 # DateTime format guide: DateTime.new(2001,2,3,4,5,6)
@@ -106,8 +146,7 @@ end
 events.each do |event|
   starting_time = start_times.sample
   # Random datetime instance with set parameters from start_times array
-  # e = Event.create!( # uncomment for seeding images feature
-  Event.create!(
+  e = Event.create!( # uncomment for seeding images feature
     name: event[:name],
     description: event[:description],
     address: event[:address],
@@ -120,89 +159,15 @@ events.each do |event|
     user: admin_users.sample
     # Assigned to random organizer/admin user
   )
-  puts "Event -> #{Event.last.name} has been created"
+  c = 1
+  puts "Attaching photos to #{e.name} "
+  event[:photos].each do |photo|
+    e.photos.attach(photo)
+    print "Photo no. #{c} attached, "
+    c += 1
+  end
+  puts "Event -> #{e.name} has been created"
 end
-
-a = Event.first
-b = Event.second
-c = Event.third
-d = Event.fourth
-e = Event.last
-
-a.photos.attach(
-  io:  File.open(Rails.root.join('db/images/discoball.jpg')),
-  filename: 'discoball.jpg'
-)
-a.photos.attach(
-  io:  File.open(Rails.root.join('db/images/discoball2.jpg')),
-  filename: 'discoball2.jpg'
-)
-a.photos.attach(
-  io:  File.open(Rails.root.join('db/images/discoball3.jpg')),
-  filename: 'discoball3.jpg'
-)
-
-puts "Event -> #{a.name} photos have been attached 📸"
-
-b.photos.attach(
-  io:  File.open(Rails.root.join('db/images/programming.jpg')),
-  filename: 'programming.jpg'
-)
-b.photos.attach(
-  io:  File.open(Rails.root.join('db/images/programming2.jpg')),
-  filename: 'programming2.jpg'
-)
-b.photos.attach(
-  io:  File.open(Rails.root.join('db/images/programming3.jpg')),
-  filename: 'programming3.jpg'
-)
-
-puts "Event -> #{b.name} photos have been attached 📸"
-
-c.photos.attach(
-  io:  File.open(Rails.root.join('db/images/70s.jpg')),
-  filename: '70s.jpg'
-)
-c.photos.attach(
-  io:  File.open(Rails.root.join('db/images/70s2.jpg')),
-  filename: '70s2.jpg'
-)
-c.photos.attach(
-  io:  File.open(Rails.root.join('db/images/70s3.jpg')),
-  filename: '70s3.jpg'
-)
-
-puts "Event -> #{c.name} photos have been attached 📸"
-
-d.photos.attach(
-  io:  File.open(Rails.root.join('db/images/singles.jpg')),
-  filename: 'singles.jpg'
-)
-d.photos.attach(
-  io:  File.open(Rails.root.join('db/images/singles2.jpg')),
-  filename: 'singles2.jpg'
-)
-d.photos.attach(
-  io:  File.open(Rails.root.join('db/images/singles3.jpg')),
-  filename: 'singles3.jpg'
-)
-
-puts "Event -> #{d.name} photos have been attached 📸"
-
-e.photos.attach(
-  io:  File.open(Rails.root.join('db/images/marathon.jpg')),
-  filename: 'marathon.jpg'
-)
-e.photos.attach(
-  io:  File.open(Rails.root.join('db/images/marathon2.jpg')),
-  filename: 'marathon2.jpg'
-)
-e.photos.attach(
-  io:  File.open(Rails.root.join('db/images/marathon3.jpg')),
-  filename: 'marathon3.jpg'
-)
-
-puts "Event -> #{e.name} photos have been attached 📸"
 
 puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --
