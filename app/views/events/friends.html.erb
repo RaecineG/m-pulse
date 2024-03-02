@@ -21,14 +21,13 @@
                 <div class="card-user-details">
                 </div>
                 <div class="card-event-infos-button">
-                <% if @current_user.favorited?(user) %>
-                <%= link_to "Unfollow", "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } %>
-                <!-- unfollow -->
-                <% else %>
-
-                <%= link_to "Follow", "/follow/#{user.id}/follow", data: { 'turbo-method' => :post }%>
+                  <% if @current_user.favorited?(user) %>
+                    <%= link_to "Unfollow", "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } %>
+                    <!-- unfollow -->
+                  <% else %>
+                    <%= link_to "Follow", "/follow/#{user.id}/follow", data: { 'turbo-method' => :post }%>
                     <%# <button type="button" class="btn" style = "background-color: #FAFD69; border-radius: 5px; margin-right: 10px;">follow</button> %>
-                <% end %>
+                  <% end %>
                 </div>
               </div>
             <% end %>
