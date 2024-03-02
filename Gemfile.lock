@@ -83,6 +83,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    ambry (1.0.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
@@ -163,6 +164,9 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    merit (4.0.3)
+      ambry (~> 1.0.0)
+      zeitwerk
     method_source (1.0.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
@@ -359,12 +363,13 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  merit
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8)
+  redis
   rspec-rails
   rubocop
-  redis
   sassc-rails
   selenium-webdriver
   simple_form!
