@@ -102,6 +102,38 @@ class EventsController < ApplicationController
     @user = current_user
   end
 
+  def follows
+    @user = current_user
+    @user_all = User.all
+    @follows = @user.all_favorites
+    @followers = @user.user_favoritors
+  end
+
+  def friends
+    @current_user = current_user
+    @users = User.all
+  end
+
+  def follow_user
+    user = User.find(params[:user_id])
+    value = params[:follow]
+    if value == "follow"
+      if current_user.favorite(user)
+        redirect_to friends_path
+      else
+        redirect_to friends_path
+        flash.now[:alert] = "Sorry, alrady following"
+      end
+    else
+      if curent_user.unfavorite(user)
+        redirect_to friends_path
+      else
+        redirect_to friends_path
+        flash.now[:alert] = "Sorry, couldnt unfollow."
+      end
+    end
+  end
+
   private
 
   def event_params

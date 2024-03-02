@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/events/recommended', to: 'events#recommended', as: 'recommended'
   get '/dashboard', to: 'events#dashboard', as: 'dashboard'
   get '/events/:id/details', to: 'events#details', as: 'details'
+  get '/follows', to: 'events#follows', as: 'follows'
+  get '/friends', to: 'events#friends', as: 'friends'
+  post '/follow/:user_id/:follow', to: 'events#follow_user'
   resources :events do
     resources :checkins, only: [:index, :create]
     resources :comments, only: [:index, :create]
