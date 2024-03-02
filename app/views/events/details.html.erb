@@ -1,65 +1,70 @@
-<!-- Start of event-show-page-checkedin -->
-<div class="event-checkedin-container row justify-content-center">
-  <div class="show-card-event col-sm-12 col-lg-4">
-    <!-- Start of image carousel -->
-    <div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">
-      <div id="carouselEventCaptions" class="carousel slide" data-bs-ride="false">
-        <div class="carousel-inner cold-md-10">
-          <% @event.photos.each_with_index do |photo, index| %>
-            <div class="carousel-item <%= "active" if index == 0 %>">
-              <img src="<%= cl_image_path photo.key, height: 1200, width: 1600, crop: :fill %>" class="d-block w-100 img-size" alt="...">
-              <div class="carousel-caption d-none d-md-block">
+<body style="background-color:#FFFFFF;">
+  <!-- Start of event-show-page-checkedin -->
+  <div class="event-checkedin-container row justify-content-center">
+    <div class="details-card-event col-sm-12 col-lg-5">
+      <!-- Start of image carousel -->
+      <div id="carouselEvents" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselEventCaptions" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner cold-md-10">
+            <% @event.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= "active" if index == 0 %>">
+                <img src="<%= cl_image_path photo.key, height: 1200, width: 1600, crop: :fill %>" class="d-block w-100 img-size" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvents" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselEvents" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvents" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselEvents" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      </div>
+      <!-- End of image carousel -->
+      <div class="add-image-button">
+        <%= simple_form_for [@event], html: { id: 'fileForm', multipart: true, data: { controller: 'autosave' } } do |f| %>
+          <label for="fileInput">
+            <i class="fa-solid fa-plus" style="color: #3c3b3b;"></i>
+            <%= f.input :photos, as: :file, input_html: { multiple: true, data: { action: 'autosave#save' } }, label: false %>
+          </label>
+        <% end %>
+      </div>
+      <!-- Start of Event info container -->
+      <div class="details-card-event-infos">
+        <div class="details-card-event-details">
+          <h2><%= @event.name %></h2>
+          <p><%= @event.category %></p>
+        </div>
+        <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
+        <h6><%= @event.checkins.count %></h6>
+      </div>
+      <!-- End of Event info container -->
+      <hr style="width: 95%; margin: auto;">
+      <!-- Start of comments container for event -->
+      <div class="comments-master-container">
+        <h4>Comments</h4>
+        <div class="comments-container">
+          <div class="all-comments">
+            <ul>
+              <% @comments.each do |comment| %>
+                <li>
+                  <div class="d-flex space-between">
+                    <h5><%= comment.user.username %></h5>
+                    <%# add a comment timestamp here? %>
+                  </div>
+                  <p><%= comment.content %></p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <%= render "comments/new_comment", event: @event, comment: @comment %>
       </div>
     </div>
-    <!-- End of image carousel -->
-    <div class="add-image-button">
-      <%= simple_form_for [@event], html: { id: 'fileForm', multipart: true, data: { controller: 'autosave' } } do |f| %>
-        <label for="fileInput">
-          <i class="fa-solid fa-plus" style="color: #3c3b3b;"></i>
-          <%= f.input :photos, as: :file, input_html: { multiple: true, data: { action: 'autosave#save' } }, label: false %>
-        </label>
-      <% end %>
-    </div>
-    <!-- Start of Event info container -->
-    <div class="show-card-event-infos">
-      <div class="show-card-event-details">
-        <h2><%= @event.name %></h2>
-        <p><%= @event.category %></p>
-      </div>
-      <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-      <h6><%= @event.checkins.count %></h6>
-    </div>
-    <!-- End of Event info container -->
-    <!-- Start of comments container for event -->
-    <h4>Comments</h4>
-    <div class="comments-container">
-      <div class="all-comments">
-        <ul>
-          <% @comments.each do |comment| %>
-            <li>
-              <div class="d-flex space-between">
-                <h5><%= comment.user.username %></h5>
-                <%# add a comment timestamp here? %>
-              </div>
-              <p><%= comment.content %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <%= render "comments/new_comment", event: @event, comment: @comment %>
+    <!-- End of comments container for event -->
   </div>
-</div>
-<!-- End of comments container for event -->
+</body>
