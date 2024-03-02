@@ -47,8 +47,8 @@ users.each do |user|
   end
 end
 
-meg = User.first
-raecine = User.second
+raecine = User.first
+meg = User.second
 syrene = User.third
 justin = User.last
 
