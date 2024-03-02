@@ -22,7 +22,7 @@ users << {
 
 users << {
   first_name: "Syrene", last_name: "Prontendo",
-  username: "sy", email: "sy@mpulse.com",
+  username: "syrene", email: "sy@mpulse.com",
   gender: "1", password: "123456"
 }
 
@@ -47,6 +47,38 @@ users.each do |user|
   end
 end
 
+meg = User.first
+raecine = User.second
+syrene = User.third
+justin = User.last
+
+meg.photo.attach(
+  io:  File.open(Rails.root.join('db/images/megumi.jpg')),
+  filename: 'megumi.jpg'
+)
+
+puts "Event -> #{meg.username}'s photo has been attached 📸"
+
+raecine.photo.attach(
+  io:  File.open(Rails.root.join('db/images/raecine.jpg')),
+  filename: 'raecine.jpg'
+)
+
+puts "Event -> #{raecine.username}'s photo has been attached 📸"
+
+syrene.photo.attach(
+  io:  File.open(Rails.root.join('db/images/syrene.jpg')),
+  filename: 'syrene.jpg'
+)
+
+puts "Event -> #{syrene.username}'s photo has been attached 📸"
+
+justin.photo.attach(
+  io:  File.open(Rails.root.join('db/images/justin.jpg')),
+  filename: 'justin.jpg'
+)
+
+puts "Event -> #{justin.username}'s photo has been attached 📸"
 # Random users for checkins!
 random_users = []
 number = 1 # For incrementing

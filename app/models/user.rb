@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :events_as_attendee, through: :checkins, source: :event, dependent: :destroy
   has_many :badges, through: :user_badges
+  has_one_attached :photo
 
   validates :first_name, presence: true
   validates :last_name, presence: true
