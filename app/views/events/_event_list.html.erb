@@ -1,8 +1,8 @@
 
-  <div class ="row justify-content-center w-100" data-showpage-popup-target = "eventName">
-    <% events&.each do |event| %>
+ <div class ="row justify-content-center w-100" data-showpage-popup-target = "eventName">
+<% events&.each do |event| %>
       <div class="card-events-list col-12 col-sm-10 col-md-10 col-lg-9" data-showpage-popup-category-value="<%= event.category %>" data-showpage-popup-target="category">
-        <div class="card-image" id="<%= event.id %>" data-toggle="collapse" data-showpage-popup-target="card" data-action="click->showpage-popup#openCard">
+        <div class="card-image" id="<%= event.id %>" data-toggle="collapse" data-showpage-popup-target="card" data-action="click->showpage-popup#openCard"  data-event-id="<%= event.id %>">
           <% if event&.photos&.attached? %>
             <%= cl_image_tag event.photos.first.key %>
           <% else %>
@@ -11,6 +11,7 @@
         </div>
         <div class="card-event-infos" data-toggle="collapse">
           <div class="card-event-infos-details">
+          <h2 class="h4"><%= event.id %></h2>
             <h2 class="h4"><%= event.name %></h2>
             <h3 class="h5"><%= event.category %></h3>
             <p id="distance_<%= event.id %>" style ="font-size: 14px; text-align: left;"><%= "#{event.distance_to(coords)&.round(2)} km" unless coords.nil? %></p>
