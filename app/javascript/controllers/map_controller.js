@@ -9,8 +9,6 @@ export default class extends Controller {
     markers: Array,
   }
 
-
-
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -185,8 +183,6 @@ export default class extends Controller {
         }
         console.log(distanceElement, event_id);
 
-
-
       console.log(distanceBetweenLocations);
       return distanceBetweenLocations;
     } catch (error) {
@@ -194,10 +190,5 @@ export default class extends Controller {
       throw error; // Propagate the error
     }
   }
-
-
-
-
-
 
 }
