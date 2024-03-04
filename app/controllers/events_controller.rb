@@ -2,6 +2,9 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
+    #please do not delete the below two lines. Might use it when Javascrip doesnt work
+    # user_location = [current_user.latitude, current_user.longitude] //need to hard code
+    # @events_near = Event.where("end_at > ?", Time.now).near(user_location, 10) //need to add if hard code
     @events = Event.where("end_at > ?", Time.now)
     @past_events = Event.where("end_at < ?", Time.now)
     @checkin = Checkin.new
@@ -84,10 +87,10 @@ class EventsController < ApplicationController
       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
-    respond_to do |format|
-      format.html
-      format.text
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.text
+    # end
   end
 
   def dashboard
