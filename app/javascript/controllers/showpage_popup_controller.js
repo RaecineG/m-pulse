@@ -13,8 +13,6 @@ export default class extends Controller {
     // console.log(this.categoryValue);
     // console.log(this.inputTarget.value);
 
-
-
     }
 
   filterEventsByCategory(category) {
@@ -41,10 +39,11 @@ export default class extends Controller {
     this.filterEventsByCategory(selectedCategory);
   }
 
-  openCard() {
-
-    const class_name = this.cardTarget.id;
-    const eventCard= document.getElementById(`marker_${class_name}`);
+  openCard(event) {
+    const eventId = event.currentTarget.dataset.eventId; // Assuming you have data-event-id attribute on the image element
+    // const class_name = this.cardTarget.id;
+    console.log("Event ID:", eventId);
+    const eventCard = document.getElementById(`marker_${eventId}`);
     console.log(eventCard);
 
     const modalButton = document.getElementById("modal-button");
@@ -68,8 +67,8 @@ export default class extends Controller {
         this.eventNameTarget.outerHTML = data;
 
       });
-  });
-
-
+  });Ï
 }
+
+
 }
