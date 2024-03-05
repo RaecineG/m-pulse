@@ -1,0 +1,35 @@
+<div class="row justify-content-center friends-container" data-friendslist-target="friendList">
+  <div class="container-recommended">
+    <% users&.each do |user| %>
+      <% if user != @current_user %>
+        <div class="card-events-list col-8 col-sm-6 col-md-6 col-lg-6">
+          <div class="card-image">
+          </div>
+          <div class="card-event-infos" data-toggle="collapse">
+            <div class="card-event-infos-details">
+              <h2 class="h4"><%= user.username %></h2>
+            </div>
+          </div>
+          <div class="card-user-details">
+          </div>
+          <div class="card-event-infos-button">
+            <% if current_user.favorited?(user) %>
+              <%= link_to "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } do %>
+                <button type="button" class="btn" style = "background-color: #FAFD69; text-decoration: none; margin-right:5px; border-radius: 5px;">Unfollow</button>
+              <% end %>
+              <!-- <%= link_to "Unfollow", "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } %> -->
+              <!-- unfollow -->
+            <% else %>
+              <%= link_to "/follow/#{user.id}/follow",  data: { 'turbo-method' => :post } do %>
+                <button type="button" class="btn" style = "background-color: #FAFD69; text-decoration: none; margin-right:5px; border-radius: 5px;">Follow</button>
+              <% end %>
+              <!--  <%= link_to "Follow", "/follow/#{user.id}/follow", data: { 'turbo-method' => :post }%> -->
+              <%# <button type="button" class="btn" style = "background-color: #FAFD69; border-radius: 5px; margin-right: 10px;">follow</button> %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+</div>

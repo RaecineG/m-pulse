@@ -2,6 +2,9 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
+    #please do not delete the below two lines. Might use it when Javascrip doesnt work
+    # user_location = [current_user.latitude, current_user.longitude] //need to hard code
+    # @events_near = Event.where("end_at > ?", Time.now).near(user_location, 10) //need to add if hard code
     @events = Event.where("end_at > ?", Time.now)
     @past_events = Event.where("end_at < ?", Time.now)
     @checkin = Checkin.new
@@ -84,10 +87,10 @@ class EventsController < ApplicationController
        @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
-    respond_to do |format|
-      format.html
-      format.text
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.text
+    # end
   end
 
   def dashboard
@@ -112,6 +115,15 @@ class EventsController < ApplicationController
   def friends
     @current_user = current_user
     @users = User.all
+
+    if params[:query].present?
+      @users = @users.where("username ILIKE ?", "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "friends_list", locals: { users: @users }, formats: [:html] }
+    end
   end
 
   def follow_user
@@ -125,7 +137,7 @@ class EventsController < ApplicationController
         flash.now[:alert] = "Sorry, alrady following"
       end
     else
-      if curent_user.unfavorite(user)
+      if current_user.unfavorite(user)
         redirect_to friends_path
       else
         redirect_to friends_path
