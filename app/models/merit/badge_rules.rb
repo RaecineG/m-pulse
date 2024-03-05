@@ -21,8 +21,48 @@ module Merit
     include Merit::BadgeRulesMethods
 
     def initialize
-      grant_on 'checkins#create', badge: 'First', to: :user do |checkin|
-        checkin.user.checkins.count >= 1
+      grant_on 'checkins#create', badge: 'First', to: :user do |target|
+        target.user.checkins.count >= 1
+      end
+
+      grant_on 'checkins#create', badge: 'Club', to: :user do |target|
+        total = []
+        target.user.checkins.each do |checkin|
+          if checkin.event.category == "club"
+            total << checkin
+          end
+        end
+        total.count >= 5
+      end
+
+      grant_on 'checkins#create', badge: 'Sports', to: :user do |target|
+        total = []
+        target.user.checkins.each do |checkin|
+          if checkin.event.category == "sports"
+            total << checkin
+          end
+        end
+        total.count >= 5
+      end
+
+      grant_on 'checkins#create', badge: 'Meetup', to: :user do |target|
+        total = []
+        target.user.checkins.each do |checkin|
+          if checkin.event.category == "meetup"
+            total << checkin
+          end
+        end
+        total.count >= 5
+      end
+
+      grant_on 'checkins#create', badge: 'Tech', to: :user do |target|
+        total = []
+        target.user.checkins.each do |checkin|
+          if checkin.event.category == "tech"
+            total << checkin
+          end
+        end
+        total.count >= 5
       end
 
       # If it creates user, grant badge

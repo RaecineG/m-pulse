@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   showfirst(event) {
-    event.preventDefault()
+    // event.preventDefault()
     console.log(event)
   }
 }

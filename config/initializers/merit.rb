@@ -15,16 +15,40 @@ Merit.setup do |config|
   # is "current_#{user_model_name.downcase}".
   # config.current_user_method = 'current_user'
 
-  def badges
-  end
+  # def badges
+  # end
 end
 
 Rails.application.reloader.to_prepare do
   Merit::Badge.create!(
     id: 1,
     name: 'First',
-    description: "Congratulations on your first check-in!",
-    custom_fields: { image: "badges/FirstEventBadge.gif" }
+    description: "The first of many!",
+    custom_fields: { image: "badges/FirstEventBadge.gif", title: "First Event" }
+  )
+  Merit::Badge.create!(
+    id: 2,
+    name: 'Club',
+    description: "Life of the party!",
+    custom_fields: { image: "badges/PartyAnimalBadge.gif", title: "Party Animal" }
+  )
+  Merit::Badge.create!(
+    id: 3,
+    name: 'Sports',
+    description: "Active lifestyle",
+    custom_fields: { image: "badges/SportsFanaticBadge.gif", title: "First Event" }
+  )
+  Merit::Badge.create!(
+    id: 4,
+    name: 'Meetup',
+    description: "Gets along with everyone",
+    custom_fields: { image: "badges/SocialButterflyBadge.gif", title: "Social Butterfly" }
+  )
+  Merit::Badge.create!(
+    id: 5,
+    name: 'Tech',
+    description: "The future is you",
+    custom_fields: { image: "badges/TechEnthusiastBadge.gif", title: "Tech Enthusiast" }
   )
 end
 
