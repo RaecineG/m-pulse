@@ -145,3 +145,11 @@
   </div>
 </div>
 </div>-->
+<div>
+  <h2>My Badges</h2>
+  <% @user.badges.each do |badge| %>
+    <%= image_tag badge.custom_fields[:image],
+    alt: "badge icon", class: "container",
+    style: "padding-top: 10px; height: 400px; width: 400px;" %>
+  <% end %>
+</div>
