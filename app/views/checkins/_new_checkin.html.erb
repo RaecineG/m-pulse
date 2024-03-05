@@ -1,5 +1,6 @@
-<div>
-  <%= simple_form_for [event, checkin] do |f| %>
+<div data-controller="badges">
+  <%= simple_form_for [event, checkin],
+   data: { action: "submit->badges#showfirst" } do |f| %>
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="my-2 me-4"><%= f.label "#{event.name}" %></h5>
       <div class="d-flex flex-column align-items-center">

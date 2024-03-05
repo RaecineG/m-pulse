@@ -56,8 +56,11 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "geocoder"
 gem "cloudinary"
+# Gem for followers ⬇️
 gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
 gem 'rspec-rails'
+# Gem for badges ⬇️
+gem 'merit'
 
 group :development do
   gem 'rubocop', require: false
