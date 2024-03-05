@@ -133,6 +133,10 @@ export default class extends Controller {
       const current_x = position.coords.longitude;
       const current_y = position.coords.latitude;
 
+
+      // const current_x = 139.7139662
+      // const current_y = 35.6449777
+
       this.markersValue.forEach((marker) => {
 
       const event_x = marker.lng
@@ -144,14 +148,6 @@ export default class extends Controller {
 
 
       this.getDistance(coordinates, event_id)
-
-      // if (distance < 10000) { // Check if the distance is less than 10 km (in meters)
-      //   const distanceElement = document.getElementById(`distance_${event_id}`);
-      //   if (distanceElement) {
-      //     distanceElement.textContent = `${(distance / 1000).toFixed(2)} km`;
-      //   }
-      // }
-
 
     })
   }
