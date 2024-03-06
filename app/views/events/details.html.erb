@@ -66,4 +66,22 @@
       <!-- End of comments container for event -->
     </div>
   </div>
+
+  <%# Badges Section %>
+  <div class="badge-popup" data-controller="badges">
+    <%# Badge image container %>
+    <div class="badge-image m-4" style="border-radius: 50%;">
+      <% if @badge_image != nil %>
+        <%= image_tag @badge_image,
+        style: "height: 200px; width: 200px; border-radius: 50%;",
+        alt: "badge" %>
+      <% end %>
+    </div>
+
+    <%# Badge buttons with JS %>
+    <div class="d-flex flex-column">
+      <button class="btn btn-directions m-2">OK</button>
+      <%= link_to "See all badges...", dashboard_path, class: "btn btn-directions m-2" %>
+    </div>
+  </div>
 </body>
