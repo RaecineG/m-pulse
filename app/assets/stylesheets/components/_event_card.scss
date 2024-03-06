@@ -80,7 +80,7 @@
 
 .btn-directions {
   font-weight: bold;
-  background-color: yellow;
+  background-color: #FAFD69;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 100%;
@@ -89,12 +89,12 @@
 
 .btn-directions:hover {
   background-color: rgb(55, 53, 53);
-  color: yellow;
+  color: #FAFD69;
   transition: all 0.25s ease;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: yellow!important;
+  color: #FAFD69!important;
   background-color: rgb(55, 53, 53)!important;
 }
 
@@ -139,7 +139,7 @@ position: relative;
 .time-container {
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: yellow;
+  background-color: #FAFD69;
   padding: 6px;
   width: 20%;
   position: absolute;

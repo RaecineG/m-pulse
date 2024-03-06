@@ -1,30 +1,37 @@
-<div class="switch-container">
-  <div class="title" style= "justify-content: center;">
-    <h1 style = "text-align:center; color: white;">Following</h1>
-  </div>
-  <div class="row justify-content-center w-100">
-    <div class="container-recommended">
-      <% @follows&.each do |follow| %>
-        <div class="card-events-list col-10 col-sm-8 col-md-8 col-lg-8">
-          <div class="card-image">
-          </div>
-          <div class="card-event-infos" data-toggle="collapse">
-            <div class="card-event-infos-details">
-              <h2 class="h4"><%= @user_all.find(follow.favoritable_id).username %></h2>
+<body style="background-color: #2d3436;
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);">
+  <div class="following-container">
+    <div class="title" style= "justify-content: center;">
+      <h1 style = "text-align:center;">Following</h1>
+    </div>
+    <div class="row justify-content-center w-100">
+      <div class="following-users-container">
+        <% @followees&.each do |followee| %>
+          <div class="following-users-list col-10 col-sm-8 col-md-8 col-lg-8">
+            <div class="card-image">
+              <% if followee.photo.attached? %>
+                <%= image_tag (cl_image_path followee.photo.key), crop: :fill, class: "avatar-bordered-follow" %>
+              <% else %>
+                <%= image_tag "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg", class: "avatar-bordered-follow" %>
+              <% end %>
+            </div>
+            <div class="card-event-infos" data-toggle="collapse">
+              <div class="card-event-infos-details">
+                <h2 class="h4"><%= followee.username %></h2>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="nav-item d-flex justify-content-center">
+      <%= link_to friends_path do %>
+        <button type="button" class="btn search-friends-btn"><i class="fa-solid fa-user-plus" style="color: #3c3b3b;"></i> Add Friends</button>
       <% end %>
     </div>
   </div>
-</div>
+</body>
 <!-- End of the list of users the current user is following -->
-</div>
-<div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
-</div>
-</div>
-<div class="nav-item d-flex justify-content-center">
-  <%= link_to friends_path do %>
-    <button type="button" class="btn" style = "background-color: #FAFD69; text-decoration: none;">Search friends</button>
-  <% end %>
-</div>
+<%# <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill"> %>
+<%# </div> %>
+<%# </div> %>
