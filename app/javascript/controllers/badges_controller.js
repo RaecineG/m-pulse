@@ -11,7 +11,9 @@ export default class extends Controller {
     console.log(event)
   }
 
-  closePopup() {
-
+  closePopup(event) {
+    console.log(event)
+    const popupDiv = this.element
+    popupDiv.classList.add("d-none")
   }
 }
