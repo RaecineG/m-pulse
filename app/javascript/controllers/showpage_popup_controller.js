@@ -40,7 +40,7 @@ export default class extends Controller {
   }
 
   openCard(event) {
-    const eventId = event.currentTarget.dataset.eventId; // Assuming you have data-event-id attribute on the image element
+    const eventId = event.currentTarget.dataset.eventId;
     // const class_name = this.cardTarget.id;
     console.log("Event ID:", eventId);
     const eventCard = document.getElementById(`marker_${eventId}`);
