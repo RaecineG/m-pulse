@@ -66,4 +66,25 @@
       <!-- End of comments container for event -->
     </div>
   </div>
+
+  <%# Badges Section %>
+  <div class="badge-popup flex-column align-items-center" data-controller="badges">
+    <% if @badge_image != nil %>
+      <%# Badge image container %>
+      <div class="badge-image m-4" style="border-radius: 50%;">
+        <%= image_tag @badge_image,
+        style: "height: 200px; width: 200px; border-radius: 50%;",
+        alt: "badge" %>
+      </div>
+
+      <%# Badge buttons with JS %>
+      <div class="d-flex flex-column align-items-center">
+        <h4>Congratulations!</h4>
+        <p>You earned the <%= @badge_name %> badge!</p>
+        <button class="btn btn-directions m-2" data-action="click->badges#closePopup">OK</button>
+        <%= link_to "See all badges...", dashboard_path, class: "btn btn-directions m-2" %>
+      </div>
+    <% end %>
+  </div>
+  <%# Badges Section - End %>
 </body>
