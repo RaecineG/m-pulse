@@ -10,32 +10,49 @@ users = []
 
 users << {
   first_name: "Raecine", last_name: "Leaddev",
-  username: "rae", email: "rae@mpulse.com",
-  gender: "2", password: "123456"
+  username: "rae", email: "rae@mpulse.com", gender: "2",
+  photo: {
+    io: File.open(Rails.root.join('db/images/raecine.jpg')),
+    filename: 'raecine.jpg'
+  }
 }
 
 users << {
   first_name: "Meg", last_name: "Projman",
-  username: "komegi", email: "meg@mpulse.com",
-  gender: "2", password: "123456"
+  username: "komegi", email: "meg@mpulse.com", gender: "2",
+  photo: {
+    io: File.open(Rails.root.join('db/images/megumi.jpg')),
+    filename: 'megumi.jpg'
+  }
 }
 
 users << {
   first_name: "Syrene", last_name: "Prontendo",
-  username: "syrene", email: "sy@mpulse.com",
-  gender: "1", password: "123456"
+  username: "syrene", email: "sy@mpulse.com", gender: "1",
+  photo: {
+    io: File.open(Rails.root.join('db/images/syrene.jpg')),
+    filename: 'syrene.jpg'
+  }
 }
 
 users << {
   first_name: "Justin", last_name: "Bakuendo",
-  username: "just", email: "justin@mpulse.com",
-  gender: "1", password: "123456"
+  username: "just", email: "justin@mpulse.com", gender: "1",
+  photo: {
+    io: File.open(Rails.root.join('db/images/justin.jpg')),
+    filename: 'justin.jpg'
+  }
 }
 
 admin_users = []
 
 users.each do |user|
-  created_user = User.create!(user)
+  created_user = User.create!(
+    first_name: user[:first_name], last_name: user[:last_name],
+    username: user[:username], email: user[:email],
+    gender: user[:gender], password: "123456"
+  )
+  created_user.photo.attach(user[:photo])
   admin_users << created_user
 
   if created_user.gender == 1
@@ -47,38 +64,6 @@ users.each do |user|
   end
 end
 
-raecine = User.first
-meg = User.second
-syrene = User.third
-justin = User.last
-
-meg.photo.attach(
-  io:  File.open(Rails.root.join('db/images/megumi.jpg')),
-  filename: 'megumi.jpg'
-)
-
-puts "Event -> #{meg.username}'s photo has been attached 📸"
-
-raecine.photo.attach(
-  io:  File.open(Rails.root.join('db/images/raecine.jpg')),
-  filename: 'raecine.jpg'
-)
-
-puts "Event -> #{raecine.username}'s photo has been attached 📸"
-
-syrene.photo.attach(
-  io:  File.open(Rails.root.join('db/images/syrene.jpg')),
-  filename: 'syrene.jpg'
-)
-
-puts "Event -> #{syrene.username}'s photo has been attached 📸"
-
-justin.photo.attach(
-  io:  File.open(Rails.root.join('db/images/justin.jpg')),
-  filename: 'justin.jpg'
-)
-
-puts "Event -> #{justin.username}'s photo has been attached 📸"
 # Random users for checkins!
 random_users = []
 number = 1 # For incrementing
@@ -92,6 +77,10 @@ rando_usernames = ["PartyAnimal", "MochaScript", "qt.pi", "1337coder", "unicorn"
     email: "RandomEmail#{number}@mpulse.com",
     gender: rand(1..2),
     password: "123456"
+  )
+  created_user.photo.attach(
+    io: URI.open(Faker::Avatar.image(slug: "rando", size: "50x50", format: "jpg")),
+    filename: "rando.jpg"
   )
   random_users << created_user
   number += 1
@@ -269,8 +258,11 @@ finished_events.each do |event|
     e.photos.attach(photo)
   end
   past_events << e
+  print "#{e.name} created, "
 end
-  puts "#{past_events.count} past events has been created"
+
+puts ""
+puts "#{past_events.count} past events has been created"
 
 puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --
