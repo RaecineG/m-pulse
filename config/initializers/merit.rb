@@ -36,7 +36,7 @@ Rails.application.reloader.to_prepare do
     id: 3,
     name: 'Sports',
     description: "Active lifestyle",
-    custom_fields: { image: "badges/SportsFanaticBadge.gif", title: "First Event" }
+    custom_fields: { image: "badges/SportsFanaticBadge.gif", title: "Sports Fanatic" }
   )
   Merit::Badge.create!(
     id: 4,
