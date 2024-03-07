@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/follows', to: 'events#follows', as: 'follows'
   get '/friends', to: 'events#friends', as: 'friends'
   post '/follow/:user_id/:follow', to: 'events#follow_user'
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+
   resources :events do
     resources :checkins, only: [:index, :create]
     resources :comments, only: [:index, :create]
