@@ -113,9 +113,9 @@ class EventsController < ApplicationController
 
   def follows
     @user = current_user
-    @user_all = User.all
-    @follows = @user.all_favorites
-    @followers = @user.user_favoritors
+    # @user_all = User.all
+    @followees = @user.favorited_by_type('User')
+    # @followers = @user.user_favoritors
   end
 
   def friends
