@@ -74,19 +74,21 @@
   </div>
   <!-- End of list of events created -->
 
-  <!-- Display Badges -->
+  <!-- Display Badges / Currently outside of the dashboard pills -->
   <div>
     <h1>My Badges</h1>
     <div class="d-flex justify-content-between">
       <% current_user.badges.each do |badge| %>
         <li class="d-flex flex-column">
           <h2 style="text-align: center;"><%= badge.custom_fields[:title] %></h2>
-          <%= image_tag badge.custom_fields[:image],
-          class: "m-2", style: "height: 200px; width: 200px;" %>
+          <div>
+            <%= image_tag badge.custom_fields[:image],
+            class: "m-2", style: "height: 200px; width: 200px; border-radius: 50%;" %>
+          </div>
           <p style="text-align: center;"><%= badge.description %></p>
         </li>
       <% end %>
     </div>
   </div>
-  <!-- End of displlay badges -->
+  <!-- End of display badges -->
 </div>
