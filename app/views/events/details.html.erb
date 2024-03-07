@@ -1,5 +1,6 @@
 <head><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /></head>
-<body style="background-color:#FFFFFF;">
+<body style="background-color: #2d3436;
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%); height: 100%;">
   <!-- Start of event-show-page-checkedin -->
   <div class="event-checkedin-container row justify-content-center">
     <div class="details-card-event col-sm-12 col-md-6 col-lg-4">
@@ -42,11 +43,11 @@
           <h2><%= @event.name %></h2>
           <p><%= @event.category %></p>
         </div>
-        <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
+        <i class="fa-solid fa-people-group" style="color: #5CE1E6"></i>
         <h6><%= @event.checkins.count %></h6>
       </div>
       <!-- End of Event info container -->
-      <hr style="width: 93%; margin: auto;">
+      <hr style="width: 93%; margin: auto; color: lightgray;">
       <!-- Start of comments container for event -->
       <div class="comments-master-container">
         <h4>Comments</h4>
@@ -66,4 +67,25 @@
       <!-- End of comments container for event -->
     </div>
   </div>
+
+  <%# Badges Section %>
+  <div class="badge-popup flex-column align-items-center" data-controller="badges">
+    <% if @badge_image != nil %>
+      <%# Badge image container %>
+      <div class="badge-image m-4" style="border-radius: 50%;">
+        <%= image_tag @badge_image,
+        style: "height: 200px; width: 200px; border-radius: 50%;",
+        alt: "badge" %>
+      </div>
+
+      <%# Badge buttons with JS %>
+      <div class="d-flex flex-column align-items-center">
+        <h4>Congratulations!</h4>
+        <p>You earned the <%= @badge_name %> badge!</p>
+        <button class="btn btn-directions m-2" data-action="click->badges#closePopup">OK</button>
+        <%= link_to "See all badges...", dashboard_path, class: "btn btn-directions m-2" %>
+      </div>
+    <% end %>
+  </div>
+  <%# Badges Section - End %>
 </body>
