@@ -59,6 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_082018) do
     t.index ["sash_id"], name: "index_badges_sashes_on_sash_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "checkins", force: :cascade do |t|
     t.integer "status"
     t.bigint "user_id", null: false
