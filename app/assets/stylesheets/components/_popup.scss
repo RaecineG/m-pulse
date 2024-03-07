@@ -63,3 +63,20 @@
   overflow: scroll;/* Hide any content that exceeds the height */
 
 }
+
+.badge-popup {
+  position: fixed;
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  bottom: 50%;
+  right: 50%;
+  z-index: 1000;
+}
+
+// .badge-popup {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+//   min-height: 100vh;
+// }

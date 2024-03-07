@@ -103,6 +103,12 @@ class EventsController < ApplicationController
     @comments = @event.comments
     @comment = Comment.new
     @user = current_user
+    badges_sashes = @user.sash.badges_sashes.where(created_at: (10.seconds.ago..Time.now))
+    unless badges_sashes.empty?
+      flash.now[:notice] = "You earned a badge!"
+      @badge_image = badges_sashes.first.badge.custom_fields[:image]
+      @badge_name = badges_sashes.first.badge.custom_fields[:title]
+    end
   end
 
   def follows
