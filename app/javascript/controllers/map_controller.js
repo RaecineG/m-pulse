@@ -9,6 +9,8 @@ export default class extends Controller {
     markers: Array,
   }
 
+  static targets = ["details"]
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -72,11 +74,20 @@ export default class extends Controller {
 
       el.id = `marker_${marker.id}`;
 
-      new mapboxgl.Marker(el)
+      const markerObj = new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
+        // .setPopup(popup)
         .addTo(this.map)
       console.log(marker)
+
+      const markerElemt = markerObj.getElement();
+      markerElemt.addEventListener("click", () => {
+        this.detailsTarget.innerHTML = marker.info_window_html
+        this.detailsTarget.querySelector(".btn-close").addEventListener("click", () => {
+          this.detailsTarget.innerHTML = ""
+        })
+      })
+
     })
   }
 
