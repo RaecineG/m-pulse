@@ -2,10 +2,10 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
-    #please do not delete the below two lines. Might use it when Javascrip doesnt work
-    # user_location = [current_user.latitude, current_user.longitude] //need to hard code
-    # @events_near = Event.where("end_at > ?", Time.now).near(user_location, 10) //need to add if hard code
-    @events = Event.where("end_at > ?", Time.now)
+    #Hard coding the location
+    @user_location = [35.6449777, 139.7139662]
+    @events = Event.where("end_at > ?", Time.now).near(@user_location, 9, unit: :km)
+    # @events = Event.where("end_at > ?", Time.now)
     @past_events = Event.where("end_at < ?", Time.now)
     @checkin = Checkin.new
     @markers = @events.geocoded.map do |event|
@@ -103,6 +103,12 @@ class EventsController < ApplicationController
     @comments = @event.comments
     @comment = Comment.new
     @user = current_user
+    badges_sashes = @user.sash.badges_sashes.where(created_at: (10.seconds.ago..Time.now))
+    unless badges_sashes.empty?
+      flash.now[:notice] = "You earned a badge!"
+      @badge_image = badges_sashes.first.badge.custom_fields[:image]
+      @badge_name = badges_sashes.first.badge.custom_fields[:title]
+    end
   end
 
   def follows
