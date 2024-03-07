@@ -300,7 +300,7 @@ events = [
     ] },
   { name: "City Groove: A City Pop Celebration🎸",
     description: "Get ready to immerse yourself in the smooth sounds and nostalgic vibes of City Pop at the City Groove event!",
-    address: "Shinjuku", category: 0,
+    address: "Ikebukuro", category: 0,
     start_at: DateTime.new(2024, 3, 8, 21, 0, 0),
     end_at: DateTime.new(2024, 3, 9, 4, 0, 0),
     photos: [
@@ -397,7 +397,7 @@ finished_events = [
     description: "Let's deep dive into the world of Javascript!",
     address: "Meguro", category: 3,
     start_at: DateTime.new(2024, 1, 16, 19, 0, 0),
-    end_at: DateTime.new(2024, 2, 9, 22, 00, 0),
+    end_at: DateTime.new(2024, 2, 9, 22, 0, 0),
     photos: [
       { io: File.open(Rails.root.join('db/images/javascript.jpg')),
         filename: 'javascript.jpg' }
