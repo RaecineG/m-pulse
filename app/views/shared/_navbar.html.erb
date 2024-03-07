@@ -1,21 +1,21 @@
-<div class="navbar fixed-bottom sticky-bottom">
+<div class="navbar fixed-bottom sticky-bottom" data-controller="navbar">
   <%# ------ Home/index Link --------  %>
   <div class="nav-item d-flex justify-content-center">
     <%= link_to events_path do %>
-      <i class="fa-solid fa-house" style="color: #fafd69;"></i>
+      <i class="fa-solid fa-house" style="color: grey;" data-action="click->navbar#changeColor" data-navbar-target="icon"></i>
     <% end %>
   </div>
   <%# ------ Dashboard Link --------  %>
   <div class="nav-item d-flex justify-content-center">
     <%= link_to dashboard_path do %>
-      <i class="fa-solid fa-user" style="color: #fafd69;"></i>
+      <i class="fa-solid fa-user" style="color: grey;" data-action="click->navbar#changeColor" data-navbar-target="icon"></i>
     <% end %>
   </div>
   <%# ------ Recommended Events Near you link --------  %>
   <%# -----------  Modal for Events near you ------------ %>
   <div class="nav-item d-flex justify-content-center">
     <div class="recommended-container text-center" data-controller="recommend-modal">
-      <i class="fa-solid fa-street-view" id ="modal-button" style="color: #fafd69;" data-action="click->recommend-modal#toggleModal"></i>
+      <i class="fa-solid fa-street-view" id ="modal-button" style="color: #grey;" data-action="click->recommend-modal#toggleModal" data-action="click->navbar#changeColor" data-navbar-target="icon"></i>
       <%# Modal Overlay %>
       <div class="card-events-list col-12 col-lg-8">
         <div id="modal-overlay" class="modal-overlay" data-recommend-modal-target="overlay">
@@ -32,7 +32,7 @@
   <%# ------ Followers Link --------  %>
   <div class="nav-item d-flex justify-content-center">
     <%= link_to follows_path do %>
-      <i class="fa-solid fa-people-arrows" style="color: #fafd69;"></i>
+      <i class="fa-solid fa-people-arrows" style="color: grey;" data-action="click->navbar#changeColor" data-navbar-target="icon"></i>
     <% end %>
   </div>
   <%# ------ Logout Link --------  %>
