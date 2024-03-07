@@ -6,19 +6,20 @@
   transform: translate(-50%, -50%);
   width: 80%;
   height: 60%;
-  background-color: rgba(249, 249, 249, 0.797);
+  background-color: #3c3b3bcb;
   display: none;
   z-index: 1000;
   justify-content: center;
   align-items: center;
   overflow: scroll;
+  border-radius: 10px;
   // overflow-x: scroll;
   padding:0;
 }
 
 .recommended-container {
   width: 90%;
-  height: 60%;
+  height: 90%;
   overflow:hidden;
 }
 
@@ -61,7 +62,11 @@
   height: 80%;
   overflow-y: hidden;
   overflow: scroll;/* Hide any content that exceeds the height */
+}
 
+.modal-content h1 {
+  font-size: 26px;
+  color: white;
 }
 
 .badge-popup {
