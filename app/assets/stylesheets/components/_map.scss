@@ -102,13 +102,14 @@
 }
 
 .mapboxgl-ctrl-geocoder {
-  width: 75vw!important;
-  border-radius: 5px!important;
+  width: 90vw!important;
+  border-radius: 25px!important;
   display: flex!important;
   align-items: center!important;
   justify-content: center!important;
   padding-left: 5px!important;
   padding-right: 5px!important;
-  margin-top: 5%!important;
-  margin-right: 20%!important;
+  margin-top: 50px!important;
+  margin-right: 10%!important;
+  background-color: #3c3b3b!important;
 }

@@ -1,3 +1,12 @@
+.event-checkedin-container {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  position: relative;
+  margin-top: 16px;
+}
+
 .details-card-event {
   overflow: hidden;
   // background: white;
@@ -11,6 +20,14 @@
 
 .details-card-event-details {
   max-width: 70%;
+}
+
+.details-card-event-details h2{
+  color: white;
+}
+
+.details-card-event-details p{
+  color: lightgray;
 }
 
 
@@ -31,7 +48,7 @@
 }
 
 .details-card-event-infos h6 {
-  color: rgb(55, 53, 53);
+  color: lightgray;
   position: absolute;
   top: 40px;
   right: 29px;
@@ -54,7 +71,7 @@
 
 .add-image-button {
   border-radius: 5px;
-  background-color: yellow;
+  background-color: #FAFD69;
   // padding-left: 8px;
   // padding-right: 8px;
   // padding-top: 2px;
@@ -70,4 +87,48 @@
 
 .comments-master-container {
   margin: 16px;
+}
+
+.comments-master-container h4 {
+  color: lightgray;
+}
+
+.comments-container {
+  border-radius: 5px;
+  padding-top: 2px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background: inherit;
+  border-style: solid;
+  border-color: #3c3b3b;
+  // background-color: #3c3b3b;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 150px;
+  overflow: scroll;
+  color: lightgray;
+  font-size: 18px;
+}
+
+.comments-container p {
+  color: #5CE1E6;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: -6px;
+  margin-top: 6px;
+}
+
+#comment_content {
+  background: inherit;
+  border-style: solid;
+  border-color: #3c3b3b;
+  // background-color: #3c3b3b;
+  border-radius: 5px;
+  color: lightgray
+}
+
+#comment_content::placeholder {
+  color: lightgray!important;
 }

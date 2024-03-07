@@ -1,94 +1,104 @@
-<div class="switch-container">
-  <nav>
-    <div class="nav justify-content-center nav-pills" id="nav-pill" role="pilllist">
-      <button class="nav-link active" id="switch-description-pill" data-bs-toggle="pill" data-bs-target="#switch-description" type="button" role="pill" aria-controls="switch-description" aria-selected="true">My Attended Events</button>
-      <button class="nav-link" id="switch-comments-pill" data-bs-toggle="pill" data-bs-target="#switch-comments" type="button" role="pill" aria-controls="switch-comments" aria-selected="false">My Planned Events</button>
-    </div>
-  </nav>
-  <!-- List of events already attended -->
-  <div class="pill-content" id="nav-pillContent">
-    <div class="pill-pane fade show active" id="switch-description" role="pillpanel" aria-labelledby="switch-description-pill">
-      <div class="row justify-content-center">
-        <div class="container-recommended">
-          <% @events&.each do |event| %>
-            <% if event.end_at < Time.zone.today %>
-              <div class="card-events-list col-10 col-sm-8 col-md-8 col-lg-8">
-                <div class="card-image">
-                  <% if event&.photos&.attached? %>
-                    <%= cl_image_tag event.photos.first.key %>
-                  <% else %>
-                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-                  <% end %>
-                </div>
-                <div class="card-event-infos" data-toggle="collapse">
-                  <div class="card-event-infos-details">
-                    <h2 class="h4"><%= event.name %></h2>
-                    <h3 class="h5"><%= event.category %></h3>
-                    <h3 class="h5"><%= event.end_at.strftime('%Y/%m/%d') %></h3>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+<body style="background-color: #2d3436;
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%); height: 100vh;">
+  <div class="dashboard-master-container row justify-content-center">
+    <div class="dashboard-page col-sm-12 col-md-6 col-lg-4">
+      <div class="title" style= "justify-content: center;">
+        <h1 style = "text-align:center; color: white;">Dashboard</h1>
+      </div>
+      <div class="my-events-switch-container">
+        <h2>Events</h2>
+        <div class="switch-container">
+          <nav>
+            <div class="nav justify-content-center events-nav-pills" id="nav-pill" role="pilllist">
+              <button class="events-nav-link active" id="switch-attended-pill" data-bs-toggle="pill" data-bs-target="#switch-attended" type="button" role="pill" aria-controls="switch-attended" aria-selected="true">Attended</button>
+              <button class="events-nav-link" id="switch-planned-pill" data-bs-toggle="pill" data-bs-target="#switch-planned" type="button" role="pill" aria-controls="switch-planned" aria-selected="false">Planned</button>
+            </div>
+          </nav>
         </div>
       </div>
-    </div>
-    <!-- End of list of events already attended -->
-    <!-- List of events created -->
-    <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill">
-      <div class="row justify-content-center">
-        <div class="container-recommended">
-          <% @events&.each do |event| %>
-            <% if event.start_at >= Time.zone.today %>
-              <div class="card-events-list col-10 col-sm-8 col-md-8 col-lg-8">
-                <div class="card-image">
-                  <!--<%= link_to event_path(event), class: 'card-event-link' do %> -->
-                  <% if event&.photos&.attached? %>
-                    <%= cl_image_tag event.photos.first.key %>
-                    <% else %>
-                      <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-                    <% end %>
-                  <% end %>
-                </div>
-
-                <div class="card-event-infos" data-toggle="collapse">
-                  <div class="card-event-infos-details">
-                    <h2 class="h4"><%= event.name %></h2>
-                    <h3 class="h5"><%= event.category %></h3>
-                    <h3 class="h5"><%= event.end_at.strftime('%Y/%m/%d') %></h3>
+      <!-- List of events already attended -->
+      <div class="pill-content" id="nav-pillContent">
+        <div class="pill-pane fade show active" id="switch-attended" role="pillpanel" aria-labelledby="switch-attended-pill">
+          <div class="row justify-content-center">
+            <div class="container-my-events">
+              <% @events&.each do |event| %>
+                <% if event.end_at < Time.zone.today %>
+                  <div class="card-my-events-list col-10 col-sm-12 col-md-12 col-lg-10">
+                    <div class="my-events-card-image">
+                      <% if event&.photos&.attached? %>
+                        <%= cl_image_tag event.photos.first.key %>
+                      <% else %>
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                      <% end %>
+                    </div>
+                    <div class="card-my-event-infos" data-toggle="collapse">
+                      <div class="card-my-event-infos-details">
+                        <h6><%= event.name %></h6>
+                        <p><%= event.category %></p>
+                        <p><%= event.end_at.strftime('%Y/%m/%d') %></p>
+                      </div>
+                    </div>
                   </div>
-
-                  <div class="card-event-icon">
-                    <div class="icon-and-text-dashboard">
-                      <i class="fa-solid fa-people-group" style="color: #3c3b3b"></i>
-                      <p><%= event.checkins.count %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <!-- End of list of events already attended -->
+        <!-- List of events created -->
+        <div class="pill-pane fade" id="switch-planned" role="pillpanel" aria-labelledby="switch-planned-pill">
+          <div class="row justify-content-center">
+            <div class="container-my-events">
+              <% @events&.each do |event| %>
+                <% if event.start_at >= Time.zone.today %>
+                  <div class="card-my-events-list col-10 col-sm-12 col-md-12 col-lg-10">
+                    <div class="my-events-card-image">
+                      <!--<%= link_to event_path(event), class: 'card-event-link' do %> -->
+                      <% if event&.photos&.attached? %>
+                        <%= cl_image_tag event.photos.first.key %>
+                      <% else %>
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-my-event-infos" data-toggle="collapse">
+                    <div class="card-my-event-infos-details">
+                      <h6><%= event.name %></h6>
+                      <p><%= event.category %></p>
+                      <p><%= event.end_at.strftime('%Y/%m/%d') %></p>
+                    </div>
+                    <div class="card-event-icon">
+                      <div class="icon-and-text-dashboard">
+                        <i class="fa-solid fa-people-group" style="color: #5CE1E6"></i>
+                        <p><%= event.checkins.count %></p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of list of events created -->
+    <!-- Display Badges -->
+    <div class="badge-list-container">
+      <h2>Badges</h2>
+      <div class="d-flex justify-content-between">
+        <div class="badge-container d-flex flex-row">
+          <% current_user.badges.each do |badge| %>
+            <li class="d-flex flex-column">
+              <%= image_tag badge.custom_fields[:image],
+          class: "m-2", style: "height: 100px; width: 100px;" %>
+              <h6 style="text-align: center;"><%= badge.custom_fields[:title] %></h6>
+              <p style="text-align: center;"><%= badge.description %></p>
+            </li>
           <% end %>
         </div>
       </div>
     </div>
+    <!-- End of displlay badges -->
   </div>
-  <!-- End of list of events created -->
-
-  <!-- Display Badges / Currently outside of the dashboard pills -->
-  <div>
-    <h1>My Badges</h1>
-    <div class="d-flex justify-content-between">
-      <% current_user.badges.each do |badge| %>
-        <li class="d-flex flex-column">
-          <h2 style="text-align: center;"><%= badge.custom_fields[:title] %></h2>
-          <div>
-            <%= image_tag badge.custom_fields[:image],
-            class: "m-2", style: "height: 200px; width: 200px; border-radius: 50%;" %>
-          </div>
-          <p style="text-align: center;"><%= badge.description %></p>
-        </li>
-      <% end %>
-    </div>
-  </div>
-  <!-- End of display badges -->
 </div>
+</body>
