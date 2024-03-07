@@ -2,11 +2,16 @@
   <div class="container-recommended">
     <% users&.each do |user| %>
       <% if user != @current_user %>
-        <div class="card-events-list col-8 col-sm-6 col-md-6 col-lg-6">
+        <div class="card-search-friends-list col-10 col-sm-12 col-md-12 col-lg-10">
           <div class="card-image">
+            <% if user.photo.attached? %>
+              <%= image_tag (cl_image_path user.photo.key), crop: :fill, class: "avatar-bordered-follow" %>
+            <% else %>
+              <%= image_tag "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg", class: "avatar-bordered-follow" %>
+            <% end %>
           </div>
-          <div class="card-event-infos" data-toggle="collapse">
-            <div class="card-event-infos-details">
+          <div class="card-search-friends-infos" data-toggle="collapse">
+            <div class="card-search-friends-infos-details">
               <h2 class="h4"><%= user.username %></h2>
             </div>
           </div>
@@ -15,21 +20,21 @@
           <div class="card-event-infos-button">
             <% if current_user.favorited?(user) %>
               <%= link_to "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } do %>
-                <button type="button" class="btn" style = "background-color: #FAFD69; text-decoration: none; margin-right:5px; border-radius: 5px;">Unfollow</button>
-              <% end %>
-              <!-- <%= link_to "Unfollow", "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } %> -->
-              <!-- unfollow -->
-            <% else %>
-              <%= link_to "/follow/#{user.id}/follow",  data: { 'turbo-method' => :post } do %>
-                <button type="button" class="btn" style = "background-color: #FAFD69; text-decoration: none; margin-right:5px; border-radius: 5px;">Follow</button>
-              <% end %>
-              <!--  <%= link_to "Follow", "/follow/#{user.id}/follow", data: { 'turbo-method' => :post }%> -->
-              <%# <button type="button" class="btn" style = "background-color: #FAFD69; border-radius: 5px; margin-right: 10px;">follow</button> %>
+                <button type="button" class="btn unfollow-btn"><i class="fa-solid fa-user-check" style="color: #FAFD69;"></i></i></button>
             <% end %>
-          </div>
+            <!-- <%= link_to "Unfollow", "/follow/#{user.id}/unfollow", data: { 'turbo-method' => :post } %> -->
+            <!-- unfollow -->
+          <% else %>
+            <%= link_to "/follow/#{user.id}/follow",  data: { 'turbo-method' => :post } do %>
+              <button type="button" class="btn follow-btn"><i class="fa-solid fa-user-plus" style="color: #3c3b3b;"></i></button>
+            <% end %>
+            <!--  <%= link_to "Follow", "/follow/#{user.id}/follow", data: { 'turbo-method' => :post }%> -->
+            <%# <button type="button" class="btn" style = "background-color: #FAFD69; border-radius: 5px; margin-right: 10px;">follow</button> %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
 </div>
 </div>

@@ -1,0 +1,103 @@
+#query {
+  border-radius: 10px!important;
+}
+
+.friends-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 40px;
+  padding: 16px;
+  overflow: hidden;
+  max-height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-search-friends-list {
+  background: inherit;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 8px;
+  padding: 8px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #3c3b3b;
+  overflow: hidden;
+  width: 100%;
+}
+
+.card-search-friends-list:hover {
+  border-color: #FAFD69;
+  transition: all 0.25s ease;
+}
+
+.card-search-friends-infos {
+  text-decoration: none;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin-right: 8px;
+}
+
+.card-search-friends-infos-details {
+  padding: 0;
+  text-decoration: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 8px;
+}
+
+.card-search-friends-infos-details h4 {
+  font-size: 14px;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.follow-btn {
+  font-weight: bold;
+  background-color: #5CE1E6;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: #3c3b3b;
+  margin-right: 8px;
+}
+
+.follow-btn:hover {
+  background-color: lightgray;
+  color: rgb(55, 53, 53);
+  transition: all 0.25s ease;
+}
+
+.unfollow-btn {
+  font-weight: bold;
+  background: inherit;
+  border-radius: 5px;
+  border-style: groove;
+  border-color: #3c3b3b;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-right: 8px;
+}
+
+.unfollow-btn:hover {
+  background-color: lightgray;
+  color: rgb(55, 53, 53);
+  transition: all 0.25s ease;
+}
+
+.friends-page-container {
+  margin-top: 32px;
+  margin-bottom: 40px;
+  height: 100vh;
+}
