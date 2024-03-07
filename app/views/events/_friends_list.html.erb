@@ -2,7 +2,7 @@
   <div class="container-recommended">
     <% users&.each do |user| %>
       <% if user != @current_user %>
-        <div class="card-search-friends-list col-8 col-sm-6 col-md-6 col-lg-6">
+        <div class="card-search-friends-list col-10 col-sm-12 col-md-12 col-lg-10">
           <div class="card-image">
             <% if user.photo.attached? %>
               <%= image_tag (cl_image_path user.photo.key), crop: :fill, class: "avatar-bordered-follow" %>

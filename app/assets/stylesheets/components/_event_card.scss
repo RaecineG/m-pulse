@@ -1,6 +1,7 @@
 .show-card-event {
   overflow: hidden;
-  background: white;
+  background-color: #2d3436;
+  background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   z-index: 1;
@@ -18,12 +19,13 @@
 }
 
 .show-card-event h2 {
+  color: white;
   font-size: 24px;
-  font-weight: bold;
   margin: 0;
 }
 
 .show-card-event p {
+  color: lightgray;
   font-size: 16px;
   opacity: .7;
   margin: 0;
@@ -35,6 +37,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  margin-bottom: -24px;
 }
 
 .show-card-event-description {
@@ -72,7 +75,7 @@
 }
 
 .show-card-event-infos h6 {
-  color: rgb(55, 53, 53);
+  color: lightgray;
   position: absolute;
   top: 40px;
   right: 29px;
@@ -99,7 +102,7 @@
 }
 
 .nav-link {
-  color: rgb(55, 53, 53)!important;
+  color: lightgray!important;
 }
 
 .nav-pills .nav-link {
@@ -109,7 +112,7 @@
 .nav-pills {
   border: solid;
   border-radius: 25px;
-  border-color: lightgray;
+  border-color: lightgray!important;
   padding: 4px;
   width: fit-content;
   margin: auto;
@@ -118,9 +121,36 @@
 
 .pill-content {
   font-size: 14px;
-  color: rgb(55, 53, 53);
+  color: lightgray;
   margin-top: 8px;
   margin-bottom: 16px;
+}
+
+#switch-description {
+  color: lightgray;
+}
+
+#switch-comments {
+  border-style: solid;
+  border-color: lightgray;
+  padding-top: 3px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 295px;
+  border-radius: 10px;
+  overflow: scroll;
+  height: 150px;
+  color: lightgray;
+  border-width: thin;
+}
+
+#switch-comments p {
+  color: #5CE1E6;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
 .fade:not(.show) {
@@ -146,4 +176,8 @@ position: relative;
   top: 168px;
   left: 16px;
   text-align: center;
+}
+
+.my-2 h5 {
+  color: white;
 }

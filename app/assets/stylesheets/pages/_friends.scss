@@ -60,6 +60,7 @@
 }
 
 .card-search-friends-infos-details h4 {
+  font-size: 14px;
   margin-top: 0.5rem;
   color: white;
 }
@@ -93,4 +94,10 @@
   background-color: lightgray;
   color: rgb(55, 53, 53);
   transition: all 0.25s ease;
+}
+
+.friends-page-container {
+  margin-top: 32px;
+  margin-bottom: 40px;
+  height: 100vh;
 }

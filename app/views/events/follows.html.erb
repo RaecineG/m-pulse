@@ -1,37 +1,59 @@
 <body style="background-color: #2d3436;
-background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);">
-  <div class="following-container">
-    <div class="title" style= "justify-content: center;">
-      <h1 style = "text-align:center;">Following</h1>
-    </div>
-    <div class="row justify-content-center w-100">
-      <div class="following-users-container">
-        <% @followees&.each do |followee| %>
-          <div class="following-users-list col-10 col-sm-8 col-md-8 col-lg-8">
-            <div class="card-image">
-              <% if followee.photo.attached? %>
-                <%= image_tag (cl_image_path followee.photo.key), crop: :fill, class: "avatar-bordered-follow" %>
-              <% else %>
-                <%= image_tag "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg", class: "avatar-bordered-follow" %>
-              <% end %>
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%); height: 100%;">
+  <div class="row justify-content-center">
+    <div class="dashboard-page col-sm-12 col-md-6 col-lg-4">
+      <div class="friends-page-container">
+        <div class="title" style= "justify-content: center;">
+          <h1 style = "text-align:center; color: white;">Friends</h1>
+        </div>
+        <div class="switch-container">
+          <nav>
+            <div class="nav justify-content-center events-nav-pills" id="nav-pill" role="pilllist">
+              <button class="events-nav-link active" id="switch-attended-pill" data-bs-toggle="pill" data-bs-target="#switch-attended" type="button" role="pill" aria-controls="switch-attended" aria-selected="true">Following</button>
+              <button class="events-nav-link" id="switch-planned-pill" data-bs-toggle="pill" data-bs-target="#switch-planned" type="button" role="pill" aria-controls="switch-planned" aria-selected="false">Followers</button>
             </div>
-            <div class="card-event-infos" data-toggle="collapse">
-              <div class="card-event-infos-details">
-                <h2 class="h4"><%= followee.username %></h2>
+          </nav>
+          <!-- List of events already attended -->
+          <div class="pill-content" id="nav-pillContent">
+            <div class="pill-pane fade show active" id="switch-attended" role="pillpanel" aria-labelledby="switch-attended-pill">
+              <div class="row justify-content-center w-100">
+                <div class="following-users-container d-flex flex-row">
+                  <% @followees&.each do |followee| %>
+                    <div class="following-users-list d-flex flex-column col-10 col-sm-12 col-md-12 col-lg-10">
+                      <div class="card-image">
+                        <% if followee.photo.attached? %>
+                          <%= image_tag (cl_image_path followee.photo.key), crop: :fill, class: "avatar-bordered-follow" %>
+                        <% else %>
+                          <%= image_tag "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg", class: "avatar-bordered-follow" %>
+                        <% end %>
+                      </div>
+                      <div class="card-event-infos" data-toggle="collapse">
+                        <div class="card-event-infos-details">
+                          <h2 class="h4"><%= followee.username %></h2>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!-- End of list of events already attended -->
+            <!-- List of events created -->
+            <div class="pill-pane fade" id="switch-planned" role="pillpanel" aria-labelledby="switch-planned-pill">
+              <div class="row justify-content-center">
+                <div class="container-my-events">
+                </div>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
+        <!-- End of list of events created -->
+        <div class="nav-item d-flex justify-content-center">
+          <%= link_to friends_path do %>
+            <button type="button" class="btn search-friends-btn"><i class="fa-solid fa-user-plus" style="color: #3c3b3b;"></i> Add Friends</button>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="nav-item d-flex justify-content-center">
-      <%= link_to friends_path do %>
-        <button type="button" class="btn search-friends-btn"><i class="fa-solid fa-user-plus" style="color: #3c3b3b;"></i> Add Friends</button>
-      <% end %>
     </div>
   </div>
 </body>
-<!-- End of the list of users the current user is following -->
-<%# <div class="pill-pane fade" id="switch-comments" role="pillpanel" aria-labelledby="switch-comments-pill"> %>
-<%# </div> %>
-<%# </div> %>

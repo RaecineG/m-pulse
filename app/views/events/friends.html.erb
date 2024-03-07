@@ -1,13 +1,14 @@
 <body style="background-color: #2d3436;
-background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);">
-  <div class="switch-container">
-    <div class="title" style= "justify-content: center;">
-      <h1 style = "text-align:center; color: white;">Add friends</h1>
-    </div>
-    <div class ="row justify-content-center w-100 friends-container" data-controller="friendslist" >
-      <div class="container">
-        <%= form_with url: friends_path, method: :get, html: {class: "mb-4", style: "display: flex; align-items: center; justify-content: center;", data: {friendslist_target: "form"}} do |f| %>
-          <%= f.text_field :query,
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);  height: 100%;">
+  <div class="row justify-content-center">
+    <div class="switch-container col-sm-12 col-md-6 col-lg-4">
+      <div class="title" style= "justify-content: center;">
+        <h2 style = "text-align:center; color: lightgray;">Add Friends</h2>
+      </div>
+      <div class ="row justify-content-center w-100 friends-container" data-controller="friendslist" >
+        <div class="container">
+          <%= form_with url: friends_path, method: :get, html: {class: "mb-4", style: "display: flex; align-items: center; justify-content: center;", data: {friendslist_target: "form"}} do |f| %>
+            <%= f.text_field :query,
                      class: "form-control",
                      style: "width: 300px; height: 40px;",
                      placeholder: "Search friends",
@@ -15,8 +16,9 @@ background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);">
                      data: {friendslist_target: "input",
                      action: "keyup->friendslist#search",
                      } %>
-        <% end %>
-        <%= render "friends_list", users: @users %>
+          <% end %>
+          <%= render "friends_list", users: @users %>
+        </div>
       </div>
     </div>
   </div>
