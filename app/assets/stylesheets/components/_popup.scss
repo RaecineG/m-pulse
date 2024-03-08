@@ -73,7 +73,7 @@
   position: fixed;
   // background-color: #e6e6e6;
   background-color:#3c3b3bcb;
-  border-radius: 8px;
+  border-radius: 5px;
   // bottom: 50%;
   // right: 50%;
   padding: 8px;
@@ -81,6 +81,13 @@
   left: 15%;
   transform: translate (-50%, -50%);
   z-index: 1000;
+}
+
+.badge-popup img {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: lightgray;
+
 }
 
 .badge-popup h4 {
@@ -101,4 +108,8 @@
 .my-2 label {
   color: white;
 
+}
+
+.number {
+  color: white;
 }

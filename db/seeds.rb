@@ -208,8 +208,8 @@ events = [
         filename: 'yoga_3.jpg' }
   ] },
   { name: "Yamathon🚃",
-    description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Meguro to Meguro!🚶",
-    address: "Meguro", category: 2,
+    description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Mejiro to Mejiro!🚶",
+    address: "Mejiro", category: 2,
     start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
     end_at: DateTime.new(2024, 3, 8, 23, 0, 0),
     photos: [
@@ -404,7 +404,7 @@ events = [
     ] },
   { name: "Wine Symphony🍷",
     description: "Set in an elegant venue adorned with twinkling lights and classical music softly playing in the background.",
-    address: "Mitaka station", category: 2,
+    address: "Mitaka", category: 2,
     start_at: DateTime.new(2024, 3, 8, 16, 0, 0),
     end_at: DateTime.new(2024, 3, 8, 22, 0, 0),
     photos: [
@@ -447,7 +447,7 @@ finished_events = [
     ] },
   { name: "Level up your coding skills and build a game with JavaScript🎮",
     description: "Let's deep dive into the world of Javascript!",
-    address: "Meguro", category: 3,
+    address: "Nihonbashi", category: 3,
     start_at: DateTime.new(2024, 1, 16, 19, 0, 0),
     end_at: DateTime.new(2024, 2, 9, 22, 0, 0),
     photos: [
