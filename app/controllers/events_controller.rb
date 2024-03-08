@@ -4,11 +4,13 @@ class EventsController < ApplicationController
   def index
     #Hard coding the location
     @user_location = [35.6449777, 139.7139662]
-    @events = Event.where("end_at > ?", Time.now).near(@user_location, 9, unit: :km)
+    time = DateTime.new(2024, 3, 8, 4, 0, 0)
+    @events_all = Event.where("end_at > ?", time)
+    @events = Event.where("end_at > ?", time).near(@user_location, 9, unit: :km)
     # @events = Event.where("end_at > ?", Time.now)
-    @past_events = Event.where("end_at < ?", Time.now)
+    @past_events = Event.where("end_at < ?", time)
     @checkin = Checkin.new
-    @markers = @events.geocoded.map do |event|
+    @markers = @events_all.geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
@@ -103,8 +105,8 @@ class EventsController < ApplicationController
     @comments = @event.comments
     @comment = Comment.new
     @user = current_user
-    badges_sashes = @user.sash.badges_sashes.where(created_at: (10.seconds.ago..Time.now))
-    unless badges_sashes.empty?
+    badges_sashes = @user.sash&.badges_sashes.where(created_at: (10.seconds.ago..Time.now))
+    unless badges_sashes.empty? || badges_sashes.nil?
       flash.now[:notice] = "You earned a badge!"
       @badge_image = badges_sashes.first.badge.custom_fields[:image]
       @badge_name = badges_sashes.first.badge.custom_fields[:title]

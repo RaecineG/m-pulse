@@ -17,7 +17,7 @@ background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%); height: 100%
           <div class="pill-content" id="nav-pillContent">
             <div class="pill-pane fade show active" id="switch-attended" role="pillpanel" aria-labelledby="switch-attended-pill">
               <div class="row justify-content-center w-100">
-                <div class="following-users-container d-flex flex-row">
+                <div class="following-users-container d-flex flex-row flex-wrap">
                   <% @followees&.each do |followee| %>
                     <div class="following-users-list d-flex flex-column col-10 col-sm-12 col-md-12 col-lg-10">
                       <div class="card-image">
