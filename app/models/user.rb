@@ -20,6 +20,14 @@ class User < ApplicationRecord
   acts_as_favoritable
   acts_as_favoritor
 
+  def followees
+    favorited_by_type('User')
+  end
+
+  def current_attending_event
+    events_as_attendee.last
+  end
+
   # validates :gender, presence: true
   # validates :date_of_birth, presence: true
 end

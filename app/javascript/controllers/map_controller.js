@@ -7,6 +7,7 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
+    followeeMarkers: Array,
   }
 
   static targets = ["details"]
@@ -21,6 +22,7 @@ export default class extends Controller {
 
     })
 
+    this.#addFolloweeMarkersToMap()
     this.#addMarkersToMap()
     this.#addCurrentLocation()
     this.#fitMapToMarkers()
@@ -87,6 +89,19 @@ export default class extends Controller {
           this.detailsTarget.innerHTML = ""
         })
       })
+
+    })
+  }
+
+  #addFolloweeMarkersToMap() {
+    this.followeeMarkersValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.innerHTML = marker.marker_html;
+
+
+      const markerObj = new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng  + 0.000001, marker.lat ])
+        .addTo(this.map)
 
     })
   }
