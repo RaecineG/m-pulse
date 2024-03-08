@@ -120,19 +120,19 @@ events = [
       { io: File.open(Rails.root.join('db/images/discoball3.jpg')),
         filename: 'discoball3.jpg' }
     ] },
-  { name: "Javascript Seminar 💻",
-    description: "Hone your coding skills in this Javascript seminar, be the web developer you know you can be!",
-    address: "Meguro", category: 3,
-    start_at: DateTime.new(2024, 3, 8, 21, 0, 0),
-    end_at: DateTime.new(2024, 3, 8, 22, 30, 0),
-    photos: [
-      { io: File.open(Rails.root.join('db/images/programming.jpg')),
-        filename: 'programming.jpg' },
-      { io: File.open(Rails.root.join('db/images/programming2.jpg')),
-        filename: 'programming2.jpg' },
-      { io: File.open(Rails.root.join('db/images/programming3.jpg')),
-        filename: 'programming3.jpg' }
-    ] },
+    { name: "Yamathon🚃",
+      description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Meguro to Meguro!🚶",
+      address: "Meguro", category: 2,
+      start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
+      end_at: DateTime.new(2024, 3, 8, 23, 0, 0),
+      photos: [
+        { io: File.open(Rails.root.join('db/images/yamathon.jpg')),
+          filename: 'yamathon.jpg' },
+        { io: File.open(Rails.root.join('db/images/yamathon_2.jpg')),
+          filename: 'yamathon_2.jpg' },
+        { io: File.open(Rails.root.join('db/images/yamathon_3.jpg')),
+          filename: 'yamathon_3.jpg' }
+      ] },
   { name: "70's Night 📺",
     description: "Go back in time and bring your vintage look to life",
     address: "Shibuya", category: 0,
@@ -198,22 +198,9 @@ events = [
       { io: File.open(Rails.root.join('db/images/yoga_3.jpg')),
         filename: 'yoga_3.jpg' }
   ] },
-  { name: "Yamathon🚃",
-    description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Meguro to Meguro!🚶",
-    address: "Meguro", category: 2,
-    start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
-    end_at: DateTime.new(2024, 3, 8, 23, 0, 0),
-    photos: [
-      { io: File.open(Rails.root.join('db/images/yamathon.jpg')),
-        filename: 'yamathon.jpg' },
-      { io: File.open(Rails.root.join('db/images/yamathon_2.jpg')),
-        filename: 'yamathon_2.jpg' },
-      { io: File.open(Rails.root.join('db/images/yamathon_3.jpg')),
-        filename: 'yamathon_3.jpg' }
-    ] },
   { name: "Midnight Madness Club Party🎉",
     description: "Join us for a night of non-stop fun, music, and excitement as we transform the dance floor into an electrifying playground of rhythm and beats.",
-    address: "Shibuya", category: 0,
+    address: "Kabukicho", category: 0,
     start_at: DateTime.new(2024, 3, 8, 22, 0, 0),
     end_at: DateTime.new(2024, 3, 9, 4, 0, 0),
     photos: [
@@ -237,7 +224,7 @@ events = [
       { io: File.open(Rails.root.join('db/images/Film Fanatics_3.jpg')),
         filename: 'Film Fanatics_3.jpg' }
     ] },
-  { name: "Japan vs England match⚽️",
+  { name: "Japan vs England match ⚽️",
     description: "Welcome to the Film Fanatics Forum, where movie lovers unite for a cinematic celebration like no other!",
     address: "Sendagaya", category: 1,
     start_at: DateTime.new(2024, 3, 8, 18, 0, 0),
@@ -276,7 +263,7 @@ events = [
       { io: File.open(Rails.root.join('db/images/kpop_3.jpg')),
         filename: 'kpop_3.jpg' }
     ] },
-  { name: "Straberry Festival🍓",
+  { name: "Strawberry Festival🍓",
     description: "Join us for a day filled with fun, food, and festivities as we celebrate the vibrant and delicious strawberry harvest.",
     address: "Jiyugaoka", category: 2,
     start_at: DateTime.new(2024, 3, 8, 11, 0, 0),
@@ -434,6 +421,8 @@ events.each do |event|
   puts "Event -> #{e.name} has been created"
 end
 
+puts "#{main_events.count} current events generated 🤹"
+
 past_events = []
 puts "Generating past events 📼"
 finished_events.each do |event|
@@ -464,12 +453,12 @@ puts "Events have been generated succesfully 🪩🎊🪅"
 random_users.each do |user|
   c = 1
   main_events.each do |event|
-    if c <= 2
+    if c <= 5
       go = rand(1..8)
       if go != 1
         Checkin.create!( status: 1, event: event, user: user)
       end
-    elsif c <= 4
+    elsif c <= 12
       go = rand(1..2)
       if go != 1
         Checkin.create!( status: 1, event: event, user: user)
