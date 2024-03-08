@@ -113,3 +113,26 @@
   margin-right: 10%!important;
   background-color: #3c3b3b!important;
 }
+
+.mapboxgl-ctrl-geocoder--icon-close {
+  display: none!important;
+}
+
+.mapboxgl-ctrl-geocoder--icon-loading {
+  display: none!important;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  fill: lightgray;
+  margin-left: 3px!important;
+}
+
+.map-details {
+  position: fixed;
+    // height: 80vh;
+    // width: 80vw;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
