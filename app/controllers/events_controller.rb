@@ -4,11 +4,13 @@ class EventsController < ApplicationController
   def index
     #Hard coding the location
     @user_location = [35.6449777, 139.7139662]
-    @events = Event.where("end_at > ?", Time.now).near(@user_location, 9, unit: :km)
+    time = DateTime.new(2024, 3, 8, 4, 0, 0)
+    @events_all = Event.where("end_at > ?", time)
+    @events = Event.where("end_at > ?", time).near(@user_location, 9, unit: :km)
     # @events = Event.where("end_at > ?", Time.now)
-    @past_events = Event.where("end_at < ?", Time.now)
+    @past_events = Event.where("end_at < ?", time)
     @checkin = Checkin.new
-    @markers = @events.geocoded.map do |event|
+    @markers = @events_all.geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
