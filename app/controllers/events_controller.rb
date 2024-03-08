@@ -21,6 +21,7 @@ class EventsController < ApplicationController
       }
     end
 
+    @followee_markers = []
     @followee_markers = current_user.followees.map do |followee|
       event = followee.current_attending_event
       {
@@ -32,7 +33,7 @@ class EventsController < ApplicationController
         marker_html: render_to_string(partial: "shared/user_avatar", locals: {user: followee}, formats: [:html]),
         checkin_count: event.checkins.count
       }
-    end
+    end if user_signed_in?
 
     if params[:query].present?
       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
