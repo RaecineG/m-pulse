@@ -67,25 +67,27 @@ end
 # Random users for checkins!
 random_users = []
 number = 1 # For incrementing
-rando_usernames = ["PartyAnimal", "MochaScript", "qt.pi", "1337coder", "unicorn", "LakersFan"]
+# rando_usernames = ["PartyAnimal", "MochaScript", "qt.pi", "1337coder", "unicorn", "LakersFan"]
+
+print "Creating random users"
 
 60.times do
   created_user = User.create!(
-    first_name: "RandomFirstName#{number}",
-    last_name: "RandomLastName#{number}",
-    username: "#{rando_usernames.sample}#{number}",
-    email: "RandomEmail#{number}@mpulse.com",
-    gender: rand(1..2),
+    first_name: "RandomFirstName#{number}", last_name: "RandomLastName#{number}",
+    username: "#{Faker::Internet.username(specifier: 5..8)}#{number}",
+    email: "RandomEmail#{number}@mpulse.com", gender: rand(1..2),
     password: "123456"
   )
   created_user.photo.attach(
-    io: URI.open(Faker::Avatar.image(slug: "rando", size: "50x50", format: "jpg")),
-    filename: "rando.jpg"
+    io: URI.open(Faker::Avatar.image(slug: created_user.username.to_s, size: "50x50", format: "jpg")),
+    filename: "#{created_user.username}.jpg"
   )
   random_users << created_user
   number += 1
+  print "."
 end
 
+puts ""
 puts "Created #{random_users.count} random users 🤖"
 
 puts "All users have been generated succesfully 💃🕺"
