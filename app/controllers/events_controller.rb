@@ -21,20 +21,21 @@ class EventsController < ApplicationController
       }
     end
 
-    @followee_markers = []
-    @followee_markers = current_user.followees.each do |followee|
-      event = followee.current_attending_event
-      next if event.geocoded?
-      @followee_markers << {
-        lat: event.latitude,
-        lng: event.longitude,
-        id: event.id,
-        category: event.category,
-        info_window_html: render_to_string(partial: "events/info_window", locals: {event: event}, formats: [:html]),
-        marker_html: render_to_string(partial: "shared/user_avatar", locals: {user: followee}, formats: [:html]),
-        checkin_count: event.checkins.count
-      }
-    end if user_signed_in?
+    # @followee_markers = []
+
+    # @followee_markers = current_user.followees.each do |followee|
+    #   event = followee.current_attending_event
+    #   next if event.geocoded?
+    #   @followee_markers << {
+    #     lat: event.latitude,
+    #     lng: event.longitude,
+    #     id: event.id,
+    #     category: event.category,
+    #     info_window_html: render_to_string(partial: "events/info_window", locals: {event: event}, formats: [:html]),
+    #     marker_html: render_to_string(partial: "shared/user_avatar", locals: {user: followee}, formats: [:html]),
+    #     checkin_count: event.checkins.count
+    #   }
+    # end if user_signed_in?
 
     if params[:query].present?
       @events = @events.where("name ILIKE ?", "%#{params[:query]}%")
