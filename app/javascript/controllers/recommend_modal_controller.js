@@ -3,9 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="recommend-modal"
 export default class extends Controller {
 
-  static targets = ["overlay"]
+  static targets = ["overlay", "eventsIcon", "icon"]
   connect() {
-
     // <!-- JavaScript for Modal -->
   }
 
@@ -18,6 +17,8 @@ export default class extends Controller {
   }
   open() {
     this.overlayTarget.style.display = "flex";
+    this.iconTargets.forEach( icon => icon.style.color = "grey");
+    this.eventsIconTarget.style.color = "#FAFD69";
   }
 
   close() {
