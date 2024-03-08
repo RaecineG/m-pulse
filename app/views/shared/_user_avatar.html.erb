@@ -1,0 +1,7 @@
+<div class="card-image">
+  <% if user.photo.attached? %>
+    <%= image_tag (cl_image_path user.photo.key), crop: :fill, class: "avatar-bordered-follow-map" %>
+  <% else %>
+    <%= image_tag "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg", class: "avatar-bordered-follow-map" %>
+  <% end %>
+</div>
