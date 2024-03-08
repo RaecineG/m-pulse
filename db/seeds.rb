@@ -350,7 +350,7 @@ events = [
       { io: File.open(Rails.root.join('db/images/shinagawa_fes_3.jpg')),
         filename: 'shinagawa_fes_3.jpg' }
     ] },
-  { name: "Entrepreneurial Spark📱",
+  { name: "Innovator Spark📱",
     description: "Join us for a day of immersive learning, networking, and empowerment as we navigate the exciting world of startups and innovation.",
     address: "Gotanda", category: 3,
     start_at: DateTime.new(2024, 3, 8, 11, 0, 0),
