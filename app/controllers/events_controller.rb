@@ -22,9 +22,10 @@ class EventsController < ApplicationController
     end
 
     @followee_markers = []
-    @followee_markers = current_user.followees.map do |followee|
+    @followee_markers = current_user.followees.each do |followee|
       event = followee.current_attending_event
-      {
+      next if event.geocoded?
+      @followee_markers << {
         lat: event.latitude,
         lng: event.longitude,
         id: event.id,
