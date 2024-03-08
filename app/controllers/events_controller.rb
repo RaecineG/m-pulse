@@ -121,6 +121,7 @@ class EventsController < ApplicationController
       end
     end
     @events = past_events
+    @my_events = @user.events
   end
 
   def details
