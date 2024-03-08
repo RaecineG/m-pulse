@@ -13,7 +13,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
 
   # Enable server timing
   config.server_timing = true
@@ -60,6 +60,8 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.hosts.clear
+  
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
