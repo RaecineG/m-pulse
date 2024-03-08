@@ -71,13 +71,32 @@
 
 .badge-popup {
   position: fixed;
-  background-color: #e6e6e6;
-  border-radius: 8px;
-  bottom: 50%;
-  right: 50%;
+  // background-color: #e6e6e6;
+  background-color:#3c3b3bcb;
+  border-radius: 5px;
+  // bottom: 50%;
+  // right: 50%;
+  padding: 8px;
+  top: 20%;
+  left: 15%;
+  transform: translate (-50%, -50%);
   z-index: 1000;
 }
 
+.badge-popup img {
+  border-radius: 20px;
+  border-style: solid;
+  border-color: lightgray;
+
+}
+
+.badge-popup h4 {
+  color: white;
+}
+
+.badge-popup p {
+  color: white;
+}
 // .badge-popup {
 //   display: flex;
 //   justify-content: center;
@@ -85,3 +104,12 @@
 //   text-align: center;
 //   min-height: 100vh;
 // }
+
+.my-2 label {
+  color: white;
+
+}
+
+.number {
+  color: white;
+}
