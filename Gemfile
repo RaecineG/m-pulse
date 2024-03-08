@@ -61,6 +61,7 @@ gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
 gem 'rspec-rails'
 # Gem for badges ⬇️
 gem 'merit'
+gem 'faker'
 
 group :development do
   gem 'rubocop', require: false
