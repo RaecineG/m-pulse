@@ -106,7 +106,7 @@ events = [
         filename: 'demo.jpg' },
       { io: File.open(Rails.root.join('db/images/demo2.jpg')),
         filename: 'demo2.jpg' }
-    ] },
+    ] }, # OK / RED
   { name: "Disco Ball 🪩",
     description: "Party until your head spin 😵‍💫",
     address: "Shinjuku", category: 0,
@@ -119,10 +119,10 @@ events = [
         filename: 'discoball2.jpg' },
       { io: File.open(Rails.root.join('db/images/discoball3.jpg')),
         filename: 'discoball3.jpg' }
-    ] },
-    { name: "Yamathon🚃",
-      description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Mejiro to Mejiro!🚶",
-      address: "Mejiro", category: 2,
+    ] }, # OK / RED
+    { name: "Yamathon 🚃",
+      description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Mejiro to Mejiro!🏃‍♂️🏃‍♀️",
+      address: "Mejiro", category: 1,
       start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
       end_at: DateTime.new(2024, 3, 8, 23, 0, 0),
       photos: [
@@ -132,7 +132,7 @@ events = [
           filename: 'yamathon_2.jpg' },
         { io: File.open(Rails.root.join('db/images/yamathon_3.jpg')),
           filename: 'yamathon_3.jpg' }
-      ] },
+      ] }, # OK / RED
   { name: "70's Night 📺",
     description: "Go back in time and bring your vintage look to life",
     address: "Shibuya", category: 0,
@@ -145,7 +145,7 @@ events = [
         filename: '70s2.jpg' },
       { io: File.open(Rails.root.join('db/images/70s3.jpg')),
         filename: '70s3.jpg' }
-    ] },
+    ] }, # OK / RED
   { name: "Single's Meet-up 💘",
     description: "Find your match made in heaven in this meet-up event. Disclaimer: You are not required to end up with a partner by the end of this event!",
     address: "Ikebukuro", category: 2,
@@ -158,7 +158,7 @@ events = [
         filename: 'singles2.jpg' },
       { io: File.open(Rails.root.join('db/images/singles3.jpg')),
         filename: 'singles3.jpg' }
-    ] },
+    ] }, # NG
   { name: "Pre-sakura Half-Marathon 🏃",
     description: "Warm-up before the Sakura season start, join us in this fun run along the scenic Meguro river",
     address: "Nakameguro", category: 1,
@@ -171,7 +171,7 @@ events = [
         filename: 'marathon2.jpg' },
       { io: File.open(Rails.root.join('db/images/marathon3.jpg')),
         filename: 'marathon3.jpg' }
-    ] },
+    ] }, # OK / ORANGE
   { name: "InnovateX Conference💻",
     description: "Join us at the InnovateX Conference, where visionaries, thought leaders, and innovators converge to explore the cutting-edge trends",
     address: "Roppongi", category: 3,
@@ -184,7 +184,7 @@ events = [
         filename: 'InnovateX Conference.jpg' },
       { io: File.open(Rails.root.join('db/images/InnovateX Conference_3.jpg')),
         filename: 'InnovateX Conference_3.jpg' }
-    ] },
+    ] }, # OK / ORANGE
   { name: "Morning Yoga🧘",
     description: "Start your day fresh with yoga in Yoyogi Park!",
     address: "Yoyogi", category: 1,
@@ -197,7 +197,7 @@ events = [
         filename: 'yoga_2.jpg' },
       { io: File.open(Rails.root.join('db/images/yoga_3.jpg')),
         filename: 'yoga_3.jpg' }
-  ] },
+  ] }, # OK / ORANGE
   { name: "Midnight Madness Club Party🎉",
     description: "Join us for a night of non-stop fun, music, and excitement as we transform the dance floor into an electrifying playground of rhythm and beats.",
     address: "Kabukicho", category: 0,
@@ -210,7 +210,7 @@ events = [
         filename: 'Midnight Madness_2.jpg' },
       { io: File.open(Rails.root.join('db/images/Midnight Madness_3.jpg')),
         filename: 'Midnight Madness_3.jpg' }
-    ] },
+    ] }, # OK / ORANGE
   { name: "Film Fanatics Forum🎬",
     description: "Welcome to the Film Fanatics Forum, where movie lovers unite for a cinematic celebration like no other!",
     address: "Nakano", category: 2,
@@ -223,7 +223,7 @@ events = [
         filename: 'Film Fanatics_2.jpg' },
       { io: File.open(Rails.root.join('db/images/Film Fanatics_3.jpg')),
         filename: 'Film Fanatics_3.jpg' }
-    ] },
+    ] }, # NG
   { name: "Japan vs England match ⚽️",
     description: "Welcome to the Film Fanatics Forum, where movie lovers unite for a cinematic celebration like no other!",
     address: "Sendagaya", category: 1,
@@ -236,7 +236,7 @@ events = [
         filename: 'japanvsengland_2.jpg' },
       { io: File.open(Rails.root.join('db/images/japanvsengland_3.jpg')),
         filename: 'japanvsengland_3.jpg' }
-    ] },
+    ] }, # OK / ORANGE
   { name: "Health Tech Conference🩺",
     description: "Welcome to the HealthTech Innovate Summit, where pioneers, innovators, and thought leaders converge to explore the cutting-edge advancements.",
     address: "Akihabara", category: 3,
@@ -249,7 +249,7 @@ events = [
         filename: 'health_2.jpeg' },
       { io: File.open(Rails.root.join('db/images/health_2.jpeg')),
         filename: 'health_3.jpeg' }
-    ] },
+    ] }, # OK / ORANGE
   { name: "Kpop night🇰🇷",
     description: "Welcome to the K-Pop Krazed Meetup, where fans of Korean pop music come together to celebrate their love for K-pop culture!",
     address: "Tokyo Dome", category: 2,
@@ -262,7 +262,7 @@ events = [
         filename: 'kpop_2.jpg' },
       { io: File.open(Rails.root.join('db/images/kpop_3.jpg')),
         filename: 'kpop_3.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "Strawberry Festival🍓",
     description: "Join us for a day filled with fun, food, and festivities as we celebrate the vibrant and delicious strawberry harvest.",
     address: "Jiyugaoka", category: 2,
@@ -275,7 +275,7 @@ events = [
         filename: 'strawberry_2.jpg' },
       { io: File.open(Rails.root.join('db/images/strawberry_3.jpg')),
         filename: 'strawberry_3.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "A City Pop Celebration🎸",
     description: "Get ready to immerse yourself in the smooth sounds and nostalgic vibes of City Pop at the City Groove event!",
     address: "Shimokitazawa", category: 0,
@@ -288,7 +288,7 @@ events = [
         filename: 'citypop_2.jpg' },
       { io: File.open(Rails.root.join('db/images/citypop_3.jpeg')),
         filename: 'citypop_3.jpeg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "Sakura Matsuri🌸🇯🇵",
     description: "Step into a world of beauty, tradition, and wonder at Sakura Matsuri, a vibrant celebration of Japanese culture.",
     address: "Hamamatsucho", category: 2,
@@ -301,7 +301,7 @@ events = [
         filename: 'sakuramatsuri_2.jpg' },
       { io: File.open(Rails.root.join('db/images/sakuramatsuri_3.jpg')),
         filename: 'sakuramatsuri_3.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "Spring Fes🌱",
     description: "Celebrate the arrival of spring in all its glory at Spring Fes, a vibrant festival filled with lively performances, and joyful festivities.",
     address: "Odaiba", category: 2,
@@ -314,7 +314,7 @@ events = [
         filename: 'sakuramatsuri_2.jpg' },
       { io: File.open(Rails.root.join('db/images/sakuramatsuri_3.jpg')),
         filename: 'sakuramatsuri_3.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "The Athletic Challenge🚴",
     description: "Join us for an electrifying journey through a series of grueling challenges that will push your mind, body, and spirit to the limit.",
     address: "Shinagawa", category: 1,
@@ -327,7 +327,7 @@ events = [
         filename: 'shinagawa_fes_2.jpg' },
       { io: File.open(Rails.root.join('db/images/shinagawa_fes_3.jpg')),
         filename: 'shinagawa_fes_3.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "Innovator Spark📱",
     description: "Join us for a day of immersive learning, networking, and empowerment as we navigate the exciting world of startups and innovation.",
     address: "Gotanda", category: 3,
@@ -340,10 +340,10 @@ events = [
         filename: 'entrepreneur.jpg' },
       { io: File.open(Rails.root.join('db/images/entrepreneur_3.jpg')),
         filename: 'entrepreneur.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "Lazona Wagashi Festival🍡",
     description: "The festival serves as a platform for both locals and tourists to immerse themselves in the beauty and flavors of wagashi.",
-    address: "Kawasaki", category: 2,
+    address: "Yokohama", category: 2,
     start_at: DateTime.new(2024, 3, 8, 10, 0, 0),
     end_at: DateTime.new(2024, 3, 8, 20, 0, 0),
     photos: [
@@ -353,7 +353,7 @@ events = [
         filename: 'wagashi_2.jpg' },
       { io: File.open(Rails.root.join('db/images/wagashi_3.jpg')),
         filename: 'wagashi_3.jpg' }
-    ] },
+    ] }, # NG
   { name: "Pokémon Search🔍",
     description: "Pokémon Search invites Pokémon enthusiasts of all ages to embark on an exciting adventure through the bustling streets of Ikebukuro.",
     address: "Takadanobaba", category: 2,
@@ -366,10 +366,10 @@ events = [
         filename: 'pokemon_2.jpg' },
       { io: File.open(Rails.root.join('db/images/pokemon_3.jpg')),
         filename: 'pokemon_3.jpg' }
-    ] },
+    ] }, # OK / BLUE
   { name: "Homerun Derby⚾️",
     description: "This thrilling baseball event promises a home run experience for fans of all ages",
-    address: "Kameido", category: 1,
+    address: "Chofu", category: 1,
     start_at: DateTime.new(2024, 3, 8, 10, 0, 0),
     end_at: DateTime.new(2024, 3, 8, 15, 0, 0),
     photos: [
@@ -379,7 +379,7 @@ events = [
         filename: 'homerun_2.jpg' },
       { io: File.open(Rails.root.join('db/images/homerun_3.jpg')),
         filename: 'homerun_3.jpg' }
-    ] },
+    ] }, # NG
   { name: "Wine Symphony🍷",
     description: "Set in an elegant venue adorned with twinkling lights and classical music softly playing in the background.",
     address: "Mitaka", category: 2,
@@ -392,7 +392,7 @@ events = [
         filename: 'wine_2.jpg' },
       { io: File.open(Rails.root.join('db/images/wine_3.jpg')),
         filename: 'wine_3.jpg' }
-    ] }
+    ] } # NG
 ] # Current event categories: 0-Club, 1-Sports, 2-Meet-up, 3-Tech
 
 finished_events = [
