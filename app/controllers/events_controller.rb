@@ -97,7 +97,14 @@ class EventsController < ApplicationController
 
   def dashboard
     @user = current_user
-    @events = @user.events
+    checkins = @user.checkins
+    past_events = []
+    checkins.each do |checkin|
+      if checkin.event.end_at < Time.now
+        past_events << checkin.event
+      end
+    end
+    @events = past_events
   end
 
   def details

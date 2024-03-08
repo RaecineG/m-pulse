@@ -22,24 +22,22 @@ background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%); height: 100v
           <div class="row justify-content-center">
             <div class="container-my-events">
               <% @events&.each do |event| %>
-                <% if event.end_at < Time.zone.today %>
-                  <div class="card-my-events-list col-10 col-sm-12 col-md-12 col-lg-10">
-                    <div class="my-events-card-image">
-                      <% if event&.photos&.attached? %>
-                        <%= cl_image_tag event.photos.first.key %>
-                      <% else %>
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-                      <% end %>
-                    </div>
-                    <div class="card-my-event-infos" data-toggle="collapse">
-                      <div class="card-my-event-infos-details">
-                        <h6><%= event.name %></h6>
-                        <p><%= event.category %></p>
-                        <p><%= event.end_at.strftime('%Y/%m/%d') %></p>
-                      </div>
+                <div class="card-my-events-list col-10 col-sm-12 col-md-12 col-lg-10">
+                  <div class="my-events-card-image">
+                    <% if event&.photos&.attached? %>
+                      <%= cl_image_tag event.photos.first.key %>
+                    <% else %>
+                      <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <% end %>
+                  </div>
+                  <div class="card-my-event-infos" data-toggle="collapse">
+                    <div class="card-my-event-infos-details">
+                      <h6><%= event.name %></h6>
+                      <p><%= event.category %></p>
+                      <p><%= event.end_at.strftime('%Y/%m/%d') %></p>
                     </div>
                   </div>
-                <% end %>
+                </div>
               <% end %>
             </div>
           </div>
