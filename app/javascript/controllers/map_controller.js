@@ -22,7 +22,7 @@ export default class extends Controller {
 
     })
 
-    this.#addFolloweeMarkersToMap()
+    // this.#addFolloweeMarkersToMap()
     this.#addMarkersToMap()
     this.#addCurrentLocation()
     this.#fitMapToMarkers()
