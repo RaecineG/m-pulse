@@ -121,8 +121,8 @@ events = [
         filename: 'discoball3.jpg' }
     ] },
     { name: "Yamathon🚃",
-      description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Meguro to Meguro!🚶",
-      address: "Meguro", category: 2,
+      description: "Walk the 30 stations, the 45km (wow!!) of the mythic Yamanote line together, from Mejiro to Mejiro!🚶",
+      address: "Mejiro", category: 2,
       start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
       end_at: DateTime.new(2024, 3, 8, 23, 0, 0),
       photos: [
@@ -211,7 +211,7 @@ events = [
       { io: File.open(Rails.root.join('db/images/Midnight Madness_3.jpg')),
         filename: 'Midnight Madness_3.jpg' }
     ] },
-  { name: "Film Fanatics Forum: Cinematic Celebration Meetup🎬",
+  { name: "Film Fanatics Forum🎬",
     description: "Welcome to the Film Fanatics Forum, where movie lovers unite for a cinematic celebration like no other!",
     address: "Nakano", category: 2,
     start_at: DateTime.new(2024, 3, 8, 14, 0, 0),
@@ -276,9 +276,9 @@ events = [
       { io: File.open(Rails.root.join('db/images/strawberry_3.jpg')),
         filename: 'strawberry_3.jpg' }
     ] },
-  { name: "City Groove: A City Pop Celebration🎸",
+  { name: "A City Pop Celebration🎸",
     description: "Get ready to immerse yourself in the smooth sounds and nostalgic vibes of City Pop at the City Groove event!",
-    address: "Shinjuku", category: 0,
+    address: "Shimokitazawa", category: 0,
     start_at: DateTime.new(2024, 3, 8, 21, 0, 0),
     end_at: DateTime.new(2024, 3, 9, 4, 0, 0),
     photos: [
@@ -289,7 +289,7 @@ events = [
       { io: File.open(Rails.root.join('db/images/citypop_3.jpeg')),
         filename: 'citypop_3.jpeg' }
     ] },
-  { name: "Sakura Matsuri: Celebrating Japanese Culture🌸🇯🇵",
+  { name: "Sakura Matsuri🌸🇯🇵",
     description: "Step into a world of beauty, tradition, and wonder at Sakura Matsuri, a vibrant celebration of Japanese culture.",
     address: "Hamamatsucho", category: 2,
     start_at: DateTime.new(2024, 3, 8, 12, 0, 0),
@@ -315,7 +315,7 @@ events = [
       { io: File.open(Rails.root.join('db/images/sakuramatsuri_3.jpg')),
         filename: 'sakuramatsuri_3.jpg' }
     ] },
-  { name: "The Ultimate Athletic Challenge🚴",
+  { name: "The Athletic Challenge🚴",
     description: "Join us for an electrifying journey through a series of grueling challenges that will push your mind, body, and spirit to the limit.",
     address: "Shinagawa", category: 1,
     start_at: DateTime.new(2024, 3, 8, 9, 0, 0),
@@ -328,18 +328,70 @@ events = [
       { io: File.open(Rails.root.join('db/images/shinagawa_fes_3.jpg')),
         filename: 'shinagawa_fes_3.jpg' }
     ] },
-  { name: "Entrepreneurial Spark: Ignite Your Startup Journey📱",
+  { name: "Innovator Spark📱",
     description: "Join us for a day of immersive learning, networking, and empowerment as we navigate the exciting world of startups and innovation.",
     address: "Gotanda", category: 3,
     start_at: DateTime.new(2024, 3, 8, 11, 0, 0),
     end_at: DateTime.new(2024, 3, 8, 20, 0, 0),
     photos: [
       { io: File.open(Rails.root.join('db/images/entrepreneur.jpg')),
-        filename: 'shinagawa_fes.jpg' },
+        filename: 'entrepreneur.jpg' },
       { io: File.open(Rails.root.join('db/images/entrepreneur_2.jpg')),
-        filename: 'shinagawa_fes_2.jpg' },
+        filename: 'entrepreneur.jpg' },
       { io: File.open(Rails.root.join('db/images/entrepreneur_3.jpg')),
-        filename: 'shinagawa_fes_3.jpg' }
+        filename: 'entrepreneur.jpg' }
+    ] },
+  { name: "Lazona Wagashi Festival🍡",
+    description: "The festival serves as a platform for both locals and tourists to immerse themselves in the beauty and flavors of wagashi.",
+    address: "Kawasaki", category: 2,
+    start_at: DateTime.new(2024, 3, 8, 10, 0, 0),
+    end_at: DateTime.new(2024, 3, 8, 20, 0, 0),
+    photos: [
+      { io: File.open(Rails.root.join('db/images/wagashi.jpg')),
+        filename: 'wagashi.jpg' },
+      { io: File.open(Rails.root.join('db/images/wagashi_2.jpg')),
+        filename: 'wagashi_2.jpg' },
+      { io: File.open(Rails.root.join('db/images/wagashi_3.jpg')),
+        filename: 'wagashi_3.jpg' }
+    ] },
+  { name: "Pokémon Search🔍",
+    description: "Pokémon Search invites Pokémon enthusiasts of all ages to embark on an exciting adventure through the bustling streets of Ikebukuro.",
+    address: "Takadanobaba", category: 2,
+    start_at: DateTime.new(2024, 3, 8, 10, 0, 0),
+    end_at: DateTime.new(2024, 3, 8, 20, 0, 0),
+    photos: [
+      { io: File.open(Rails.root.join('db/images/pokemon.png')),
+        filename: 'pokemon.jpg' },
+      { io: File.open(Rails.root.join('db/images/pokemon_2.jpg')),
+        filename: 'pokemon_2.jpg' },
+      { io: File.open(Rails.root.join('db/images/pokemon_3.jpg')),
+        filename: 'pokemon_3.jpg' }
+    ] },
+  { name: "Homerun Derby⚾️",
+    description: "This thrilling baseball event promises a home run experience for fans of all ages",
+    address: "Kameido", category: 1,
+    start_at: DateTime.new(2024, 3, 8, 10, 0, 0),
+    end_at: DateTime.new(2024, 3, 8, 15, 0, 0),
+    photos: [
+      { io: File.open(Rails.root.join('db/images/homerun.jpg')),
+        filename: 'homerun.jpg' },
+      { io: File.open(Rails.root.join('db/images/homerun_2.jpg')),
+        filename: 'homerun_2.jpg' },
+      { io: File.open(Rails.root.join('db/images/homerun_3.jpg')),
+        filename: 'homerun_3.jpg' }
+    ] },
+  { name: "Wine Symphony🍷",
+    description: "Set in an elegant venue adorned with twinkling lights and classical music softly playing in the background.",
+    address: "Mitaka", category: 2,
+    start_at: DateTime.new(2024, 3, 8, 16, 0, 0),
+    end_at: DateTime.new(2024, 3, 8, 22, 0, 0),
+    photos: [
+      { io: File.open(Rails.root.join('db/images/wine.jpg')),
+        filename: 'wine.jpg' },
+      { io: File.open(Rails.root.join('db/images/wine_2.jpg')),
+        filename: 'wine_2.jpg' },
+      { io: File.open(Rails.root.join('db/images/wine_3.jpg')),
+        filename: 'wine_3.jpg' }
     ] }
 ] # Current event categories: 0-Club, 1-Sports, 2-Meet-up, 3-Tech
 
@@ -373,9 +425,9 @@ finished_events = [
     ] },
   { name: "Level up your coding skills and build a game with JavaScript🎮",
     description: "Let's deep dive into the world of Javascript!",
-    address: "Meguro", category: 3,
+    address: "Nihonbashi", category: 3,
     start_at: DateTime.new(2024, 1, 16, 19, 0, 0),
-    end_at: DateTime.new(2024, 2, 9, 22, 00, 0),
+    end_at: DateTime.new(2024, 2, 9, 22, 0, 0),
     photos: [
       { io: File.open(Rails.root.join('db/images/javascript.jpg')),
         filename: 'javascript.jpg' }
@@ -444,7 +496,7 @@ finished_events.each do |event|
 end
 
 puts ""
-puts "#{past_events.count} past events has been created"
+puts "#{past_events.count} past events has been created 🦖"
 
 puts "Events have been generated succesfully 🪩🎊🪅"
 # Events section -- END --
